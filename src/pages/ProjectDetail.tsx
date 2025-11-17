@@ -17,9 +17,19 @@ import {
   Car,
   Shield
 } from "lucide-react";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/project (1).jpeg";
+import project2 from "@/assets/project (2).jpg";
+import project3 from "@/assets/project (3).jpg";
+import project4 from "@/assets/project (4).jpg";
+import project5 from "@/assets/project (5).JPG";
+import project6 from "@/assets/project (6).jpg";
+import project7 from "@/assets/project (7).jpg";
+import project8 from "@/assets/project (8).jpg";
+import project9 from "@/assets/project (9).jpg";
+import project10 from "@/assets/project (10).jpg";
+import project11 from "@/assets/project (11).jpg";
+import project12 from "@/assets/project (12).jpg";
+import project13 from "@/assets/project (13).jpg";
 
 interface Project {
   id: number;
@@ -71,7 +81,7 @@ const ProjectDetail = () => {
       budget: "$50M",
       status: "Under Construction",
       client: "Golden Properties Development",
-      gallery: [project1, project2, project3],
+      gallery: [project1, project2, project3, project4],
       specifications: {
         floors: 12,
         units: 120,
@@ -94,7 +104,7 @@ const ProjectDetail = () => {
       budget: "$120M",
       status: "Completed",
       client: "Cairo Development Authority",
-      gallery: [project2, project1, project3],
+      gallery: [project2, project5, project6],
       specifications: {
         floors: 25,
         units: 200,
@@ -117,7 +127,7 @@ const ProjectDetail = () => {
       budget: "$35M",
       status: "Planning Phase",
       client: "Alexandria Cultural Foundation",
-      gallery: [project3, project1, project2],
+      gallery: [project3, project7, project8],
       specifications: {
         floors: 4,
         units: 1,
@@ -132,7 +142,7 @@ const ProjectDetail = () => {
       category: "residential",
       location: "Giza, Egypt",
       year: "2025",
-      image: project1,
+      image: project4,
       description: "Contemporary residential design blending modern comfort with traditional Egyptian aesthetics.",
       detailedDescription: "The Modern Villa Estate in Giza represents the perfect fusion of contemporary luxury and traditional Egyptian design principles. This exclusive development features 50 luxury villas, each designed to provide maximum privacy and comfort while maintaining a strong connection to the surrounding landscape. The villas incorporate traditional Egyptian architectural elements such as courtyards, mashrabiya screens, and natural stone finishes, while featuring modern amenities and smart home technology. The estate includes a central park, community facilities, and premium security services.",
       features: ["Private Pool", "Garden Terrace", "Smart Home", "Solar Power", "Security", "Community Park", "Luxury Finishes", "Traditional Elements"],
@@ -141,7 +151,7 @@ const ProjectDetail = () => {
       budget: "$25M",
       status: "Under Construction",
       client: "Giza Properties Group",
-      gallery: [project1, project2, project3],
+      gallery: [project4, project9, project10],
       specifications: {
         floors: 2,
         units: 50,
@@ -155,7 +165,7 @@ const ProjectDetail = () => {
       category: "commercial",
       location: "New Administrative Capital, Egypt",
       year: "2025",
-      image: project2,
+      image: project5,
       description: "A cutting-edge workspace designed for technology companies and startups.",
       detailedDescription: "The Tech Innovation Hub in the New Administrative Capital is designed to be Egypt's premier destination for technology companies and startups. This state-of-the-art facility provides flexible co-working spaces, innovation labs, and networking areas that foster collaboration and creativity. The building features advanced technology infrastructure, including high-speed internet, smart building systems, and cutting-edge presentation facilities. The design emphasizes openness and transparency, with extensive use of glass and natural light to create an inspiring work environment.",
       features: ["Co-working Spaces", "Innovation Labs", "Event Center", "Rooftop Garden", "High-Speed Internet", "Meeting Rooms", "Café", "Networking Areas"],
@@ -164,7 +174,7 @@ const ProjectDetail = () => {
       budget: "$60M",
       status: "Planning Phase",
       client: "New Capital Technology Authority",
-      gallery: [project2, project1, project3],
+      gallery: [project5, project11, project12],
       specifications: {
         floors: 15,
         units: 100,

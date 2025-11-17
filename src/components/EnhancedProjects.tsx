@@ -2,9 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import HorizontalScroll from "./HorizontalScroll";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/project (1).jpeg";
+import project2 from "@/assets/project (2).jpg";
+import project3 from "@/assets/project (3).jpg";
+import project4 from "@/assets/project (4).jpg";
+import project5 from "@/assets/project (5).JPG";
+import project6 from "@/assets/project (6).jpg";
 
 const EnhancedProjects = () => {
   const [filter, setFilter] = useState("all");
@@ -40,14 +43,14 @@ const EnhancedProjects = () => {
       description: "A contemporary interpretation of traditional Egyptian architecture housing cultural artifacts and exhibitions.",
       features: ["Exhibition Halls", "Educational Center", "Research Library", "Public Plaza"],
     },
-    // Duplicate for horizontal scroll demonstration
+    // Additional projects for horizontal scroll demonstration
     {
       id: 4,
       title: "Modern Villa Estate",
       category: "residential",
       location: "Giza, Egypt",
       year: "2025",
-      image: project1,
+      image: project4,
       description: "Contemporary residential design blending modern comfort with traditional Egyptian aesthetics.",
       features: ["Private Pool", "Garden Terrace", "Smart Home", "Solar Power"],
     },
@@ -57,9 +60,19 @@ const EnhancedProjects = () => {
       category: "commercial",
       location: "Cairo, Egypt",
       year: "2025",
-      image: project2,
+      image: project5,
       description: "A cutting-edge workspace designed for technology companies and startups.",
       features: ["Co-working Spaces", "Innovation Labs", "Event Center", "Rooftop Garden"],
+    },
+    {
+      id: 6,
+      title: "Sustainable Community Center",
+      category: "cultural",
+      location: "Luxor, Egypt",
+      year: "2025",
+      image: project6,
+      description: "An eco-friendly community center that serves as a hub for local cultural activities.",
+      features: ["Solar Powered", "Green Roof", "Multi-purpose Halls", "Art Studios"],
     },
   ];
 

@@ -3,9 +3,19 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SmartCarousel from "@/components/SmartCarousel";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/project (1).jpeg";
+import project2 from "@/assets/project (2).jpg";
+import project3 from "@/assets/project (3).jpg";
+import project4 from "@/assets/project (4).jpg";
+import project5 from "@/assets/project (5).JPG";
+import project6 from "@/assets/project (6).jpg";
+import project7 from "@/assets/project (7).jpg";
+import project8 from "@/assets/project (8).jpg";
+import project9 from "@/assets/project (9).jpg";
+import project10 from "@/assets/project (10).jpg";
+import project11 from "@/assets/project (11).jpg";
+import project12 from "@/assets/project (12).jpg";
+import project13 from "@/assets/project (13).jpg";
 
 const Projects = () => {
   const [filter, setFilter] = useState("all");
@@ -51,7 +61,7 @@ const Projects = () => {
       category: "residential",
       location: "Giza, Egypt",
       year: "2025",
-      image: project1,
+      image: project4,
       description: "Contemporary residential design blending modern comfort with traditional Egyptian aesthetics.",
       features: ["Private Pool", "Garden Terrace", "Smart Home", "Solar Power"],
       delay: "0.8s"
@@ -62,7 +72,7 @@ const Projects = () => {
       category: "commercial",
       location: "New Administrative Capital, Egypt",
       year: "2025",
-      image: project2,
+      image: project5,
       description: "A cutting-edge workspace designed for technology companies and startups.",
       features: ["Co-working Spaces", "Innovation Labs", "Event Center", "Rooftop Garden"],
       delay: "1.0s"
@@ -73,7 +83,7 @@ const Projects = () => {
       category: "cultural",
       location: "Luxor, Egypt",
       year: "2025",
-      image: project3,
+      image: project6,
       description: "An eco-friendly community center that serves as a hub for local cultural activities.",
       features: ["Solar Powered", "Green Roof", "Multi-purpose Halls", "Art Studios"],
       delay: "1.2s"
@@ -84,7 +94,7 @@ const Projects = () => {
       category: "commercial",
       location: "Zamalek, Cairo",
       year: "2024",
-      image: project1,
+      image: project7,
       description: "A prestigious office tower with panoramic Nile views and premium amenities.",
       features: ["Nile Views", "Premium Amenities", "Green Building", "Smart Systems"],
       delay: "1.4s"
@@ -95,7 +105,7 @@ const Projects = () => {
       category: "residential",
       location: "Maadi, Cairo",
       year: "2024",
-      image: project2,
+      image: project8,
       description: "Eco-friendly residential complex with extensive green spaces and sustainable features.",
       features: ["Green Spaces", "Solar Energy", "Water Recycling", "Natural Ventilation"],
       delay: "1.6s"
@@ -106,7 +116,7 @@ const Projects = () => {
       category: "cultural",
       location: "Heliopolis, Cairo",
       year: "2024",
-      image: project3,
+      image: project9,
       description: "A modern art gallery complex showcasing contemporary Egyptian and international artists.",
       features: ["Multiple Galleries", "Sculpture Garden", "Artist Studios", "Event Spaces"],
       delay: "1.8s"
@@ -117,7 +127,7 @@ const Projects = () => {
       category: "commercial",
       location: "New Capital, Egypt",
       year: "2023",
-      image: project1,
+      image: project10,
       description: "A comprehensive mixed-use development combining retail, office, and residential spaces.",
       features: ["Retail Spaces", "Office Complex", "Residential Units", "Public Plaza"],
       delay: "2.0s"
@@ -128,7 +138,7 @@ const Projects = () => {
       category: "residential",
       location: "North Coast, Egypt",
       year: "2023",
-      image: project2,
+      image: project11,
       description: "Exclusive beachfront penthouse with panoramic sea views and luxury finishes.",
       features: ["Sea Views", "Private Beach", "Luxury Finishes", "Smart Home"],
       delay: "2.2s"
@@ -139,7 +149,7 @@ const Projects = () => {
       category: "cultural",
       location: "6th October City, Egypt",
       year: "2023",
-      image: project3,
+      image: project12,
       description: "A modern educational campus designed to foster learning and innovation.",
       features: ["Modern Classrooms", "Research Labs", "Library", "Sports Facilities"],
       delay: "2.4s"
@@ -150,7 +160,7 @@ const Projects = () => {
       category: "residential",
       location: "Garden City, Cairo",
       year: "2023",
-      image: project1,
+      image: project13,
       description: "Luxury apartments with stunning Nile views and premium finishes throughout.",
       features: ["Nile Views", "Premium Finishes", "Concierge Service", "Rooftop Pool"],
       delay: "2.6s"
@@ -161,7 +171,7 @@ const Projects = () => {
       category: "commercial",
       location: "New Administrative Capital, Egypt",
       year: "2023",
-      image: project2,
+      image: project1,
       description: "A landmark office tower in the heart of Egypt's new financial district.",
       features: ["50 Floors", "LEED Platinum", "Smart Building", "Premium Amenities"],
       delay: "2.8s"
@@ -172,7 +182,7 @@ const Projects = () => {
       category: "cultural",
       location: "Aswan, Egypt",
       year: "2023",
-      image: project3,
+      image: project2,
       description: "A cultural center celebrating ancient Egyptian heritage with modern architecture.",
       features: ["Museum", "Research Center", "Cultural Events", "Garden Spaces"],
       delay: "3.0s"
@@ -183,7 +193,7 @@ const Projects = () => {
       category: "residential",
       location: "Bahariya Oasis, Egypt",
       year: "2022",
-      image: project1,
+      image: project3,
       description: "Sustainable desert villas designed to blend with the natural landscape.",
       features: ["Desert Views", "Solar Power", "Natural Cooling", "Eco-Friendly"],
       delay: "3.2s"
@@ -194,7 +204,7 @@ const Projects = () => {
       category: "commercial",
       location: "Sheikh Zayed City, Egypt",
       year: "2022",
-      image: project2,
+      image: project4,
       description: "A modern shopping destination with entertainment and dining options.",
       features: ["Retail Spaces", "Cinema Complex", "Food Court", "Parking Garage"],
       delay: "3.4s"
@@ -205,7 +215,7 @@ const Projects = () => {
       category: "cultural",
       location: "Islamic Cairo, Egypt",
       year: "2022",
-      image: project3,
+      image: project5,
       description: "A contemporary museum showcasing Islamic art and architecture.",
       features: ["Exhibition Halls", "Conservation Lab", "Library", "Garden Courtyard"],
       delay: "3.6s"
@@ -216,7 +226,7 @@ const Projects = () => {
       category: "residential",
       location: "New Cairo, Egypt",
       year: "2022",
-      image: project1,
+      image: project6,
       description: "High-end condominiums with world-class amenities and services.",
       features: ["Luxury Amenities", "24/7 Security", "Fitness Center", "Spa Services"],
       delay: "3.8s"
@@ -227,7 +237,7 @@ const Projects = () => {
       category: "commercial",
       location: "Smart Village, Egypt",
       year: "2022",
-      image: project2,
+      image: project7,
       description: "A technology-focused business park for innovative companies.",
       features: ["Office Spaces", "Research Labs", "Conference Center", "Green Spaces"],
       delay: "4.0s"
@@ -238,7 +248,7 @@ const Projects = () => {
       category: "cultural",
       location: "Zamalek, Cairo",
       year: "2022",
-      image: project3,
+      image: project8,
       description: "A modern art gallery promoting contemporary Egyptian artists.",
       features: ["Gallery Spaces", "Artist Studios", "Event Hall", "Café"],
       delay: "4.2s"
@@ -249,7 +259,7 @@ const Projects = () => {
       category: "residential",
       location: "Sharm El Sheikh, Egypt",
       year: "2021",
-      image: project1,
+      image: project9,
       description: "Exclusive gated community with luxury villas and resort amenities.",
       features: ["Private Beach", "Golf Course", "Marina", "Luxury Villas"],
       delay: "4.4s"
@@ -260,7 +270,7 @@ const Projects = () => {
       category: "commercial",
       location: "Nasr City, Cairo",
       year: "2021",
-      image: project2,
+      image: project10,
       description: "State-of-the-art medical facility with specialized treatment centers.",
       features: ["Specialized Clinics", "Surgery Centers", "Emergency Room", "Parking"],
       delay: "4.6s"
@@ -271,7 +281,7 @@ const Projects = () => {
       category: "cultural",
       location: "Karnak, Luxor",
       year: "2021",
-      image: project3,
+      image: project11,
       description: "Restoration and enhancement of ancient temple complex visitor facilities.",
       features: ["Visitor Center", "Museum", "Restoration Lab", "Garden"],
       delay: "4.8s"
@@ -282,7 +292,7 @@ const Projects = () => {
       category: "residential",
       location: "Sinai Peninsula, Egypt",
       year: "2021",
-      image: project1,
+      image: project12,
       description: "Luxury mountain resort with stunning views and natural integration.",
       features: ["Mountain Views", "Spa Resort", "Hiking Trails", "Natural Materials"],
       delay: "5.0s"
@@ -293,7 +303,7 @@ const Projects = () => {
       category: "commercial",
       location: "10th of Ramadan City, Egypt",
       year: "2021",
-      image: project2,
+      image: project13,
       description: "Modern industrial facility designed for efficiency and sustainability.",
       features: ["Manufacturing Spaces", "Office Complex", "Warehouse", "Green Energy"],
       delay: "5.2s"
@@ -304,7 +314,7 @@ const Projects = () => {
       category: "cultural",
       location: "Giza, Egypt",
       year: "2020",
-      image: project3,
+      image: project1,
       description: "A museum dedicated to showcasing archaeological discoveries and artifacts.",
       features: ["Exhibition Halls", "Research Facilities", "Conservation Lab", "Library"],
       delay: "5.4s"
@@ -315,7 +325,7 @@ const Projects = () => {
       category: "residential",
       location: "Marina, Alexandria",
       year: "2020",
-      image: project1,
+      image: project2,
       description: "Luxury waterfront apartments with Mediterranean Sea views.",
       features: ["Sea Views", "Marina Access", "Luxury Finishes", "Rooftop Deck"],
       delay: "5.6s"
@@ -326,7 +336,7 @@ const Projects = () => {
       category: "commercial",
       location: "New Capital, Egypt",
       year: "2020",
-      image: project2,
+      image: project3,
       description: "A world-class convention center for international events and conferences.",
       features: ["Conference Halls", "Exhibition Space", "Meeting Rooms", "Catering"],
       delay: "5.8s"
@@ -337,7 +347,7 @@ const Projects = () => {
       category: "cultural",
       location: "Fayoum, Egypt",
       year: "2020",
-      image: project3,
+      image: project4,
       description: "A center dedicated to preserving and promoting traditional Egyptian arts and crafts.",
       features: ["Workshop Spaces", "Exhibition Hall", "Artist Residency", "Garden"],
       delay: "6.0s"

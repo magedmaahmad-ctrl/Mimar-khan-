@@ -9,8 +9,8 @@ import {
   Sparkles
 } from "lucide-react";
 import heroImage from "@/assets/hero-architecture.jpg";
-import heroImageSecondary from "@/assets/project-2.jpg";
-import heroImageTertiary from "@/assets/project-3.jpg";
+import heroImageSecondary from "@/assets/project (2).jpg";
+import heroImageTertiary from "@/assets/project (3).jpg";
 
 const Home = () => {
   const stats = [

@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { Calendar, MapPin, ArrowRight, Filter } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/project (1).jpeg";
+import project2 from "@/assets/project (2).jpg";
+import project3 from "@/assets/project (3).jpg";
+import project4 from "@/assets/project (4).jpg";
+import project5 from "@/assets/project (5).JPG";
+import project6 from "@/assets/project (6).jpg";
+import project7 from "@/assets/project (7).jpg";
+import project8 from "@/assets/project (8).jpg";
+import project9 from "@/assets/project (9).jpg";
+import project10 from "@/assets/project (10).jpg";
+import project11 from "@/assets/project (11).jpg";
+import project12 from "@/assets/project (12).jpg";
+import project13 from "@/assets/project (13).jpg";
 
 const AllProjects = () => {
   const [filter, setFilter] = useState("all");
@@ -46,7 +56,7 @@ const AllProjects = () => {
       category: "residential",
       location: "Giza, Egypt",
       year: "2025",
-      image: project1,
+      image: project4,
       description: "Contemporary residential design blending modern comfort with traditional Egyptian aesthetics.",
       features: ["Private Pool", "Garden Terrace", "Smart Home", "Solar Power"],
     },
@@ -56,7 +66,7 @@ const AllProjects = () => {
       category: "commercial",
       location: "New Administrative Capital, Egypt",
       year: "2025",
-      image: project2,
+      image: project5,
       description: "A cutting-edge workspace designed for technology companies and startups.",
       features: ["Co-working Spaces", "Innovation Labs", "Event Center", "Rooftop Garden"],
     },
@@ -66,7 +76,7 @@ const AllProjects = () => {
       category: "cultural",
       location: "Luxor, Egypt",
       year: "2025",
-      image: project3,
+      image: project6,
       description: "An eco-friendly community center that serves as a hub for local cultural activities.",
       features: ["Solar Powered", "Green Roof", "Multi-purpose Halls", "Art Studios"],
     },
@@ -76,7 +86,7 @@ const AllProjects = () => {
       category: "commercial",
       location: "Zamalek, Cairo",
       year: "2024",
-      image: project1,
+      image: project7,
       description: "A prestigious office tower with panoramic Nile views and premium amenities.",
       features: ["Nile Views", "Premium Amenities", "Green Building", "Smart Systems"],
     },
@@ -86,7 +96,7 @@ const AllProjects = () => {
       category: "residential",
       location: "Maadi, Cairo",
       year: "2024",
-      image: project2,
+      image: project8,
       description: "Eco-friendly residential units surrounded by lush gardens and sustainable features.",
       features: ["Green Spaces", "Energy Efficient", "Water Conservation", "Community Garden"],
     },
@@ -96,7 +106,7 @@ const AllProjects = () => {
       category: "cultural",
       location: "Heliopolis, Cairo",
       year: "2024",
-      image: project3,
+      image: project9,
       description: "A modern art gallery complex showcasing contemporary Egyptian and international artists.",
       features: ["Multiple Galleries", "Sculpture Garden", "Artist Studios", "Event Spaces"],
     },
@@ -106,7 +116,7 @@ const AllProjects = () => {
       category: "commercial",
       location: "New Capital, Egypt",
       year: "2025",
-      image: project1,
+      image: project10,
       description: "A comprehensive mixed-use development combining retail, office, and residential spaces.",
       features: ["Retail Spaces", "Office Complex", "Residential Units", "Public Plaza"],
     },
@@ -116,7 +126,7 @@ const AllProjects = () => {
       category: "residential",
       location: "Sharm El Sheikh, Egypt",
       year: "2025",
-      image: project2,
+      image: project11,
       description: "An exclusive resort complex with luxury villas and world-class amenities.",
       features: ["Private Beach", "Spa Facilities", "Golf Course", "Fine Dining"],
     },
@@ -126,7 +136,7 @@ const AllProjects = () => {
       category: "cultural",
       location: "6th October City, Egypt",
       year: "2024",
-      image: project3,
+      image: project12,
       description: "A modern educational campus designed for innovative learning and research.",
       features: ["Research Labs", "Library", "Auditorium", "Student Housing"],
     },
@@ -286,4 +296,7 @@ const AllProjects = () => {
 };
 
 export default AllProjects;
+
+
+
 
