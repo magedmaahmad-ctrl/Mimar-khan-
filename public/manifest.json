@@ -1,0 +1,21 @@
+{
+  "name": "Mimar Khan Architecture",
+  "short_name": "Mimar Khan",
+  "description": "Innovative architectural design and construction services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["architecture", "design", "construction"],
+  "lang": "en",
+  "dir": "ltr"
+}
+
