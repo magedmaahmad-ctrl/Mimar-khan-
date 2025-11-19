@@ -1,24 +1,14 @@
-import React, { useRef, useCallback, memo } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { Html } from '@react-three/drei';
-import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Calendar } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import * as THREE from 'three';
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  location: string;
-  year: string;
-  image: string;
-  description: string;
-  features: string[];
-}
+import React, { useRef, useCallback, memo } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Html } from "@react-three/drei";
+import { motion } from "framer-motion";
+import { ArrowRight, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import * as THREE from "three";
+import { ProjectData } from "@/data/projects";
 
 interface ProjectCardProps {
-  project: Project;
+  project: ProjectData;
   position: [number, number, number];
   rotation: [number, number, number];
   onHover: () => void;
@@ -65,9 +55,9 @@ export const ProjectCard3D = memo(({
   });
 
   const handleClick = useCallback(() => {
-    navigate(`/project/${project.id}`);
+    navigate(`/projects/${project.slug}`);
     onClick();
-  }, [navigate, project.id, onClick]);
+  }, [navigate, project.slug, onClick]);
 
   const handlePointerOver = useCallback(() => {
     onHover();
@@ -121,12 +111,11 @@ export const ProjectCard3D = memo(({
               <MapPin className="h-3 w-3" />
               <span>{project.location}</span>
             </div>
-            <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-2">
-              <Calendar className="h-3 w-3" />
-              <span>{project.year}</span>
+            <div className="text-[11px] inline-flex items-center px-2 py-1 bg-stone/40 rounded uppercase tracking-wide text-muted-foreground mb-2">
+              {project.category}
             </div>
             <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
-              {project.description}
+              {project.summary}
             </p>
             <button 
               onClick={handleClick}
@@ -143,4 +132,7 @@ export const ProjectCard3D = memo(({
 });
 
 ProjectCard3D.displayName = 'ProjectCard3D';
+
+
+
 

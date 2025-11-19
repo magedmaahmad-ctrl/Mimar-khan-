@@ -1,146 +1,11 @@
 import { useState } from "react";
-import { Calendar, MapPin, ArrowRight, Filter } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import project1 from "@/assets/project (1).jpeg";
-import project2 from "@/assets/project (2).jpg";
-import project3 from "@/assets/project (3).jpg";
-import project4 from "@/assets/project (4).jpg";
-import project5 from "@/assets/project (5).JPG";
-import project6 from "@/assets/project (6).jpg";
-import project7 from "@/assets/project (7).jpg";
-import project8 from "@/assets/project (8).jpg";
-import project9 from "@/assets/project (9).jpg";
-import project10 from "@/assets/project (10).jpg";
-import project11 from "@/assets/project (11).jpg";
-import project12 from "@/assets/project (12).jpg";
-import project13 from "@/assets/project (13).jpg";
+import { MapPin, ArrowRight, Filter } from "lucide-react";
+import { Link } from "react-router-dom";
+import { projects as projectData } from "@/data/projects";
 
 const AllProjects = () => {
   const [filter, setFilter] = useState("all");
-  const navigate = useNavigate();
-
-  const projects = [
-    {
-      id: 1,
-      title: "Golden Residence Complex",
-      category: "residential",
-      location: "New Cairo, Egypt",
-      year: "2025",
-      image: project1,
-      description: "A luxury residential complex featuring modern Egyptian architectural elements with sustainable design principles.",
-      features: ["120 Units", "Sustainable Design", "Community Spaces", "Modern Amenities"],
-    },
-    {
-      id: 2,
-      title: "Cairo Business Center",
-      category: "commercial",
-      location: "Downtown Cairo, Egypt",
-      year: "2025",
-      image: project2,
-      description: "A state-of-the-art commercial building designed to meet the demands of modern business while respecting urban context.",
-      features: ["25 Floors", "LEED Certified", "Smart Building", "Mixed-Use"],
-    },
-    {
-      id: 3,
-      title: "Heritage Cultural Museum",
-      category: "cultural",
-      location: "Alexandria, Egypt",
-      year: "2025",
-      image: project3,
-      description: "A contemporary interpretation of traditional Egyptian architecture housing cultural artifacts and exhibitions.",
-      features: ["Exhibition Halls", "Educational Center", "Research Library", "Public Plaza"],
-    },
-    {
-      id: 4,
-      title: "Modern Villa Estate",
-      category: "residential",
-      location: "Giza, Egypt",
-      year: "2025",
-      image: project4,
-      description: "Contemporary residential design blending modern comfort with traditional Egyptian aesthetics.",
-      features: ["Private Pool", "Garden Terrace", "Smart Home", "Solar Power"],
-    },
-    {
-      id: 5,
-      title: "Tech Innovation Hub",
-      category: "commercial",
-      location: "New Administrative Capital, Egypt",
-      year: "2025",
-      image: project5,
-      description: "A cutting-edge workspace designed for technology companies and startups.",
-      features: ["Co-working Spaces", "Innovation Labs", "Event Center", "Rooftop Garden"],
-    },
-    {
-      id: 6,
-      title: "Sustainable Community Center",
-      category: "cultural",
-      location: "Luxor, Egypt",
-      year: "2025",
-      image: project6,
-      description: "An eco-friendly community center that serves as a hub for local cultural activities.",
-      features: ["Solar Powered", "Green Roof", "Multi-purpose Halls", "Art Studios"],
-    },
-    {
-      id: 7,
-      title: "Luxury Office Tower",
-      category: "commercial",
-      location: "Zamalek, Cairo",
-      year: "2024",
-      image: project7,
-      description: "A prestigious office tower with panoramic Nile views and premium amenities.",
-      features: ["Nile Views", "Premium Amenities", "Green Building", "Smart Systems"],
-    },
-    {
-      id: 8,
-      title: "Garden Residences",
-      category: "residential",
-      location: "Maadi, Cairo",
-      year: "2024",
-      image: project8,
-      description: "Eco-friendly residential units surrounded by lush gardens and sustainable features.",
-      features: ["Green Spaces", "Energy Efficient", "Water Conservation", "Community Garden"],
-    },
-    {
-      id: 9,
-      title: "Art Gallery Complex",
-      category: "cultural",
-      location: "Heliopolis, Cairo",
-      year: "2024",
-      image: project9,
-      description: "A modern art gallery complex showcasing contemporary Egyptian and international artists.",
-      features: ["Multiple Galleries", "Sculpture Garden", "Artist Studios", "Event Spaces"],
-    },
-    {
-      id: 10,
-      title: "Mixed-Use Development",
-      category: "commercial",
-      location: "New Capital, Egypt",
-      year: "2025",
-      image: project10,
-      description: "A comprehensive mixed-use development combining retail, office, and residential spaces.",
-      features: ["Retail Spaces", "Office Complex", "Residential Units", "Public Plaza"],
-    },
-    {
-      id: 11,
-      title: "Luxury Resort Complex",
-      category: "residential",
-      location: "Sharm El Sheikh, Egypt",
-      year: "2025",
-      image: project11,
-      description: "An exclusive resort complex with luxury villas and world-class amenities.",
-      features: ["Private Beach", "Spa Facilities", "Golf Course", "Fine Dining"],
-    },
-    {
-      id: 12,
-      title: "Educational Campus",
-      category: "cultural",
-      location: "6th October City, Egypt",
-      year: "2024",
-      image: project12,
-      description: "A modern educational campus designed for innovative learning and research.",
-      features: ["Research Labs", "Library", "Auditorium", "Student Housing"],
-    },
-  ];
+  const projects = projectData;
 
   const categories = [
     { id: "all", name: "All Projects" },
@@ -193,15 +58,16 @@ const AllProjects = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredProjects.map((project, index) => (
-              <div
+              <Link
                 key={project.id}
-                className="group bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-border/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 fade-in-up h-full flex flex-col"
+                to={`/projects/${project.slug}`}
+                className="group bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-border/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 fade-in-up h-full flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-red"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Project Image - Fixed Height */}
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={project.image}
+                    src={project.images[0]}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -214,21 +80,11 @@ const AllProjects = () => {
                     </span>
                   </div>
 
-                  {/* Year Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-card/90 backdrop-blur-sm text-foreground rounded-full text-sm font-medium">
-                      {project.year}
-                    </span>
-                  </div>
-
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-red/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button 
-                      onClick={() => navigate(`/project/${project.id}`)}
-                      className="px-6 py-3 bg-red text-background rounded-lg font-medium hover:bg-red-dark transition-colors transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                    >
+                    <span className="px-6 py-3 bg-red text-background rounded-lg font-medium transition-colors transform translate-y-4 group-hover:translate-y-0">
                       View Details
-                    </button>
+                    </span>
                   </div>
                 </div>
 
@@ -243,14 +99,15 @@ const AllProjects = () => {
                       <MapPin className="h-4 w-4 flex-shrink-0" />
                       <span className="truncate">{project.location}</span>
                     </div>
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4 flex-shrink-0" />
-                      <span>{project.year}</span>
+                    <div className="flex items-center space-x-1 capitalize">
+                      <span className="inline-flex items-center justify-center px-2 py-1 bg-stone/30 rounded text-xs font-medium">
+                        {project.category}
+                      </span>
                     </div>
                   </div>
 
                   <p className="text-muted-foreground mb-4 line-clamp-3 flex-grow">
-                    {project.description}
+                    {project.summary}
                   </p>
 
                   {/* Features */}
@@ -271,15 +128,12 @@ const AllProjects = () => {
                   </div>
 
                   {/* Action Button */}
-                  <button 
-                    onClick={() => navigate(`/project/${project.id}`)}
-                    className="w-full flex items-center justify-center space-x-2 px-4 py-2 border border-red text-red rounded-lg hover:bg-red hover:text-background transition-all duration-300 group mt-auto"
-                  >
+                  <span className="w-full flex items-center justify-center space-x-2 px-4 py-2 border border-red text-red rounded-lg transition-all duration-300 group-hover:bg-red group-hover:text-background mt-auto">
                     <span>Explore Project</span>
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

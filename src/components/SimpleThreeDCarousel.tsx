@@ -1,63 +1,48 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Text, Html, useTexture } from '@react-three/drei';
-import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Calendar } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import * as THREE from 'three';
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  location: string;
-  year: string;
-  image: string;
-  description: string;
-  features: string[];
-}
+import React, { useRef, useState, useCallback, useMemo } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Text, Html, useTexture } from "@react-three/drei";
+import { motion } from "framer-motion";
+import { ArrowRight, MapPin } from "lucide-react";
+import * as THREE from "three";
+import { ProjectData } from "@/data/projects";
 
 interface SimpleThreeDCarouselProps {
-  projects: Project[];
+  projects: ProjectData[];
   companyName?: string;
-  onProjectClick?: (project: Project) => void;
+  onProjectClick?: (project: ProjectData) => void;
 }
 
 // Simple Project Card Component
-function ProjectCard({ 
-  project, 
-  index, 
-  totalProjects, 
+function ProjectCard({
+  project,
+  index,
+  totalProjects,
   onProjectClick,
   isHovered,
-  onHover
-}: { 
-  project: Project; 
-  index: number; 
+  onHover,
+}: {
+  project: ProjectData;
+  index: number;
   totalProjects: number;
-  onProjectClick?: (project: Project) => void;
+  onProjectClick?: (project: ProjectData) => void;
   isHovered: boolean;
   onHover: (id: number | null) => void;
 }) {
-  const navigate = useNavigate();
   const meshRef = useRef<THREE.Mesh>(null);
-  const texture = useTexture(project.image);
-  
+  const texture = useTexture(project.images[0]);
+
   const angle = (index * 2 * Math.PI) / totalProjects;
-  const radius = 5;
+  const radius = Math.max(6.5, totalProjects * 0.8);
   const x = Math.cos(angle) * radius;
   const z = Math.sin(angle) * radius;
 
-  useFrame((state) => {
+  useFrame((_state, delta) => {
     if (meshRef.current) {
-      // Remove individual rotation - projects will move as a group
-      
-      // Hover animation
       if (isHovered) {
-        meshRef.current.scale.lerp(new THREE.Vector3(1.1, 1.1, 1.1), 0.1);
-        meshRef.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.1;
+        meshRef.current.scale.lerp(new THREE.Vector3(1.1, 1.1, 1.1), 0.2);
+        meshRef.current.position.y = Math.sin(delta * 60) * 0.12;
       } else {
-        meshRef.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.1);
+        meshRef.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.08);
         meshRef.current.position.y = 0;
       }
     }
@@ -67,7 +52,7 @@ function ProjectCard({
     <group position={[x, 0, z]}>
       <mesh
         ref={meshRef}
-        onClick={() => navigate(`/project/${project.id}`)}
+        onClick={() => onProjectClick?.(project)}
         onPointerOver={() => onHover(project.id)}
         onPointerOut={() => onHover(null)}
       >
@@ -102,15 +87,11 @@ function ProjectCard({
               <MapPin className="h-3 w-3" />
               <span>{project.location}</span>
             </div>
-            <div className="flex items-center space-x-2 text-xs text-muted-foreground mb-2">
-              <Calendar className="h-3 w-3" />
-              <span>{project.year}</span>
-            </div>
             <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
-              {project.description}
+              {project.summary}
             </p>
             <button 
-              onClick={() => navigate(`/project/${project.id}`)}
+              onClick={() => onProjectClick?.(project)}
               className="text-xs font-medium text-red hover:text-red-dark inline-flex items-center group"
             >
               View Project
@@ -124,31 +105,24 @@ function ProjectCard({
 }
 
 // Main Carousel Component
-function Carousel({ 
-  projects, 
-  onProjectClick, 
-  hoveredProject, 
-  setHoveredProject 
-}: { 
-  projects: Project[]; 
-  onProjectClick?: (project: Project) => void;
+function Carousel({
+  projects,
+  onProjectClick,
+  hoveredProject,
+  setHoveredProject,
+}: {
+  projects: ProjectData[];
+  onProjectClick?: (project: ProjectData) => void;
   hoveredProject: number | null;
   setHoveredProject: (id: number | null) => void;
 }) {
   const groupRef = useRef<THREE.Group>(null);
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (groupRef.current) {
-      // Synchronized group movement - all projects move together
       const time = state.clock.elapsedTime;
-      
-      // Gentle floating motion for the entire group
       groupRef.current.position.y = Math.sin(time * 0.5) * 0.3;
-      
-      // Slow rotation of the entire group
-      groupRef.current.rotation.y = time * 0.1;
-      
-      // Optional: Add a subtle breathing effect
+      groupRef.current.rotation.y += delta * 0.15;
       const scale = 1 + Math.sin(time * 0.3) * 0.02;
       groupRef.current.scale.setScalar(scale);
     }
@@ -172,18 +146,25 @@ function Carousel({
 }
 
 // Main Component
-const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({ 
-  projects, 
+const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({
+  projects,
   companyName = "Mimar Khan",
-  onProjectClick 
+  onProjectClick,
 }) => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const visibleProjects = useMemo(
+    () => projects.slice(0, Math.min(projects.length, 12)),
+    [projects]
+  );
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
-  const handleProjectClick = useCallback((project: Project) => {
+  const handleProjectClick = useCallback(
+    (project: ProjectData) => {
     setSelectedProject(project);
-    onProjectClick?.(project);
-  }, [onProjectClick]);
+      onProjectClick?.(project);
+    },
+    [onProjectClick]
+  );
 
   return (
     <div className="relative w-full h-screen bg-white">
@@ -211,8 +192,9 @@ const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({
 
       {/* 3D Canvas */}
       <Canvas
-        camera={{ position: [0, 2, 12], fov: 55 }}
-        style={{ background: 'transparent' }}
+        camera={{ position: [0, 2, 14], fov: 50 }}
+        style={{ background: "transparent" }}
+        dpr={[1, 1.5]}
       >
         {/* Lighting */}
         <ambientLight intensity={0.4} />
@@ -221,8 +203,8 @@ const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({
 
 
         {/* Main Carousel */}
-        <Carousel 
-          projects={projects} 
+        <Carousel
+          projects={visibleProjects}
           onProjectClick={handleProjectClick}
           hoveredProject={hoveredProject}
           setHoveredProject={setHoveredProject}
@@ -270,17 +252,13 @@ const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({
                 <MapPin className="h-4 w-4" />
                 <span>{selectedProject.location}</span>
               </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Calendar className="h-4 w-4" />
-                <span>{selectedProject.year}</span>
-              </div>
               <div className="text-sm text-muted-foreground">
                 <span className="font-medium">Category:</span> {selectedProject.category}
               </div>
             </div>
 
             <p className="text-muted-foreground mb-4">
-              {selectedProject.description}
+              {selectedProject.summary}
             </p>
 
             <div className="mb-4">

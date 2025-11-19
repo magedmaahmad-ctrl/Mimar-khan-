@@ -1,22 +1,12 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  location: string;
-  year: string;
-  image: string;
-  description: string;
-  features: string[];
-}
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { ProjectData } from "@/data/projects";
 
 interface FallbackCarouselProps {
-  projects: Project[];
+  projects: ProjectData[];
   companyName?: string;
-  onProjectClick?: (project: Project) => void;
+  onProjectClick?: (project: ProjectData) => void;
 }
 
 const FallbackCarousel: React.FC<FallbackCarouselProps> = ({ 
@@ -25,7 +15,7 @@ const FallbackCarousel: React.FC<FallbackCarouselProps> = ({
   onProjectClick 
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
@@ -82,7 +72,7 @@ const FallbackCarousel: React.FC<FallbackCarouselProps> = ({
               {/* Image */}
               <div className="relative h-96 md:h-full">
                 <img
-                  src={currentProject.image}
+                  src={currentProject.images[0]}
                   alt={currentProject.title}
                   className="w-full h-full object-cover"
                 />
@@ -105,14 +95,10 @@ const FallbackCarousel: React.FC<FallbackCarouselProps> = ({
                     <MapPin className="h-4 w-4" />
                     <span>{currentProject.location}</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <span>{currentProject.year}</span>
-                  </div>
                 </div>
 
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {currentProject.description}
+                  {currentProject.summary}
                 </p>
 
                 <div className="mb-6">
@@ -202,14 +188,10 @@ const FallbackCarousel: React.FC<FallbackCarouselProps> = ({
               </button>
             </div>
             
-            <div className="space-y-4 mb-6">
+              <div className="space-y-4 mb-6">
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
                 <span>{selectedProject.location}</span>
-              </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Calendar className="h-4 w-4" />
-                <span>{selectedProject.year}</span>
               </div>
               <div className="text-muted-foreground">
                 <span className="font-medium">Category:</span> {selectedProject.category}
@@ -217,7 +199,7 @@ const FallbackCarousel: React.FC<FallbackCarouselProps> = ({
             </div>
 
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              {selectedProject.description}
+              {selectedProject.summary}
             </p>
 
             <div className="mb-6">

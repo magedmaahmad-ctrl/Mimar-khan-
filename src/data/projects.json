@@ -1,0 +1,171 @@
+[
+  {
+    "id": 1,
+    "slug": "golden-residence-complex",
+    "title": "Golden Residence Complex",
+    "summary": "A luxury residential community that blends contemporary comforts with Egyptian craftsmanship and lush courtyards.",
+    "description": "The Golden Residence Complex anchors an entire neighborhood with layered terraces, climate-conscious shading, and generous communal pockets. Residences are organized around landscaped courtyards, allowing cross ventilation and soft Northern light in every unit. Materials are sourced locally to minimize embodied carbon while celebrating regional identity. Amenity decks, wellness suites, and co-working salons support a complete live-work lifestyle for residents.",
+    "location": "New Cairo, Egypt",
+    "category": "residential",
+    "features": ["120 residences", "Sustainable systems", "Community plaza", "Wellness suites"],
+    "highlights": ["Solar-ready roofs", "Layered courtyards", "Shared creative studios"],
+    "images": ["project-1", "project-4", "project-7", "project-10"],
+    "model": null,
+    "status": "On Site",
+    "client": "Golden Properties Collective",
+    "specifications": {
+      "floors": 12,
+      "units": 120,
+      "parking": 150,
+      "area": "15,000 sqm"
+    }
+  },
+  {
+    "id": 2,
+    "slug": "cairo-business-center",
+    "title": "Cairo Business Center",
+    "summary": "A mixed-use tower that delivers flexible workplaces, strategy suites, and hospitality terraces for innovators.",
+    "description": "Cairo Business Center rethinks the contemporary office tower with vertically stacked collaboration hubs, hospitality terraces, and day-lit atriums. The tower core houses flexible floor plates that can adapt from innovation labs to executive suites. Express lifts, generous lobby lounges, and curated art moments elevate the daily arrival sequence. High-performance glazing and responsive shading reduce cooling loads significantly.",
+    "location": "Downtown Cairo, Egypt",
+    "category": "commercial",
+    "features": ["Sky lobby", "Flexible work floors", "Atrium terraces", "Smart controls"],
+    "highlights": ["Rooftop strategy deck", "Immersive lobby art", "Integrated smart systems"],
+    "images": ["project-2", "project-5", "project-8", "project-11"],
+    "model": null,
+    "status": "Complete",
+    "client": "Cairo Development Authority",
+    "specifications": {
+      "floors": 25,
+      "units": 200,
+      "parking": 320,
+      "area": "45,000 sqm"
+    }
+  },
+  {
+    "id": 3,
+    "slug": "heritage-cultural-museum",
+    "title": "Heritage Cultural Museum",
+    "summary": "A museum campus that pairs immersive exhibitions with research labs and community classrooms.",
+    "description": "The Heritage Cultural Museum creates a porous civic destination that interweaves galleries, research suites, classrooms, and outdoor plazas. Visitors navigate a series of gently sloped ramps that frame curated glimpses of artifacts and the city beyond. Structural ribs echo papyrus weaving, while the facade filters daylight to protect sensitive collections.",
+    "location": "Alexandria, Egypt",
+    "category": "cultural",
+    "features": ["Immersive galleries", "Learning studios", "Research wing", "Civic plaza"],
+    "highlights": ["Diffused daylight roof", "Collections conservation lab", "Performance courtyard"],
+    "images": ["project-3", "project-6", "project-9", "project-12"],
+    "model": null,
+    "status": "Design Development",
+    "client": "Alexandria Cultural Foundation",
+    "specifications": {
+      "floors": 4,
+      "units": 1,
+      "parking": 80,
+      "area": "12,000 sqm"
+    }
+  },
+  {
+    "id": 4,
+    "slug": "modern-villa-estate",
+    "title": "Modern Villa Estate",
+    "summary": "An estate of bespoke villas organized around gardens, pools, and shaded breezeways.",
+    "description": "Modern Villa Estate choreographs a series of low-rise villas around a lush central park. Each residence opens to private plunge pools, shaded breezeways, and double-height lounges that frame the desert horizon. Locally quarried stone, screens, and timber portals echo artisanal craft while integrating passive cooling strategies.",
+    "location": "Giza, Egypt",
+    "category": "residential",
+    "features": ["Private plunge pools", "Garden terraces", "Smart-home ready", "Solar shading"],
+    "highlights": ["Custom mashrabiya screens", "Wellness trail", "Community atelier"],
+    "images": ["project-4", "project-1", "project-8", "project-13"],
+    "model": null,
+    "status": "On Site",
+    "client": "Giza Properties Group",
+    "specifications": {
+      "floors": 2,
+      "units": 50,
+      "parking": 60,
+      "area": "8,000 sqm"
+    }
+  },
+  {
+    "id": 5,
+    "slug": "tech-innovation-hub",
+    "title": "Tech Innovation Hub",
+    "summary": "A stacked ecosystem for startups featuring labs, maker garages, and rooftop programs.",
+    "description": "Tech Innovation Hub provides an adaptable framework for incubating new ventures. The ground plane remains public and porous, inviting the community into maker garages, test kitchens, and demo zones. Above, flexible floors support co-working neighborhoods, sprint rooms, and wellness terraces. A cascading stair ties every level together, accelerating chance encounters.",
+    "location": "New Administrative Capital, Egypt",
+    "category": "commercial",
+    "features": ["Innovation labs", "Event forum", "Co-making garages", "Sky garden"],
+    "highlights": ["24/7 prototyping floor", "Media studio", "Immersive demo theater"],
+    "images": ["project-5", "project-2", "project-9", "project-6"],
+    "model": null,
+    "status": "Concept",
+    "client": "New Capital Technology Authority",
+    "specifications": {
+      "floors": 15,
+      "units": 100,
+      "parking": 200,
+      "area": "20,000 sqm"
+    }
+  },
+  {
+    "id": 6,
+    "slug": "sustainable-community-center",
+    "title": "Sustainable Community Center",
+    "summary": "A civic anchor with classrooms, ateliers, and performance decks set within gardens.",
+    "description": "Sustainable Community Center is a hybrid civic program that merges maker labs, classrooms, galleries, and outdoor amphitheaters. The building acts as an energy-positive pavilion thanks to photovoltaic canopies, harvested breeze corridors, and earth-cooled floor plates. Every roof surface becomes an occupiable learning garden for local schools.",
+    "location": "Luxor, Egypt",
+    "category": "cultural",
+    "features": ["Learning labs", "Outdoor amphitheater", "Makerspace", "Energy-positive roof"],
+    "highlights": ["Rain garden courtyards", "Community kitchen", "Storytelling pavilion"],
+    "images": ["project-6", "project-3", "project-7", "project-12"],
+    "model": null,
+    "status": "Community Review",
+    "client": "Luxor Civic Council",
+    "specifications": {
+      "floors": 3,
+      "units": 6,
+      "parking": 45,
+      "area": "6,500 sqm"
+    }
+  },
+  {
+    "id": 7,
+    "slug": "luxury-office-tower",
+    "title": "Luxury Office Tower",
+    "summary": "A riverfront tower offering boutique offices, hospitality lounges, and curated art terraces.",
+    "description": "The Luxury Office Tower stacks boutique office suites above a cascading series of shared lounges that track Nile views. Club-level amenities, hospitality-inspired reception desks, and gallery terraces differentiate the leasing experience. A perforated veil tempers glare and animates the facade from sunrise to dusk.",
+    "location": "Zamalek, Cairo",
+    "category": "commercial",
+    "features": ["Club lounges", "Art terraces", "Concierge lobby", "Wellness deck"],
+    "highlights": ["Riverfront panorama", "Client experience suite", "Private briefing pods"],
+    "images": ["project-7", "project-10", "project-1", "project-4"],
+    "model": null,
+    "status": "Tender",
+    "client": "Nile View Developments",
+    "specifications": {
+      "floors": 32,
+      "units": 140,
+      "parking": 250,
+      "area": "33,000 sqm"
+    }
+  },
+  {
+    "id": 8,
+    "slug": "garden-residences",
+    "title": "Garden Residences",
+    "summary": "A neighborhood of courtyard apartments threaded with edible landscapes and water features.",
+    "description": "Garden Residences is imagined as a continuous botanical promenade. Apartments wrap solariums and edible balconies, while the ground plane becomes a porous park with bioswales, reflective pools, and learning gardens. Residents share outdoor kitchens, art pavilions, and child-friendly exploration paths throughout the development.",
+    "location": "Maadi, Cairo",
+    "category": "residential",
+    "features": ["Edible balconies", "Water gardens", "Shared ateliers", "Family discovery trail"],
+    "highlights": ["Bio-swale landscape", "Outdoor kitchens", "Artisan market"],
+    "images": ["project-8", "project-11", "project-2", "project-5"],
+    "model": null,
+    "status": "On Site",
+    "client": "Maadi Living",
+    "specifications": {
+      "floors": 10,
+      "units": 220,
+      "parking": 260,
+      "area": "18,500 sqm"
+    }
+  }
+]
+

@@ -1,17 +1,7 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Calendar } from 'lucide-react';
-import { useState, useMemo, useCallback, useRef, memo } from 'react';
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  location: string;
-  year: string;
-  image: string;
-  description: string;
-  features: string[];
-}
+import { motion } from "framer-motion";
+import { ArrowRight, MapPin } from "lucide-react";
+import { useState, useMemo, useCallback, useRef, memo } from "react";
+import { ProjectData } from "@/data/projects";
 
 interface Category {
   id: string;
@@ -19,7 +9,7 @@ interface Category {
 }
 
 interface CircularProjectsProps {
-  projects: Project[];
+  projects: ProjectData[];
   filter: string;
   categories: Category[];
   setFilter: (filter: string) => void;
@@ -54,16 +44,16 @@ const generateSpherePositions = (count: number, radius: number) => {
  * Memoized Project Card Component
  * Prevents re-renders when other projects change
  */
-const ProjectCard = memo(({ 
-  project, 
-  position, 
+const ProjectCard = memo(({
+  project,
+  position,
   index,
   isHovered,
   onHoverStart,
   onHoverEnd,
-  rotationY
-}: { 
-  project: Project; 
+  rotationY,
+}: {
+  project: ProjectData;
   position: { x: number; y: number; z: number };
   index: number;
   isHovered: boolean;
@@ -112,7 +102,7 @@ const ProjectCard = memo(({
       >
         <div className="relative h-full overflow-hidden">
           <img
-            src={project.image}
+            src={project.images[0]}
             alt={project.title}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -151,9 +141,8 @@ const ProjectCard = memo(({
               <h4 className="text-lg font-serif font-bold mb-2">
                 {project.title}
               </h4>
-              <div className="flex items-center justify-center space-x-2 text-sm mb-3">
-                <Calendar className="h-3 w-3" />
-                <span>{project.year}</span>
+              <div className="text-xs uppercase tracking-wide mb-3">
+                {project.category}
               </div>
               <div className="flex flex-wrap gap-1 justify-center mb-3">
                 {project.features.slice(0, 2).map((feature, idx) => (
@@ -337,13 +326,12 @@ const CircularProjects = ({ projects, filter, categories, setFilter }: CircularP
                     <MapPin className="h-3 w-3" />
                     <span>{selectedProject.location}</span>
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <Calendar className="h-3 w-3" />
-                    <span>{selectedProject.year}</span>
-                  </div>
+                  <span className="inline-flex items-center px-2 py-1 bg-stone/30 rounded text-[11px] uppercase tracking-wide">
+                    {selectedProject.category}
+                  </span>
                 </div>
                 <p className="text-sm text-muted-foreground line-clamp-3">
-                  {selectedProject.description}
+                  {selectedProject.summary}
                 </p>
                 <button className="btn-minimal text-sm inline-flex items-center group">
                   View Details

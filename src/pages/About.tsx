@@ -39,8 +39,8 @@ const About = () => {
               About <span className="text-gradient-red">Mimar Khan</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto fade-in-up" style={{ animationDelay: "0.2s" }}>
-              Founded in 2025 in the heart of Egypt, we are a forward-thinking 
-              architecture consultancy dedicated to creating innovative and sustainable spaces.
+              Rooted in the heart of Egypt, we are a forward-thinking architecture consultancy
+              dedicated to creating innovative and sustainable spaces.
             </p>
           </div>
         </div>
@@ -57,8 +57,8 @@ const About = () => {
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
                   Mimar Khan was born from a vision to revolutionize architectural practice in Egypt and beyond. 
-                  Founded in 2025 by a team of passionate architects and designers, we emerged with a clear 
-                  mission: to bridge the gap between Egypt's rich architectural heritage and contemporary design innovation.
+                  We emerged with a clear mission: to bridge the gap between Egypt's rich architectural heritage 
+                  and contemporary design innovation.
                 </p>
                 <p>
                   Our name "Mimar Khan" reflects our commitment to architectural mastery—"Mimar" meaning 

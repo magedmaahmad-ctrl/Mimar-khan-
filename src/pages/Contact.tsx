@@ -232,7 +232,7 @@ ${formData.message}
                       required
                       rows={6}
                       className="w-full px-4 py-3 border border-white/20 rounded-sm bg-white/10 text-primary-foreground placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red transition-all duration-300 resize-none backdrop-blur-sm"
-                      placeholder="Please describe your project requirements, timeline, budget range, and any specific design preferences..."
+                      placeholder="Please describe your project requirements, timeline, and any specific design preferences..."
                     />
                   </div>
 

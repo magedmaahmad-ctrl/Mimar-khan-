@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import SimpleThreeDCarousel from './SimpleThreeDCarousel';
-import FallbackCarousel from './FallbackCarousel';
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  location: string;
-  year: string;
-  image: string;
-  description: string;
-  features: string[];
-}
+import React, { useState, useEffect } from "react";
+import SimpleThreeDCarousel from "./SimpleThreeDCarousel";
+import FallbackCarousel from "./FallbackCarousel";
+import { ProjectData } from "@/data/projects";
 
 interface SmartCarouselProps {
-  projects: Project[];
+  projects: ProjectData[];
   companyName?: string;
-  onProjectClick?: (project: Project) => void;
+  onProjectClick?: (project: ProjectData) => void;
 }
 
 const SmartCarousel: React.FC<SmartCarouselProps> = (props) => {

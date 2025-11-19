@@ -1,80 +1,13 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import HorizontalScroll from "./HorizontalScroll";
-import project1 from "@/assets/project (1).jpeg";
-import project2 from "@/assets/project (2).jpg";
-import project3 from "@/assets/project (3).jpg";
-import project4 from "@/assets/project (4).jpg";
-import project5 from "@/assets/project (5).JPG";
-import project6 from "@/assets/project (6).jpg";
+import { projects as projectData } from "@/data/projects";
 
 const EnhancedProjects = () => {
   const [filter, setFilter] = useState("all");
 
-  const projects = [
-    {
-      id: 1,
-      title: "Golden Residence Complex",
-      category: "residential",
-      location: "New Cairo, Egypt",
-      year: "2025",
-      image: project1,
-      description: "A luxury residential complex featuring modern Egyptian architectural elements with sustainable design principles.",
-      features: ["120 Units", "Sustainable Design", "Community Spaces", "Modern Amenities"],
-    },
-    {
-      id: 2,
-      title: "Cairo Business Center",
-      category: "commercial",
-      location: "Downtown Cairo, Egypt",
-      year: "2025",
-      image: project2,
-      description: "A state-of-the-art commercial building designed to meet the demands of modern business while respecting urban context.",
-      features: ["25 Floors", "LEED Certified", "Smart Building", "Mixed-Use"],
-    },
-    {
-      id: 3,
-      title: "Heritage Cultural Museum",
-      category: "cultural",
-      location: "Alexandria, Egypt",
-      year: "2025",
-      image: project3,
-      description: "A contemporary interpretation of traditional Egyptian architecture housing cultural artifacts and exhibitions.",
-      features: ["Exhibition Halls", "Educational Center", "Research Library", "Public Plaza"],
-    },
-    // Additional projects for horizontal scroll demonstration
-    {
-      id: 4,
-      title: "Modern Villa Estate",
-      category: "residential",
-      location: "Giza, Egypt",
-      year: "2025",
-      image: project4,
-      description: "Contemporary residential design blending modern comfort with traditional Egyptian aesthetics.",
-      features: ["Private Pool", "Garden Terrace", "Smart Home", "Solar Power"],
-    },
-    {
-      id: 5,
-      title: "Tech Innovation Hub",
-      category: "commercial",
-      location: "Cairo, Egypt",
-      year: "2025",
-      image: project5,
-      description: "A cutting-edge workspace designed for technology companies and startups.",
-      features: ["Co-working Spaces", "Innovation Labs", "Event Center", "Rooftop Garden"],
-    },
-    {
-      id: 6,
-      title: "Sustainable Community Center",
-      category: "cultural",
-      location: "Luxor, Egypt",
-      year: "2025",
-      image: project6,
-      description: "An eco-friendly community center that serves as a hub for local cultural activities.",
-      features: ["Solar Powered", "Green Roof", "Multi-purpose Halls", "Art Studios"],
-    },
-  ];
+  const projects = useMemo(() => projectData.slice(0, 8), []);
 
   const categories = [
     { id: "all", name: "All Projects" },

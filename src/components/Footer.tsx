@@ -28,8 +28,8 @@ const Footer = () => {
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Designing Tomorrow's Landmarks. An Egyptian architecture consultancy 
-              founded in 2025, dedicated to creating innovative and sustainable 
-              architectural solutions that blend modern design with cultural heritage.
+              dedicated to creating innovative and sustainable architectural solutions 
+              that blend modern design with cultural heritage.
             </p>
             
             {/* Contact Information */}
@@ -90,7 +90,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © 2025 Mimar Khan Architecture Consultancy. All rights reserved.
+            © {new Date().getFullYear()} Mimar Khan Architecture Consultancy. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a

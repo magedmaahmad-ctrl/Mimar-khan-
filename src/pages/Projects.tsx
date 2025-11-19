@@ -1,358 +1,14 @@
 import { useState } from "react";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SmartCarousel from "@/components/SmartCarousel";
-import project1 from "@/assets/project (1).jpeg";
-import project2 from "@/assets/project (2).jpg";
-import project3 from "@/assets/project (3).jpg";
-import project4 from "@/assets/project (4).jpg";
-import project5 from "@/assets/project (5).JPG";
-import project6 from "@/assets/project (6).jpg";
-import project7 from "@/assets/project (7).jpg";
-import project8 from "@/assets/project (8).jpg";
-import project9 from "@/assets/project (9).jpg";
-import project10 from "@/assets/project (10).jpg";
-import project11 from "@/assets/project (11).jpg";
-import project12 from "@/assets/project (12).jpg";
-import project13 from "@/assets/project (13).jpg";
+import { projects as projectData } from "@/data/projects";
 
 const Projects = () => {
   const [filter, setFilter] = useState("all");
   const navigate = useNavigate();
-
-  const projects = [
-    {
-      id: 1,
-      title: "Golden Residence Complex",
-      category: "residential",
-      location: "New Cairo, Egypt",
-      year: "2025",
-      image: project1,
-      description: "A luxury residential complex featuring modern Egyptian architectural elements with sustainable design principles.",
-      features: ["120 Units", "Sustainable Design", "Community Spaces", "Modern Amenities"],
-      delay: "0.2s"
-    },
-    {
-      id: 2,
-      title: "Cairo Business Center",
-      category: "commercial",
-      location: "Downtown Cairo, Egypt",
-      year: "2025",
-      image: project2,
-      description: "A state-of-the-art commercial building designed to meet the demands of modern business while respecting urban context.",
-      features: ["25 Floors", "LEED Certified", "Smart Building", "Mixed-Use"],
-      delay: "0.4s"
-    },
-    {
-      id: 3,
-      title: "Heritage Cultural Museum",
-      category: "cultural",
-      location: "Alexandria, Egypt",
-      year: "2025",
-      image: project3,
-      description: "A contemporary interpretation of traditional Egyptian architecture housing cultural artifacts and exhibitions.",
-      features: ["Exhibition Halls", "Educational Center", "Research Library", "Public Plaza"],
-      delay: "0.6s"
-    },
-    {
-      id: 4,
-      title: "Modern Villa Estate",
-      category: "residential",
-      location: "Giza, Egypt",
-      year: "2025",
-      image: project4,
-      description: "Contemporary residential design blending modern comfort with traditional Egyptian aesthetics.",
-      features: ["Private Pool", "Garden Terrace", "Smart Home", "Solar Power"],
-      delay: "0.8s"
-    },
-    {
-      id: 5,
-      title: "Tech Innovation Hub",
-      category: "commercial",
-      location: "New Administrative Capital, Egypt",
-      year: "2025",
-      image: project5,
-      description: "A cutting-edge workspace designed for technology companies and startups.",
-      features: ["Co-working Spaces", "Innovation Labs", "Event Center", "Rooftop Garden"],
-      delay: "1.0s"
-    },
-    {
-      id: 6,
-      title: "Sustainable Community Center",
-      category: "cultural",
-      location: "Luxor, Egypt",
-      year: "2025",
-      image: project6,
-      description: "An eco-friendly community center that serves as a hub for local cultural activities.",
-      features: ["Solar Powered", "Green Roof", "Multi-purpose Halls", "Art Studios"],
-      delay: "1.2s"
-    },
-    {
-      id: 7,
-      title: "Luxury Office Tower",
-      category: "commercial",
-      location: "Zamalek, Cairo",
-      year: "2024",
-      image: project7,
-      description: "A prestigious office tower with panoramic Nile views and premium amenities.",
-      features: ["Nile Views", "Premium Amenities", "Green Building", "Smart Systems"],
-      delay: "1.4s"
-    },
-    {
-      id: 8,
-      title: "Garden Residences",
-      category: "residential",
-      location: "Maadi, Cairo",
-      year: "2024",
-      image: project8,
-      description: "Eco-friendly residential complex with extensive green spaces and sustainable features.",
-      features: ["Green Spaces", "Solar Energy", "Water Recycling", "Natural Ventilation"],
-      delay: "1.6s"
-    },
-    {
-      id: 9,
-      title: "Art Gallery Complex",
-      category: "cultural",
-      location: "Heliopolis, Cairo",
-      year: "2024",
-      image: project9,
-      description: "A modern art gallery complex showcasing contemporary Egyptian and international artists.",
-      features: ["Multiple Galleries", "Sculpture Garden", "Artist Studios", "Event Spaces"],
-      delay: "1.8s"
-    },
-    {
-      id: 10,
-      title: "Mixed-Use Development",
-      category: "commercial",
-      location: "New Capital, Egypt",
-      year: "2023",
-      image: project10,
-      description: "A comprehensive mixed-use development combining retail, office, and residential spaces.",
-      features: ["Retail Spaces", "Office Complex", "Residential Units", "Public Plaza"],
-      delay: "2.0s"
-    },
-    {
-      id: 11,
-      title: "Luxury Penthouse",
-      category: "residential",
-      location: "North Coast, Egypt",
-      year: "2023",
-      image: project11,
-      description: "Exclusive beachfront penthouse with panoramic sea views and luxury finishes.",
-      features: ["Sea Views", "Private Beach", "Luxury Finishes", "Smart Home"],
-      delay: "2.2s"
-    },
-    {
-      id: 12,
-      title: "Educational Campus",
-      category: "cultural",
-      location: "6th October City, Egypt",
-      year: "2023",
-      image: project12,
-      description: "A modern educational campus designed to foster learning and innovation.",
-      features: ["Modern Classrooms", "Research Labs", "Library", "Sports Facilities"],
-      delay: "2.4s"
-    },
-    {
-      id: 13,
-      title: "Nile View Apartments",
-      category: "residential",
-      location: "Garden City, Cairo",
-      year: "2023",
-      image: project13,
-      description: "Luxury apartments with stunning Nile views and premium finishes throughout.",
-      features: ["Nile Views", "Premium Finishes", "Concierge Service", "Rooftop Pool"],
-      delay: "2.6s"
-    },
-    {
-      id: 14,
-      title: "Financial District Tower",
-      category: "commercial",
-      location: "New Administrative Capital, Egypt",
-      year: "2023",
-      image: project1,
-      description: "A landmark office tower in the heart of Egypt's new financial district.",
-      features: ["50 Floors", "LEED Platinum", "Smart Building", "Premium Amenities"],
-      delay: "2.8s"
-    },
-    {
-      id: 15,
-      title: "Pharaonic Heritage Center",
-      category: "cultural",
-      location: "Aswan, Egypt",
-      year: "2023",
-      image: project2,
-      description: "A cultural center celebrating ancient Egyptian heritage with modern architecture.",
-      features: ["Museum", "Research Center", "Cultural Events", "Garden Spaces"],
-      delay: "3.0s"
-    },
-    {
-      id: 16,
-      title: "Desert Oasis Villas",
-      category: "residential",
-      location: "Bahariya Oasis, Egypt",
-      year: "2022",
-      image: project3,
-      description: "Sustainable desert villas designed to blend with the natural landscape.",
-      features: ["Desert Views", "Solar Power", "Natural Cooling", "Eco-Friendly"],
-      delay: "3.2s"
-    },
-    {
-      id: 17,
-      title: "Shopping Mall Complex",
-      category: "commercial",
-      location: "Sheikh Zayed City, Egypt",
-      year: "2022",
-      image: project4,
-      description: "A modern shopping destination with entertainment and dining options.",
-      features: ["Retail Spaces", "Cinema Complex", "Food Court", "Parking Garage"],
-      delay: "3.4s"
-    },
-    {
-      id: 18,
-      title: "Islamic Art Museum",
-      category: "cultural",
-      location: "Islamic Cairo, Egypt",
-      year: "2022",
-      image: project5,
-      description: "A contemporary museum showcasing Islamic art and architecture.",
-      features: ["Exhibition Halls", "Conservation Lab", "Library", "Garden Courtyard"],
-      delay: "3.6s"
-    },
-    {
-      id: 19,
-      title: "Luxury Condominiums",
-      category: "residential",
-      location: "New Cairo, Egypt",
-      year: "2022",
-      image: project6,
-      description: "High-end condominiums with world-class amenities and services.",
-      features: ["Luxury Amenities", "24/7 Security", "Fitness Center", "Spa Services"],
-      delay: "3.8s"
-    },
-    {
-      id: 20,
-      title: "Technology Park",
-      category: "commercial",
-      location: "Smart Village, Egypt",
-      year: "2022",
-      image: project7,
-      description: "A technology-focused business park for innovative companies.",
-      features: ["Office Spaces", "Research Labs", "Conference Center", "Green Spaces"],
-      delay: "4.0s"
-    },
-    {
-      id: 21,
-      title: "Contemporary Art Gallery",
-      category: "cultural",
-      location: "Zamalek, Cairo",
-      year: "2022",
-      image: project8,
-      description: "A modern art gallery promoting contemporary Egyptian artists.",
-      features: ["Gallery Spaces", "Artist Studios", "Event Hall", "Café"],
-      delay: "4.2s"
-    },
-    {
-      id: 22,
-      title: "Gated Community",
-      category: "residential",
-      location: "Sharm El Sheikh, Egypt",
-      year: "2021",
-      image: project9,
-      description: "Exclusive gated community with luxury villas and resort amenities.",
-      features: ["Private Beach", "Golf Course", "Marina", "Luxury Villas"],
-      delay: "4.4s"
-    },
-    {
-      id: 23,
-      title: "Medical Center",
-      category: "commercial",
-      location: "Nasr City, Cairo",
-      year: "2021",
-      image: project10,
-      description: "State-of-the-art medical facility with specialized treatment centers.",
-      features: ["Specialized Clinics", "Surgery Centers", "Emergency Room", "Parking"],
-      delay: "4.6s"
-    },
-    {
-      id: 24,
-      title: "Cultural Heritage Site",
-      category: "cultural",
-      location: "Karnak, Luxor",
-      year: "2021",
-      image: project11,
-      description: "Restoration and enhancement of ancient temple complex visitor facilities.",
-      features: ["Visitor Center", "Museum", "Restoration Lab", "Garden"],
-      delay: "4.8s"
-    },
-    {
-      id: 25,
-      title: "Mountain Resort",
-      category: "residential",
-      location: "Sinai Peninsula, Egypt",
-      year: "2021",
-      image: project12,
-      description: "Luxury mountain resort with stunning views and natural integration.",
-      features: ["Mountain Views", "Spa Resort", "Hiking Trails", "Natural Materials"],
-      delay: "5.0s"
-    },
-    {
-      id: 26,
-      title: "Industrial Complex",
-      category: "commercial",
-      location: "10th of Ramadan City, Egypt",
-      year: "2021",
-      image: project13,
-      description: "Modern industrial facility designed for efficiency and sustainability.",
-      features: ["Manufacturing Spaces", "Office Complex", "Warehouse", "Green Energy"],
-      delay: "5.2s"
-    },
-    {
-      id: 27,
-      title: "Archaeological Museum",
-      category: "cultural",
-      location: "Giza, Egypt",
-      year: "2020",
-      image: project1,
-      description: "A museum dedicated to showcasing archaeological discoveries and artifacts.",
-      features: ["Exhibition Halls", "Research Facilities", "Conservation Lab", "Library"],
-      delay: "5.4s"
-    },
-    {
-      id: 28,
-      title: "Waterfront Residences",
-      category: "residential",
-      location: "Marina, Alexandria",
-      year: "2020",
-      image: project2,
-      description: "Luxury waterfront apartments with Mediterranean Sea views.",
-      features: ["Sea Views", "Marina Access", "Luxury Finishes", "Rooftop Deck"],
-      delay: "5.6s"
-    },
-    {
-      id: 29,
-      title: "Convention Center",
-      category: "commercial",
-      location: "New Capital, Egypt",
-      year: "2020",
-      image: project3,
-      description: "A world-class convention center for international events and conferences.",
-      features: ["Conference Halls", "Exhibition Space", "Meeting Rooms", "Catering"],
-      delay: "5.8s"
-    },
-    {
-      id: 30,
-      title: "Traditional Arts Center",
-      category: "cultural",
-      location: "Fayoum, Egypt",
-      year: "2020",
-      image: project4,
-      description: "A center dedicated to preserving and promoting traditional Egyptian arts and crafts.",
-      features: ["Workshop Spaces", "Exhibition Hall", "Artist Residency", "Garden"],
-      delay: "6.0s"
-    },
-  ];
+  const projects = projectData;
 
   const categories = [
     { id: "all", name: "All Projects" },
@@ -361,8 +17,8 @@ const Projects = () => {
     { id: "cultural", name: "Cultural" },
   ];
 
-  const filteredProjects = filter === "all" 
-    ? projects 
+  const filteredProjects = filter === "all"
+    ? projects
     : projects.filter(project => project.category === filter);
 
   return (
@@ -384,11 +40,11 @@ const Projects = () => {
 
       {/* 3D Interactive Carousel */}
       <section className="relative">
-        <SmartCarousel 
-          projects={projects} 
+        <SmartCarousel
+          projects={projects}
           companyName="Mimar Khan"
           onProjectClick={(project) => {
-            navigate(`/project/${project.id}`);
+            navigate(`/projects/${project.slug}`);
           }}
         />
       </section>
@@ -408,15 +64,16 @@ const Projects = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.slice(0, 6).map((project, index) => (
-              <div
+              <Link
                 key={project.id}
-                className="group bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-border/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 fade-in-up"
+                to={`/projects/${project.slug}`}
+                className="group bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-border/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 fade-in-up focus:outline-none focus-visible:ring-2 focus-visible:ring-red"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Project Image */}
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={project.image}
+                    src={project.images[0]}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -431,19 +88,16 @@ const Projects = () => {
 
                   {/* Year Badge */}
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-card/90 backdrop-blur-sm text-foreground rounded-full text-sm font-medium">
-                      {project.year}
+                    <span className="px-3 py-1 bg-card/90 backdrop-blur-sm text-foreground rounded-full text-sm font-medium capitalize">
+                      {project.category}
                     </span>
                   </div>
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-red/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button 
-                      onClick={() => navigate(`/project/${project.id}`)}
-                      className="px-6 py-3 bg-red text-background rounded-lg font-medium hover:bg-red-dark transition-colors transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                    >
+                    <span className="px-6 py-3 bg-red text-background rounded-lg font-medium transition-colors transform translate-y-4 group-hover:translate-y-0">
                       View Details
-                    </button>
+                    </span>
                   </div>
                 </div>
 
@@ -459,13 +113,14 @@ const Projects = () => {
                       <span>{project.location}</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{project.year}</span>
+                      <span className="inline-flex items-center px-2 py-1 bg-stone/30 rounded text-xs uppercase tracking-wide">
+                        {project.category}
+                      </span>
                     </div>
                   </div>
 
                   <p className="text-muted-foreground mb-4 line-clamp-3">
-                    {project.description}
+                    {project.summary}
                   </p>
 
                   {/* Features */}
@@ -486,15 +141,12 @@ const Projects = () => {
                   </div>
 
                   {/* Action Button */}
-                  <button 
-                    onClick={() => navigate(`/project/${project.id}`)}
-                    className="w-full flex items-center justify-center space-x-2 px-4 py-2 border border-red text-red rounded-lg hover:bg-red hover:text-background transition-all duration-300 group"
-                  >
+                  <span className="w-full flex items-center justify-center space-x-2 px-4 py-2 border border-red text-red rounded-lg transition-all duration-300 group-hover:bg-red group-hover:text-background">
                     <span>Explore Project</span>
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
