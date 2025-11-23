@@ -4,12 +4,12 @@ import { OrbitControls, Text, Html, useTexture } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import * as THREE from "three";
-import { ProjectData } from "@/data/projects";
+import { Project } from "@/data/projectsData";
 
 interface SimpleThreeDCarouselProps {
-  projects: ProjectData[];
+  projects: Project[];
   companyName?: string;
-  onProjectClick?: (project: ProjectData) => void;
+  onProjectClick?: (project: Project) => void;
 }
 
 // Simple Project Card Component
@@ -21,12 +21,12 @@ function ProjectCard({
   isHovered,
   onHover,
 }: {
-  project: ProjectData;
+  project: Project;
   index: number;
   totalProjects: number;
-  onProjectClick?: (project: ProjectData) => void;
+  onProjectClick?: (project: Project) => void;
   isHovered: boolean;
-  onHover: (id: number | null) => void;
+  onHover: (id: string | null) => void;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const texture = useTexture(project.images[0]);
@@ -59,7 +59,7 @@ function ProjectCard({
         <boxGeometry args={[2, 2.5, 0.05]} />
         <meshStandardMaterial map={texture} />
       </mesh>
-      
+
       {/* Project Title */}
       <Text
         position={[0, -2, 0]}
@@ -71,7 +71,7 @@ function ProjectCard({
       >
         {project.title}
       </Text>
-      
+
       {/* Hover Info */}
       {isHovered && (
         <Html position={[0, 1, 0]} center>
@@ -90,7 +90,7 @@ function ProjectCard({
             <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
               {project.summary}
             </p>
-            <button 
+            <button
               onClick={() => onProjectClick?.(project)}
               className="text-xs font-medium text-red hover:text-red-dark inline-flex items-center group"
             >
@@ -111,10 +111,10 @@ function Carousel({
   hoveredProject,
   setHoveredProject,
 }: {
-  projects: ProjectData[];
-  onProjectClick?: (project: ProjectData) => void;
-  hoveredProject: number | null;
-  setHoveredProject: (id: number | null) => void;
+  projects: Project[];
+  onProjectClick?: (project: Project) => void;
+  hoveredProject: string | null;
+  setHoveredProject: (id: string | null) => void;
 }) {
   const groupRef = useRef<THREE.Group>(null);
 
@@ -155,12 +155,10 @@ const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({
     () => projects.slice(0, Math.min(projects.length, 12)),
     [projects]
   );
-  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   const handleProjectClick = useCallback(
-    (project: ProjectData) => {
-    setSelectedProject(project);
+    (project: Project) => {
       onProjectClick?.(project);
     },
     [onProjectClick]
@@ -192,7 +190,7 @@ const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({
 
       {/* 3D Canvas */}
       <Canvas
-        camera={{ position: [0, 2, 14], fov: 50 }}
+        camera={{ position: [0, 2, 18], fov: 50 }}
         style={{ background: "transparent" }}
         dpr={[1, 1.5]}
       >
@@ -215,75 +213,10 @@ const SimpleThreeDCarousel: React.FC<SimpleThreeDCarouselProps> = ({
           enablePan={false}
           enableZoom={false}
           enableRotate={true}
-          minDistance={12}
-          maxDistance={12}
+          minDistance={18}
+          maxDistance={18}
         />
       </Canvas>
-
-      {/* Instructions - Hidden */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="text-center text-sm text-charcoal/70 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-charcoal/20 shadow-lg">
-          Drag to rotate • Hover to explore • Click to select
-        </div>
-      </div> */}
-
-      {/* Project Details Modal */}
-      {selectedProject && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-          onClick={() => setSelectedProject(null)}
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-card p-6 rounded-lg shadow-xl max-w-md w-full"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
-              {selectedProject.title}
-            </h2>
-            
-            <div className="space-y-3 mb-4">
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <MapPin className="h-4 w-4" />
-                <span>{selectedProject.location}</span>
-              </div>
-              <div className="text-sm text-muted-foreground">
-                <span className="font-medium">Category:</span> {selectedProject.category}
-              </div>
-            </div>
-
-            <p className="text-muted-foreground mb-4">
-              {selectedProject.summary}
-            </p>
-
-            <div className="mb-4">
-              <h3 className="font-semibold text-foreground mb-2">Features:</h3>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.features.map((feature, index) => (
-                  <span
-                    key={index}
-                    className="px-2 py-1 bg-stone/20 text-foreground rounded text-sm"
-                  >
-                    {feature}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="w-full bg-red text-background px-4 py-2 rounded hover:bg-red-dark transition-colors"
-            >
-              Close
-            </button>
-          </motion.div>
-        </motion.div>
-      )}
     </div>
   );
 };

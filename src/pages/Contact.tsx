@@ -40,13 +40,13 @@ ${formData.message}
 
       // Encode the message for URL
       const encodedMessage = encodeURIComponent(whatsappMessage);
-      
+
       // Create WhatsApp URL with the phone number
-      const whatsappUrl = `https://wa.me/201143118052?text=${encodedMessage}`;
-      
+      const whatsappUrl = `https://wa.me/201222175051?text=${encodedMessage}`;
+
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, '_blank');
-      
+
       // Reset form and show success message
       setFormData({ name: "", email: "", subject: "", message: "" });
       toast({
@@ -68,19 +68,19 @@ ${formData.message}
     {
       icon: MapPin,
       title: "Office Location",
-      details: ["123 Architectural Street", "New Cairo, Egypt", "Postal Code: 11835"],
+      details: ["35 ObourBuildings -Floor 16", "Office 4 –Salah Salem Street", "Cairo , Egypt"],
       delay: "0.2s"
     },
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+20 (0) 12 3456 7890", "+20 (0) 10 9876 5432", "Office: +20 (0) 2 1234 5678"],
+      details: ["+2-0220822573", "+2-01222175051", "+2-01113618082"],
       delay: "0.4s"
     },
     {
       icon: Mail,
       title: "Email Addresses",
-      details: ["info@mimarkhan.com", "projects@mimarkhan.com", "careers@mimarkhan.com"],
+      details: ["Info@MimarKhan.com"],
       delay: "0.6s"
     },
     {
@@ -92,13 +92,9 @@ ${formData.message}
   ];
 
   const projectTypes = [
-    "Residential Architecture",
-    "Commercial Buildings",
-    "Cultural Projects",
-    "Urban Planning",
-    "Interior Design",
-    "Consultation Services",
-    "Other"
+    "Architectes",
+    "Interior Designers",
+    "Project Managers"
   ];
 
   return (
@@ -111,7 +107,7 @@ ${formData.message}
               Contact <span className="text-gradient-red">Us</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto fade-in-scroll">
-              Ready to start your architectural journey? Get in touch with our team 
+              Ready to start your architectural journey? Get in touch with our team
               and let's discuss how we can bring your vision to life.
             </p>
           </div>
@@ -160,7 +156,7 @@ ${formData.message}
                 Send Us a Message
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Fill out the form below and it will open WhatsApp with your message ready to send. 
+                Fill out the form below and it will open WhatsApp with your message ready to send.
                 For urgent inquiries, please call us directly.
               </p>
 
@@ -263,7 +259,7 @@ ${formData.message}
                 Visit Our Office
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Located in the heart of New Cairo, our office is easily accessible 
+                Located in the heart of New Cairo, our office is easily accessible
                 and equipped with modern facilities for client meetings and consultations.
               </p>
 
@@ -278,8 +274,9 @@ ${formData.message}
                     Map integration would be implemented here
                   </p>
                   <p className="text-sm text-muted-foreground mt-4">
-                    123 Architectural Street<br />
-                    New Cairo, Egypt 11835
+                    35 ObourBuildings -Floor 16<br />
+                    Office 4 –Salah Salem Street<br />
+                    Cairo , Egypt
                   </p>
                 </div>
               </div>
@@ -289,12 +286,12 @@ ${formData.message}
                   Schedule a Visit
                 </h4>
                 <p className="text-muted-foreground mb-4">
-                  We welcome clients to visit our office for project discussions and design reviews. 
+                  We welcome clients to visit our office for project discussions and design reviews.
                   Please call ahead to schedule an appointment.
                 </p>
                 <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4 text-red" />
-                  <span>+20 (0) 12 3456 7890</span>
+                  <span>+2-0220822573</span>
                 </div>
               </div>
             </div>

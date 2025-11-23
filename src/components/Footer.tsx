@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, Twitter, MapPin, Phone, Mail } from "lucide-react";
+import FooterWave from "./FooterWave";
 
 const Footer = () => {
   const socialLinks = [
@@ -18,7 +19,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-primary text-primary-foreground relative overflow-hidden z-10">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Company Info */}
@@ -27,24 +28,24 @@ const Footer = () => {
               Mimar Khan
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Designing Tomorrow's Landmarks. An Egyptian architecture consultancy 
-              dedicated to creating innovative and sustainable architectural solutions 
+              Designing Tomorrow's Landmarks. An Egyptian architecture consultancy
+              dedicated to creating innovative and sustainable architectural solutions
               that blend modern design with cultural heritage.
             </p>
-            
+
             {/* Contact Information */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-red" />
-                <span className="text-sm">Cairo, Egypt</span>
+                <span className="text-sm">35 ObourBuildings -Floor 16 –Office 4 –Salah Salem Street –Cairo , Egypt</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-red" />
-                <span className="text-sm">+20 (0) 12 3456 7890</span>
+                <span className="text-sm">+2-0220822573</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-red" />
-                <span className="text-sm">info@mimarkhan.com</span>
+                <span className="text-sm">Info@MimarKhan.com</span>
               </div>
             </div>
           </div>
@@ -108,7 +109,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+      <FooterWave />
+    </footer >
   );
 };
 

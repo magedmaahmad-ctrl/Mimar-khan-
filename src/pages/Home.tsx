@@ -30,11 +30,7 @@ const Home = () => {
       description: "Crafting elegant interior spaces that harmonize with architectural vision and enhance user experience.",
       delay: "0.4s"
     },
-    {
-      title: "Urban Planning",
-      description: "Developing sustainable urban solutions that promote community growth and environmental consciousness.",
-      delay: "0.6s"
-    },
+
   ];
 
   const heroInsights = [
@@ -173,7 +169,7 @@ const Home = () => {
               Our Expertise
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From conceptual design to project completion, we deliver comprehensive 
+              From conceptual design to project completion, we deliver comprehensive
               architectural solutions tailored to your vision.
             </p>
           </div>

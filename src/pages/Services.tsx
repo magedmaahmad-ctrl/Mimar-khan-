@@ -1,61 +1,7 @@
 import { Link } from "react-router-dom";
-import { Building, Home, Map, Users, ArrowRight, CheckCircle } from "lucide-react";
+import { Home, Users, ArrowRight, CheckCircle, Building } from "lucide-react";
 
 const Services = () => {
-  const services = [
-    {
-      icon: Building,
-      title: "Architecture Design",
-      description: "Comprehensive architectural solutions from concept to completion, blending innovative design with functional excellence.",
-      features: [
-        "Conceptual Design & Master Planning",
-        "Detailed Architectural Drawings",
-        "3D Visualization & Modeling",
-        "Sustainable Design Solutions",
-        "Heritage & Cultural Architecture"
-      ],
-      delay: "0.2s"
-    },
-    {
-      icon: Home,
-      title: "Interior Design",
-      description: "Creating elegant and functional interior spaces that reflect your vision while enhancing user experience and comfort.",
-      features: [
-        "Space Planning & Layout Design",
-        "Material Selection & Specification",
-        "Custom Furniture Design",
-        "Lighting Design & Ambiance",
-        "Color Schemes & Finishes"
-      ],
-      delay: "0.4s"
-    },
-    {
-      icon: Map,
-      title: "Urban Planning",
-      description: "Strategic urban development solutions that promote sustainable growth and create vibrant, livable communities.",
-      features: [
-        "Master Planning & Zoning",
-        "Infrastructure Development",
-        "Environmental Impact Assessment",
-        "Community Engagement",
-        "Smart City Solutions"
-      ],
-      delay: "0.6s"
-    },
-    {
-      icon: Users,
-      title: "Consultancy",
-      description: "Expert architectural consultation services to guide your project from initial concept through successful completion.",
-      features: [
-        "Project Feasibility Studies",
-        "Design Review & Optimization",
-        "Regulatory Compliance",
-        "Construction Administration",
-        "Post-Occupancy Evaluation"
-      ],
-      delay: "0.8s"
-    },
-  ];
 
   const process = [
     {
@@ -90,8 +36,13 @@ const Services = () => {
               Our <span className="text-gradient-red">Services</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto fade-in-up" style={{ animationDelay: "0.2s" }}>
-              Comprehensive architectural solutions designed to transform your vision 
-              into remarkable spaces that inspire and endure.
+              Mimar Khan Design & Projects Management Studio is a multi-disciplinary practice led by Maged Khorshed,
+              offering integrated services across architecture, interior design, and project management. We specialize
+              in designing, remodeling, and transforming buildings and interior spaces while providing expert urban
+              and environmental planning, landscape architecture, value engineering, and real estate development support.
+              <br /><br />
+              Our studio combines creative vision with technical expertise to deliver well-designed, efficiently managed,
+              and high-value projects for clients across residential, commercial, and institutional sectors.
             </p>
           </div>
         </div>
@@ -100,41 +51,96 @@ const Services = () => {
       {/* Services Grid */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up"
-                  style={{ animationDelay: service.delay }}
-                >
-                  <div className="flex items-start space-x-6">
-                    <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon className="h-8 w-8 text-background" />
-                    </div>
-                    
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
-                        {service.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed mb-6">
-                        {service.description}
-                      </p>
-                      
-                      <ul className="space-y-3">
-                        {service.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center space-x-3">
-                            <CheckCircle className="h-5 w-5 text-red flex-shrink-0" />
-                            <span className="text-sm text-muted-foreground">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Architects */}
+            {/* Architects */}
+            <div className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: "0.2s" }}>
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
+                  <Building className="h-8 w-8 text-background" />
                 </div>
-              );
-            })}
+                <div className="flex-1">
+                  <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
+                    (A)-Architectes
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Mimar Khan Design & Projects Management Studio is a multi-disciplinary practice led by Maged Khorshed,
+                    offering integrated services across architecture, interior design, and project management. We specialize
+                    in designing, remodeling, and transforming buildings and interior spaces while providing expert urban
+                    and environmental planning, landscape architecture, value engineering, and real estate development support.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Our studio combines creative vision with technical expertise to deliver well-designed, efficiently managed,
+                    and high-value projects for clients across residential, commercial, and institutional sectors.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Interior Designers */}
+            {/* Interior Designers */}
+            <div className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: "0.3s" }}>
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
+                  <Home className="h-8 w-8 text-background" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
+                    (ID)-Interior Designers
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Primarily engaging in planning, designing, and administering projects in interior spaces to meet the physical
+                    need and aesthetic of people, taking into consideration building codes, health and safety, circulation and
+                    floor planning, mechanical & electrical needs, and furniture.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    We work in residential design, commercial and corporate design, educational design, and health care design.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Project Managers */}
+            {/* Project Managers */}
+            <div className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: "0.4s" }}>
+              <div className="flex flex-col items-start h-full">
+                <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
+                  <Users className="h-8 w-8 text-background" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
+                    (PM) Project Managers
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Efficient and responsible project management is the key to successful enterprise delivery.
+                    No matter how carefully planned a scheme is, without the competent supervision and coordination at all phases
+                    of implementation, any project is likely to become an indescribable headache.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    We offer professional construction management services especially tailored to the size of the project with
+                    solid commitment to total quality management.
+                  </p>
+
+                  <h4 className="text-lg font-semibold text-foreground mb-3">Our Project management services include:</h4>
+                  <ul className="space-y-2">
+                    {[
+                      "Schedule and budget evaluations",
+                      "Value engineering",
+                      "Constructibility reviews",
+                      "Accuracy checks on cost estimates",
+                      "Weighing project alternatives",
+                      "Structuring bid packages for lowest cost construction",
+                      "Monitoring and coordinating daily construction activities"
+                    ].map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start space-x-3">
+                        <CheckCircle className="h-5 w-5 text-red flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -173,52 +179,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Specialties Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 fade-in-up">
-              Our Specialties
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto fade-in-up" style={{ animationDelay: "0.2s" }}>
-              Areas where we excel and have developed particular expertise over the years.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Cultural & Heritage Architecture",
-                description: "Preserving and celebrating cultural heritage through sensitive architectural interventions and restorations.",
-                delay: "0.2s"
-              },
-              {
-                title: "Sustainable Design",
-                description: "Implementing green building practices and sustainable technologies for environmentally responsible architecture.",
-                delay: "0.4s"
-              },
-              {
-                title: "Mixed-Use Developments",
-                description: "Creating dynamic spaces that blend residential, commercial, and public functions seamlessly.",
-                delay: "0.6s"
-              },
-            ].map((specialty, index) => (
-              <div
-                key={index}
-                className="bg-card p-8 rounded-sm shadow-elegant hover-lift text-center fade-in-up"
-                style={{ animationDelay: specialty.delay }}
-              >
-                <h3 className="text-xl font-serif font-semibold text-foreground mb-4">
-                  {specialty.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {specialty.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-charcoal to-primary text-primary-foreground">

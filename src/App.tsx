@@ -18,6 +18,7 @@ import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import { useScrollAnimations } from "./hooks/useScrollAnimations";
 import useScrollToTop from "./hooks/useScrollToTop";
 import { useScrollRestoration } from "./hooks/useScrollRestoration";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -36,8 +37,9 @@ const AppContent = () => {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:category" element={<Projects />} />
+        <Route path="/projects/:category/:slug" element={<ProjectDetail />} />
         <Route path="/all-projects" element={<AllProjects />} />
-        <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -52,6 +54,7 @@ const App = () => (
       <Sonner />
       <HashRouter>
         <AppContent />
+        <CustomCursor />
       </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
