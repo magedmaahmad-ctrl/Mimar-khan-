@@ -8,65 +8,65 @@
 
 @layer base {
   html {
-    scroll-behavior: auto !important;
+    scroll-behavior: smooth !important;
   }
-  
+
   :root {
     /* Red and white professional palette */
     --background: 0 0% 100%;
     --foreground: 220 9% 8%;
-    
+
     --card: 0 0% 100%;
     --card-foreground: 220 9% 8%;
-    
+
     --popover: 0 0% 100%;
     --popover-foreground: 220 9% 8%;
-    
+
     /* Sophisticated primary - deep charcoal */
     --primary: 220 9% 8%;
     --primary-foreground: 0 0% 98%;
-    
+
     /* Clean secondary - light gray */
     --secondary: 0 0% 96%;
     --secondary-foreground: 220 9% 8%;
-    
+
     /* Elegant muted tones */
     --muted: 0 0% 94%;
     --muted-foreground: 220 9% 45%;
-    
+
     /* Bold red accent - professional red */
     --accent: 0 84% 50%;
     --accent-foreground: 0 0% 98%;
-    
+
     /* Red color system */
     --red: 0 84% 50%;
     --red-light: 0 76% 60%;
     --red-dark: 0 72% 42%;
-    
+
     /* Clean whites and grays */
     --stone: 0 0% 96%;
     --stone-dark: 0 0% 88%;
     --concrete: 220 9% 89%;
     --charcoal: 220 13% 18%;
-    
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    
+
     --border: 0 0% 88%;
     --input: 0 0% 88%;
     --ring: 0 84% 50%;
-    
+
     --radius: 0.5rem;
-    
+
     /* Gradients */
     --gradient-red: linear-gradient(135deg, hsl(var(--red)), hsl(var(--red-light)));
     --gradient-stone: linear-gradient(180deg, hsl(var(--background)), hsl(var(--stone)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--stone)) 100%);
-    
+
     /* Shadows */
     --shadow-elegant: 0 25px 50px -12px hsl(var(--foreground) / 0.08);
     --shadow-red: 0 10px 30px -10px hsl(var(--red) / 0.3);
-    
+
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-elegant: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -136,23 +136,41 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Playfair Display', Georgia, serif;
     @apply font-medium tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
   }
 }
 
 @layer components {
+
   /* Red & White Button Variants */
   .btn-hero {
     @apply bg-gradient-to-r from-red to-red-light text-accent-foreground px-8 py-4 rounded-sm font-medium tracking-wide transition-all duration-300 hover:shadow-lg hover:scale-105;
   }
-  
+
   .btn-outline-red {
     @apply border-2 border-red text-red bg-transparent px-6 py-3 rounded-sm font-medium tracking-wide transition-all duration-300 hover:bg-red hover:text-accent-foreground;
   }
-  
+
   .btn-minimal {
     @apply text-charcoal border-b-2 border-transparent font-medium tracking-wide transition-all duration-300 hover:border-red;
   }
@@ -359,33 +377,33 @@
     color: hsl(var(--red));
     margin-bottom: 1.5rem;
   }
-  
+
   /* Smooth Animations */
   .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
   }
-  
+
   .fade-in {
     opacity: 0;
     animation: fadeIn 0.6s ease-out forwards;
   }
-  
+
   .slide-in-right {
     opacity: 0;
     transform: translateX(30px);
     animation: slideInRight 0.8s ease-out forwards;
   }
-  
+
   /* Hover Effects */
   .hover-lift {
     @apply transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-elegant;
   }
-  
+
   .hover-red {
     @apply transition-all duration-300 hover:text-red;
   }
-  
+
   /* Line clamping utilities */
   .line-clamp-2 {
     display: -webkit-box;
@@ -393,14 +411,14 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   /* Architecture Grid */
   .arch-grid {
     display: flex;
@@ -416,15 +434,15 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .bg-gradient-hero {
     background: var(--gradient-hero);
   }
-  
+
   .shadow-elegant {
     box-shadow: var(--shadow-elegant);
   }
-  
+
   .shadow-red {
     box-shadow: var(--shadow-red);
   }
@@ -551,6 +569,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .hero-image,
   .hero-image-track {
     animation: none;
@@ -568,7 +587,14 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  body, a, button, [role="button"], input, select, textarea {
+
+  body,
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
     cursor: none !important;
   }
 }

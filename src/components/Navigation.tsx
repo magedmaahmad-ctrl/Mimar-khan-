@@ -28,11 +28,10 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-elegant border-b border-border/20"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -47,11 +46,10 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-medium tracking-wide transition-all duration-300 ${
-                  isActive(item.path)
+                className={`font-medium tracking-wide transition-all duration-300 ${isActive(item.path)
                     ? "text-red border-b-2 border-red"
                     : "text-foreground hover:text-red"
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
@@ -73,26 +71,26 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border">
-            <div className="flex flex-col space-y-4 pt-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`font-medium tracking-wide transition-all duration-300 ${
-                    isActive(item.path)
-                      ? "text-red"
-                      : "text-foreground hover:text-red"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        <div
+          className={`fixed inset-0 bg-background/98 backdrop-blur-xl z-40 transition-all duration-500 md:hidden flex flex-col justify-center items-center space-y-8 ${isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            }`}
+        >
+          {navItems.map((item, index) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`text-3xl font-serif font-medium tracking-wide transition-all duration-300 transform ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                } ${isActive(item.path)
+                  ? "text-red"
+                  : "text-foreground hover:text-red"
+                }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );
