@@ -126,8 +126,10 @@ const CustomCursor = () => {
         };
     }, [isVisible]);
 
-    // Hide on mobile
-    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+    // Hide on devices where the default cursor is not hidden by CSS
+    // CSS hides cursor when (hover: hover) and (pointer: fine)
+    // So we should only render custom cursor when that condition is met
+    if (typeof window !== "undefined" && !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         return null;
     }
 

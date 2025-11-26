@@ -12,10 +12,9 @@ const Projects = () => {
 
   const categories = [
     { id: "all", title: "All Projects" },
-    { id: "interior", title: "Interior" },
+    { id: "administrative", title: "Administrative" },
     { id: "commercial", title: "Commercial" },
     { id: "residential", title: "Residential" },
-    { id: "exterior", title: "Exterior" },
   ];
 
   useEffect(() => {
@@ -64,13 +63,13 @@ const Projects = () => {
             transition={{ delay: 0.1 }}
             className="mx-auto max-w-2xl text-xl text-muted-foreground"
           >
-            Explore our portfolio of Interior, Commercial, Residential, and Exterior designs.
+            Explore our portfolio of Administrative, Commercial, and Residential designs.
           </motion.p>
         </div>
       </section>
 
       {/* Sticky Filter Bar */}
-      <section className="sticky top-20 z-30 border-b border-border/40 bg-white/80 py-4 backdrop-blur-md">
+      <section className="sticky top-20 z-30 border-b border-border/40 bg-white/80 py-4">
         <div className="container mx-auto overflow-x-auto px-6">
           <div className="flex min-w-max justify-center space-x-4">
             {categories.map((cat) => (

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ProjectGalleryProps {
     images: string[];
@@ -9,6 +9,22 @@ interface ProjectGalleryProps {
 
 const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    const handlePrevious = () => {
+        if (selectedImage) {
+            const currentIndex = images.indexOf(selectedImage);
+            const previousIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+            setSelectedImage(images[previousIndex]);
+        }
+    };
+
+    const handleNext = () => {
+        if (selectedImage) {
+            const currentIndex = images.indexOf(selectedImage);
+            const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+            setSelectedImage(images[nextIndex]);
+        }
+    };
 
     return (
         <>
@@ -49,10 +65,34 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
                         >
                             <X className="h-8 w-8" />
                         </button>
+
+                        {/* Left Arrow */}
+                        <button
+                            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white/70 backdrop-blur-sm transition-all hover:bg-white/20 hover:text-white"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handlePrevious();
+                            }}
+                        >
+                            <ChevronLeft className="h-8 w-8" />
+                        </button>
+
+                        {/* Right Arrow */}
+                        <button
+                            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white/70 backdrop-blur-sm transition-all hover:bg-white/20 hover:text-white"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleNext();
+                            }}
+                        >
+                            <ChevronRight className="h-8 w-8" />
+                        </button>
+
                         <img
                             src={selectedImage}
                             alt={title}
                             className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
+                            onClick={(e) => e.stopPropagation()}
                         />
                     </motion.div>
                 )}
