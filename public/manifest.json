@@ -9,13 +9,16 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/favicon.png",
       "sizes": "any",
-      "type": "image/x-icon"
+      "type": "image/png"
     }
   ],
-  "categories": ["architecture", "design", "construction"],
+  "categories": [
+    "architecture",
+    "design",
+    "construction"
+  ],
   "lang": "en",
   "dir": "ltr"
 }
-
