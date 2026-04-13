@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Home, Users, ArrowRight, CheckCircle, Building } from "lucide-react";
+import { ArrowRight, CheckCircle, Building, Map, TreePine, Layers } from "lucide-react";
 
 const Services = () => {
 
@@ -24,6 +24,33 @@ const Services = () => {
       title: "Project Delivery",
       description: "From construction documentation to project completion, we ensure seamless execution of your architectural vision."
     },
+  ];
+
+  const servicesList = [
+    {
+      title: "Architecture",
+      description: "We design structures that combine functionality and aesthetics, creating spaces that inspire and endure.",
+      icon: Building,
+      delay: "0.2s"
+    },
+    {
+      title: "Urban Design",
+      description: "We shape cities and communities through thoughtful, sustainable planning that enhances connection and growth.",
+      icon: Map,
+      delay: "0.3s"
+    },
+    {
+      title: "Landscape Design",
+      description: "We create outdoor environments that blend nature with design, delivering harmony and purpose.",
+      icon: TreePine,
+      delay: "0.4s"
+    },
+    {
+      title: "Interior Architecture",
+      description: "We craft interior spaces that balance beauty and function, turning environments into meaningful experiences.",
+      icon: Layers,
+      delay: "0.5s"
+    }
   ];
 
   return (
@@ -51,96 +78,27 @@ const Services = () => {
       {/* Services Grid */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Architects */}
-            {/* Architects */}
-            <div className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: "0.2s" }}>
-              <div className="flex flex-col items-start h-full">
-                <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
-                  <Building className="h-8 w-8 text-background" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {servicesList.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <div key={index} className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: service.delay }}>
+                  <div className="flex flex-col items-start h-full">
+                    <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
+                      <Icon className="h-8 w-8 text-background" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
+                        {service.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
-                    (A)-Architectes
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Mimar Khan Design & Projects Management Studio is a multi-disciplinary practice led by Maged Khorshed,
-                    offering integrated services across architecture, interior design, and project management. We specialize
-                    in designing, remodeling, and transforming buildings and interior spaces while providing expert urban
-                    and environmental planning, landscape architecture, value engineering, and real estate development support.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Our studio combines creative vision with technical expertise to deliver well-designed, efficiently managed,
-                    and high-value projects for clients across residential, commercial, and institutional sectors.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Interior Designers */}
-            {/* Interior Designers */}
-            <div className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: "0.3s" }}>
-              <div className="flex flex-col items-start h-full">
-                <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
-                  <Home className="h-8 w-8 text-background" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
-                    (ID)-Interior Designers
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Primarily engaging in planning, designing, and administering projects in interior spaces to meet the physical
-                    need and aesthetic of people, taking into consideration building codes, health and safety, circulation and
-                    floor planning, mechanical & electrical needs, and furniture.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We work in residential design, commercial and corporate design, educational design, and health care design.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Project Managers */}
-            {/* Project Managers */}
-            <div className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: "0.4s" }}>
-              <div className="flex flex-col items-start h-full">
-                <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
-                  <Users className="h-8 w-8 text-background" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
-                    (PM) Project Managers
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    Efficient and responsible project management is the key to successful enterprise delivery.
-                    No matter how carefully planned a scheme is, without the competent supervision and coordination at all phases
-                    of implementation, any project is likely to become an indescribable headache.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    We offer professional construction management services especially tailored to the size of the project with
-                    solid commitment to total quality management.
-                  </p>
-
-                  <h4 className="text-lg font-semibold text-foreground mb-3">Our Project management services include:</h4>
-                  <ul className="space-y-2">
-                    {[
-                      "Schedule and budget evaluations",
-                      "Value engineering",
-                      "Constructibility reviews",
-                      "Accuracy checks on cost estimates",
-                      "Weighing project alternatives",
-                      "Structuring bid packages for lowest cost construction",
-                      "Monitoring and coordinating daily construction activities"
-                    ].map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start space-x-3">
-                        <CheckCircle className="h-5 w-5 text-red flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
