@@ -11,26 +11,36 @@ import {
 import heroImage from "@/assets/hero-architecture.jpg";
 import heroImageSecondary from "@/assets/project (2).jpg";
 import heroImageTertiary from "@/assets/project (3).jpg";
+import PartnerMarquee from "../components/PartnerMarquee";
 
 const Home = () => {
   const stats = [
-    { icon: Building, value: 50, suffix: "+", label: "Projects Completed", delay: "0.2s" },
-    { icon: Users, value: 25, suffix: "+", label: "Happy Clients", delay: "0.4s" },
-    { icon: Award, value: 10, suffix: "+", label: "Awards Won", delay: "0.6s" }
+    { icon: Building, value: 500, suffix: "+", label: "Projects", delay: "0.2s" },
+    { icon: Compass, value: 6, suffix: "", label: "Countries", delay: "0.4s" },
+    { icon: Award, value: 30, suffix: "+", label: "Years Experience", delay: "0.6s" }
   ];
 
   const services = [
     {
-      title: "Architecture Design",
-      description: "Creating innovative and functional architectural solutions that reflect modern aesthetics and cultural heritage.",
+      title: "Architecture",
+      description: "We design structures that combine functionality and aesthetics, creating spaces that inspire and endure.",
+      delay: "0.1s"
+    },
+    {
+      title: "Urban Design",
+      description: "We shape cities and communities through thoughtful, sustainable planning that enhances connection and growth.",
       delay: "0.2s"
     },
     {
-      title: "Interior Design",
-      description: "Crafting elegant interior spaces that harmonize with architectural vision and enhance user experience.",
-      delay: "0.4s"
+      title: "Landscape Design",
+      description: "We create outdoor environments that blend nature with design, delivering harmony and purpose.",
+      delay: "0.3s"
     },
-
+    {
+      title: "Interior Architecture",
+      description: "We craft interior spaces that balance beauty and function, turning environments into meaningful experiences.",
+      delay: "0.4s"
+    }
   ];
 
   const heroInsights = [
@@ -45,24 +55,26 @@ const Home = () => {
     { src: heroImageTertiary, alt: "Modern interior atrium" }
   ];
 
-  const approach = [
+  const culture = [
     {
-      title: "Discovery & Vision",
-      description:
-        "Immersive workshops uncover project ambitions, context, and cultural narratives to anchor our creative direction.",
-      icon: Compass
+      title: "Design for Excellence",
+      description: "We create high-quality solutions that go beyond expectations, combining beauty with functionality.",
+      icon: Award
     },
     {
-      title: "Iterative Design",
-      description:
-        "We translate insights into architectural typologies, refining every detail through digital twins and tangible prototypes.",
+      title: "Innovative Force",
+      description: "We push boundaries with creative, forward-thinking design solutions.",
+      icon: Sparkles
+    },
+    {
+      title: "Architecture Meets Technology",
+      description: "We integrate advanced technology to future-proof every project.",
       icon: Layers
     },
     {
-      title: "Delivery & Stewardship",
-      description:
-        "Coordinated execution with trusted partners ensures enduring impact, resilience, and operational excellence.",
-      icon: Sparkles
+      title: "Invest in People",
+      description: "We build a strong, creative team through continuous growth and development.",
+      icon: Users
     }
   ];
 
@@ -174,7 +186,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="arch-grid">
+          <div className="arch-grid grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -209,21 +221,21 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Approach Section */}
+      {/* Culture Section */}
       <section className="py-24 bg-gradient-hero relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-[0.8fr_1fr] gap-12 items-start">
             <div className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left fade-in-scroll">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
-                A Collaborative Process
+                Our Culture
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We pair local insight with global best practices to craft architecture that is culturally rooted, technologically advanced, and impeccably executed.
+                The core principles that drive our team and inspire our work.
               </p>
             </div>
 
             <div className="approach-grid">
-              {approach.map((step, index) => {
+              {culture.map((step, index) => {
                 const Icon = step.icon;
                 return (
                   <article key={index} className="approach-card" data-step-index={index + 1}>
@@ -244,6 +256,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Partner Marquee Section */}
+      <PartnerMarquee />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-charcoal to-primary text-primary-foreground">

@@ -161,7 +161,7 @@ const generateProjects = (): Project[] => {
     const projects: Project[] = [];
     const categoryList = ["administrative", "commercial", "residential"];
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 24; i++) {
         const isLocal = i < localImages.length;
         const image = isLocal ? localImages[i] : getUnsplashImage(i);
 

@@ -37,11 +37,10 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground mb-6 fade-in-up">
-              About <span className="text-gradient-red">Mimar Khan</span>
+              About <span className="text-gradient-red">MK</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto fade-in-up" style={{ animationDelay: "0.2s" }}>
-              Rooted in the heart of Egypt, we are a forward-thinking architecture consultancy
-              dedicated to creating innovative and sustainable spaces.
+              A leading architectural firm based in Egypt, delivering innovative, functional, and visually striking designs across diverse sectors.
             </p>
           </div>
         </div>
@@ -57,19 +56,23 @@ const About = () => {
               </h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  Mimar Khan is a multi-disciplinary and leading design studio founded by Maged Khorshed.
+                  (MK) was established in 1992 by founder and chief designer Maged Khorshed. Our mission is simple: understand each client's vision and translate it into functional, elegant, and meaningful design.
+                </p>
+                <div className="py-2">
+                  <p className="font-semibold text-foreground mb-2">We are a multidisciplinary firm offering:</p>
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li>Architecture</li>
+                    <li>Urban Design</li>
+                    <li>Landscape</li>
+                    <li>Interior Architecture</li>
+                    <li>Branding & Consultancy</li>
+                  </ul>
+                </div>
+                <p>
+                  Our portfolio spans residential, commercial, educational, cultural, hospitality, and industrial projects—both locally and internationally.
                 </p>
                 <p>
-                  We provide consulting services in connection with design, remodeling of buildings, interior design,
-                  urban and environmental planning, landscape architecture, construction management, value engineering
-                  and real estate development.
-                </p>
-                <p>
-                  We believe that what we do is valuable to our clients and to society.
-                </p>
-                <p>
-                  Our mission is to utilize our expertise to create a personalized product that enhances your space
-                  with passion and elegance.
+                  We operate with the highest standards of ethics, ensuring client privacy, precision, and excellence in every project.
                 </p>
               </div>
             </div>
@@ -127,7 +130,7 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 fade-in-up">
-              Leadership
+              A Message From Our Founder
             </h2>
           </div>
 
@@ -145,37 +148,17 @@ const About = () => {
             </div>
 
             <div className="lg:col-span-8 fade-in-up" style={{ animationDelay: "0.2s" }}>
-              <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
+              <div className="space-y-6 text-muted-foreground leading-relaxed text-xl italic border-l-4 border-red pl-6 py-2 my-auto">
                 <p>
-                  Simply said, I design houses because I enjoy helping other people create comfortable living environments.
+                  "As the founder of MK, my journey has always been driven by a profound belief: we are, at our core, building far more than mere physical structures. We are crafting the backdrops to people's lives. True architectural design possesses the unique power to shape human experiences, elevate communities, and leave a lasting positive impact on the generations that follow.
                 </p>
                 <p>
-                  I design houses because I seek beauty in these environments, for some, beauty is an archaic and meaningless,
-                  for me, it expresses an objective reality … truth.
+                  For over three decades, our firm has operated on the principle that architecture is a profound responsibility. Whether we are envisioning a residential haven, a dynamic commercial space, or a culturally significant landmark, we approach each endeavor with the same relentless pursuit of excellence, innovation, and purpose.
                 </p>
                 <p>
-                  My journey in search of beauty has been a long one, but a necessary one.
-                  I discovered early on that simply seeing and observing beautiful objects and buildings was not enough for me.
-                  Observing; was not enough for knowing, I needed to create beauty in order to know it, feel it and live it.
+                  Every project we take on is a deeply collaborative process—a continuous, evolving conversation between the client's unique vision and our firm's collective expertise. It is in this synergy that true magic happens. We don't just design buildings; together, we bring to life vibrant spaces that breathe, adapt, and continually inspire those who inhabit them."
                 </p>
-                <p>
-                  Design a house and building it, is like writing a poem. For me, designing a house is that simple as writing
-                  a poem to Ahmed Shawky or Abbas Elakkad.
-                  All good houses are poems and all good poems convey truth is some manner.
-                </p>
-                <p>
-                  Good houses are transcendent. They point to beauty, truth and love.
-                  I needed and still need to know these things through my work.
-                </p>
-                <p>
-                  Beauty is recognized as soon as it is seen, as it is hidden in every human as love.
-                  We need to be around this beauty in order to be human at our highest level.
-                </p>
-                <p>
-                  My journey, my path and my search for beauty has been a search for being me.
-                  Every new house reveals another aspect of self. Each house becomes another mirror of reality.
-                  Polishing the mirror reveals another layer of truth. Each house becomes another metaphor and another poem.
-                </p>
+                <p className="font-semibold mt-6 text-charcoal not-italic text-lg">— Maged Khorshed</p>
               </div>
             </div>
           </div>
