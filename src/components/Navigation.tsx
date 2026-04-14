@@ -71,26 +71,36 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div
-          className={`fixed inset-0 bg-background/98 backdrop-blur-xl z-40 transition-all duration-500 md:hidden flex flex-col justify-center items-center space-y-8 ${isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            }`}
-        >
-          {navItems.map((item, index) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`text-3xl font-serif font-medium tracking-wide transition-all duration-300 transform ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                } ${isActive(item.path)
-                  ? "text-red"
-                  : "text-foreground hover:text-red"
-                }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+        {isMobileMenuOpen && (
+          <div
+            className="fixed inset-0 z-[60] md:hidden flex flex-col justify-center items-center space-y-8"
+            style={{ background: 'hsl(0 0% 100% / 0.98)', backdropFilter: 'blur(16px)' }}
+          >
+            {/* Close button inside overlay */}
+            <button
+              className="absolute top-4 right-6 p-2 z-10"
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close mobile menu"
             >
-              {item.name}
-            </Link>
-          ))}
-        </div>
+              <X className="h-6 w-6 text-foreground" />
+            </button>
+            {navItems.map((item, index) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-3xl font-serif font-medium tracking-wide transition-all duration-300 transform translate-y-0 opacity-100 ${
+                  isActive(item.path)
+                    ? "text-red"
+                    : "text-foreground hover:text-red"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   );
