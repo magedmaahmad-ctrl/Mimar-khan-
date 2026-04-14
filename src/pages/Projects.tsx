@@ -59,14 +59,6 @@ const MobileHeroCarousel = ({ projects, onProjectClick }: {
         </motion.div>
       </AnimatePresence>
 
-      {/* Top branding */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-center">
-        <h1 className="text-3xl font-serif font-bold text-white/90 tracking-wide">
-          MIMAR KHAN
-        </h1>
-        <p className="text-xs text-white/60 uppercase tracking-[0.3em] mt-1">Creations</p>
-      </div>
-
       {/* Project info overlay */}
       <div className="absolute bottom-0 left-0 right-0 z-10 p-6 pb-8">
         <AnimatePresence mode="wait">

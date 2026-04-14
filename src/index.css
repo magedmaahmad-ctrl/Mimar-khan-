@@ -180,6 +180,14 @@
     background: radial-gradient(circle at center, hsl(var(--background) / 0.45), transparent 70%);
   }
 
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
   .hero-visual {
     position: absolute;
     inset: 0;
@@ -330,7 +338,7 @@
 
   .approach-card {
     position: relative;
-    padding: 2rem 2rem 2rem 3.75rem;
+    padding: 2rem;
     background: hsl(var(--card));
     border-radius: 1.25rem;
     border: 1px solid hsl(var(--border));
@@ -357,14 +365,12 @@
   }
 
   .approach-card-number {
-    position: absolute;
-    left: 1.5rem;
-    top: 2rem;
-    font-size: 1.75rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: hsl(var(--red));
-    opacity: 0.35;
+    opacity: 0.7;
     letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
   }
 
   .approach-card-icon {
@@ -375,7 +381,7 @@
     border-radius: 999px;
     background: hsl(var(--red) / 0.08);
     color: hsl(var(--red));
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   /* Smooth Animations */
@@ -531,6 +537,44 @@
 }
 
 @media (max-width: 768px) {
+  .hero-section::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.50) 0%,
+      rgba(0, 0, 0, 0.35) 50%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+  }
+
+  .hero-headline,
+  .hero-headline span[data-word] {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+
+  .hero-headline .text-gradient-red {
+    background: var(--gradient-red) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  .hero-subheadline {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .hero-insights {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .hero-insight::before {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .hero-badge {
     padding: 0.5rem 1.25rem;
     font-size: 0.8rem;
@@ -544,13 +588,8 @@
   }
 
   .approach-card {
-    padding: 1.75rem;
+    padding: 1.5rem;
     border-radius: 1rem;
-  }
-
-  .approach-card-number {
-    left: 1.25rem;
-    top: 1.5rem;
   }
 }
 
