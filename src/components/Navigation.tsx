@@ -27,7 +27,8 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav
+    <>
+      <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-elegant border-b border-border/20"
           : "bg-transparent"
@@ -69,40 +70,38 @@ const Navigation = () => {
             )}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div
-            className="fixed inset-0 z-[60] md:hidden flex flex-col justify-center items-center space-y-8"
-            style={{ background: 'hsl(0 0% 100% / 0.98)', backdropFilter: 'blur(16px)' }}
-          >
-            {/* Close button inside overlay */}
-            <button
-              className="absolute top-4 right-6 p-2 z-10"
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-label="Close mobile menu"
-            >
-              <X className="h-6 w-6 text-foreground" />
-            </button>
-            {navItems.map((item, index) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`text-3xl font-serif font-medium tracking-wide transition-all duration-300 transform translate-y-0 opacity-100 ${
-                  isActive(item.path)
-                    ? "text-red"
-                    : "text-foreground hover:text-red"
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        )}
       </div>
     </nav>
+
+      {/* Mobile Navigation Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-background/98 backdrop-blur-xl md:hidden flex flex-col justify-center items-center space-y-8">
+          {/* Close button inside overlay */}
+          <button
+            className="absolute top-4 right-6 p-2 z-10"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close mobile menu"
+          >
+            <X className="h-6 w-6 text-foreground" />
+          </button>
+          {navItems.map((item, index) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`text-3xl font-serif font-medium tracking-wide transition-all duration-300 transform translate-y-0 opacity-100 ${
+                isActive(item.path)
+                  ? "text-red"
+                  : "text-foreground hover:text-red"
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 
