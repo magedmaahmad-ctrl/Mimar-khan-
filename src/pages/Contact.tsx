@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -12,11 +12,13 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -25,38 +27,31 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Format the message for WhatsApp
-      const whatsappMessage = `🏗️ *New Contact Form Submission*
+      const whatsappMessage = `New contact form submission
 
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Project Type:* ${formData.subject}
+Name: ${formData.name}
+Email: ${formData.email}
+Project type: ${formData.subject}
 
-*Project Details:*
+Project details:
 ${formData.message}
 
----
-*Sent from Mimar Khan Design Website*`;
+Sent from the Mimar Khan website`;
 
-      // Encode the message for URL
       const encodedMessage = encodeURIComponent(whatsappMessage);
-
-      // Create WhatsApp URL with the phone number
       const whatsappUrl = `https://wa.me/201222175051?text=${encodedMessage}`;
 
-      // Open WhatsApp in a new tab
-      window.open(whatsappUrl, '_blank');
+      window.open(whatsappUrl, "_blank");
 
-      // Reset form and show success message
       setFormData({ name: "", email: "", subject: "", message: "" });
       toast({
-        title: "Opening WhatsApp...",
-        description: "Your message is ready to send on WhatsApp. Please complete the send process.",
+        title: "Opening WhatsApp",
+        description: "Your message is ready to send in WhatsApp.",
       });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "There was an error preparing your message. Please try again.",
+        title: "Something went wrong",
+        description: "Please try again in a moment.",
         variant: "destructive",
       });
     } finally {
@@ -68,103 +63,124 @@ ${formData.message}
     {
       icon: MapPin,
       title: "Office Location",
-      details: ["35 ObourBuildings -Floor 16", "Office 4 –Salah Salem Street", "Cairo , Egypt"],
-      delay: "0.2s"
+      details: ["35 Obour Buildings, Floor 16", "Office 4, Salah Salem Street", "Cairo, Egypt"],
     },
     {
       icon: Phone,
       title: "Phone Numbers",
       details: ["+2-0220822573", "+2-01222175051", "+2-01113618082"],
-      delay: "0.4s"
     },
     {
       icon: Mail,
-      title: "Email Addresses",
+      title: "Email Address",
       details: ["Info@MimarKhan.com"],
-      delay: "0.6s"
     },
     {
       icon: Clock,
       title: "Office Hours",
       details: ["Sunday - Thursday: 9:00 AM - 6:00 PM", "Friday: 9:00 AM - 2:00 PM", "Saturday: Closed"],
-      delay: "0.8s"
     },
   ];
 
   const projectTypes = [
-    "Architectes",
-    "Interior Designers",
-    "Project Managers"
+    "Residential project",
+    "Commercial project",
+    "Interior architecture",
+    "Project management",
   ];
 
   return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero">
+    <div className="pt-28">
+      <section className="pb-12">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground mb-6 fade-in-scroll">
+          <div className="max-w-3xl">
+            <div className="h-1 w-20 rounded-full bg-gradient-to-r from-red to-red-light" />
+            <h1 className="mt-8 text-[clamp(3rem,6vw,5.75rem)] font-serif font-semibold leading-[0.95] tracking-tight text-foreground">
               Contact <span className="text-gradient-red">Us</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto fade-in-scroll">
-              Ready to start your architectural journey? Get in touch with our team
-              and let's discuss how we can bring your vision to life.
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+              Ready to start your architectural journey? Share your brief and we will help turn it
+              into a clear, practical plan.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Information */}
-      <section className="py-20 bg-background">
+      <section className="pb-24">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-            {contactInfo.map((info, index) => {
-              const Icon = info.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-card p-8 rounded-sm shadow-elegant hover-lift text-center fade-in-scroll"
-                  style={{ animationDelay: info.delay }}
-                >
-                  <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Icon className="h-8 w-8 text-background" />
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="space-y-6">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {contactInfo.map((info) => {
+                  const Icon = info.icon;
+                  return (
+                    <div
+                      key={info.title}
+                      className="rounded-[1.75rem] border border-border bg-card p-6 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-red/10 text-red">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <h2 className="text-lg font-serif font-semibold text-foreground">
+                          {info.title}
+                        </h2>
+                      </div>
+                      <div className="mt-5 space-y-2">
+                        {info.details.map((detail) => (
+                          <p key={detail} className="text-sm leading-relaxed text-muted-foreground">
+                            {detail}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="rounded-[2rem] border border-border bg-stone/35 p-6 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                  What happens next
+                </p>
+                <h2 className="mt-4 text-3xl font-serif font-semibold text-foreground">
+                  We review the brief, clarify priorities, and reply with the next best step.
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  For urgent inquiries, calling the studio is the fastest way to reach the team.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {["Fast response", "Clear scope", "Practical next steps"].map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-foreground"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="rounded-[2rem] border border-border bg-card p-8 shadow-[0_24px_70px_-44px_rgba(0,0,0,0.35)]">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                      Start a conversation
+                    </p>
+                    <h2 className="mt-3 text-3xl font-serif font-semibold text-foreground">
+                      Send Us a Message
+                    </h2>
                   </div>
-                  <h3 className="text-xl font-serif font-semibold text-foreground mb-4">
-                    {info.title}
-                  </h3>
-                  <div className="space-y-2">
-                    {info.details.map((detail, detailIndex) => (
-                      <p key={detailIndex} className="text-muted-foreground text-sm">
-                        {detail}
-                      </p>
-                    ))}
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-red/10 text-red">
+                    <MessageCircle className="h-5 w-5" />
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Enhanced Contact Form Section */}
-      <section className="py-20 bg-gradient-to-br from-charcoal via-charcoal to-primary text-primary-foreground">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <div className="fade-in-scroll">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Send Us a Message
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Fill out the form below and it will open WhatsApp with your message ready to send.
-                For urgent inquiries, please call us directly.
-              </p>
-
-              <div className="bg-background/10 backdrop-blur-md p-8 rounded-sm border border-white/10">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+                  <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-primary-foreground mb-2">
+                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
                         Full Name *
                       </label>
                       <input
@@ -174,12 +190,12 @@ ${formData.message}
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-white/20 rounded-sm bg-white/10 text-primary-foreground placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red transition-all duration-300 backdrop-blur-sm"
+                        className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20"
                         placeholder="Your full name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-primary-foreground mb-2">
+                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
                         Email Address *
                       </label>
                       <input
@@ -189,14 +205,14 @@ ${formData.message}
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-white/20 rounded-sm bg-white/10 text-primary-foreground placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red transition-all duration-300 backdrop-blur-sm"
+                        className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20"
                         placeholder="your.email@example.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-primary-foreground mb-2">
+                    <label htmlFor="subject" className="mb-2 block text-sm font-medium text-foreground">
                       Project Type *
                     </label>
                     <select
@@ -205,11 +221,11 @@ ${formData.message}
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-white/20 rounded-sm bg-white/10 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-red transition-all duration-300 backdrop-blur-sm"
+                      className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20"
                     >
-                      <option value="" className="bg-charcoal text-primary-foreground">Select a project type</option>
+                      <option value="">Select a project type</option>
                       {projectTypes.map((type) => (
-                        <option key={type} value={type} className="bg-charcoal text-primary-foreground">
+                        <option key={type} value={type}>
                           {type}
                         </option>
                       ))}
@@ -217,7 +233,7 @@ ${formData.message}
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-primary-foreground mb-2">
+                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
                       Project Details *
                     </label>
                     <textarea
@@ -227,126 +243,46 @@ ${formData.message}
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border border-white/20 rounded-sm bg-white/10 text-primary-foreground placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red transition-all duration-300 resize-none backdrop-blur-sm"
-                      placeholder="Please describe your project requirements, timeline, and any specific design preferences..."
+                      className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20"
+                      placeholder="Tell us about the project scope, timeline, and the kind of space you want to create."
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-hero w-full inline-flex items-center justify-center group disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-red px-6 py-4 text-sm font-semibold text-white shadow-red transition-transform duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-full animate-spin mr-2" />
-                        Opening WhatsApp...
-                      </>
-                    ) : (
-                      <>
-                        Send via WhatsApp
-                        <MessageCircle className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                      </>
-                    )}
+                    {isSubmitting ? "Opening WhatsApp..." : "Send via WhatsApp"}
+                    <MessageCircle className="h-5 w-5" />
                   </button>
                 </form>
               </div>
-            </div>
 
-            {/* Map */}
-            <div className="fade-in-scroll">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                Visit Our Office
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Located in the heart of New Cairo, our office is easily accessible
-                and equipped with modern facilities for client meetings and consultations.
-              </p>
+              <div className="rounded-[2rem] border border-border bg-stone/35 p-6 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                      Visit the studio
+                    </p>
+                    <h2 className="mt-3 text-2xl font-serif font-semibold text-foreground">
+                      Our office is open by appointment.
+                    </h2>
+                  </div>
+                  <MapPin className="h-6 w-6 text-red" />
+                </div>
 
-              <div className="bg-background/10 backdrop-blur-md rounded-sm h-96 flex items-center justify-center border border-white/10 overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-red/20 to-charcoal/40" />
-                <div className="text-center relative z-10">
-                  <MapPin className="h-16 w-16 text-primary-foreground mx-auto mb-4" />
-                  <h3 className="text-xl font-serif font-semibold text-primary-foreground mb-2">
-                    Interactive Map
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Map integration would be implemented here
+                <div className="mt-5 rounded-3xl border border-border bg-background p-5">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    35 Obour Buildings, Floor 16, Office 4, Salah Salem Street, Cairo, Egypt
                   </p>
-                  <p className="text-sm text-muted-foreground mt-4">
-                    35 ObourBuildings -Floor 16<br />
-                    Office 4 –Salah Salem Street<br />
-                    Cairo , Egypt
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    We welcome clients for consultations, project reviews, and design discussions.
+                    Please call ahead to schedule a visit.
                   </p>
                 </div>
               </div>
-
-              <div className="mt-8 bg-background/10 backdrop-blur-md p-6 rounded-sm border border-white/10">
-                <h4 className="text-lg font-serif font-semibold text-primary-foreground mb-4">
-                  Schedule a Visit
-                </h4>
-                <p className="text-muted-foreground mb-4">
-                  We welcome clients to visit our office for project discussions and design reviews.
-                  Please call ahead to schedule an appointment.
-                </p>
-                <div className="flex items-center space-x-3 text-sm text-muted-foreground">
-                  <Phone className="h-4 w-4 text-red" />
-                  <span>+2-0220822573</span>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-stone">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 fade-in-scroll">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto fade-in-scroll">
-              Quick answers to common questions about our services and process.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                question: "What services do you offer?",
-                answer: "We provide comprehensive architectural services including design, interior design, urban planning, and consultancy services for residential, commercial, and cultural projects.",
-                delay: "0.2s"
-              },
-              {
-                question: "How long does a typical project take?",
-                answer: "Project timelines vary depending on scope and complexity. Residential projects typically take 3-6 months for design phase, while larger commercial projects may take 6-12 months.",
-                delay: "0.4s"
-              },
-              {
-                question: "Do you work outside of Egypt?",
-                answer: "While we're based in Egypt, we're open to taking on international projects. We have experience working with clients across the Middle East and North Africa region.",
-                delay: "0.6s"
-              },
-              {
-                question: "What's included in your consultation?",
-                answer: "Our initial consultation includes project assessment, preliminary design concepts, timeline discussion, and cost estimation. This helps us understand your vision and requirements.",
-                delay: "0.8s"
-              },
-            ].map((faq, index) => (
-              <div
-                key={index}
-                className="bg-card p-8 rounded-sm shadow-elegant fade-in-scroll"
-                style={{ animationDelay: faq.delay }}
-              >
-                <h3 className="text-xl font-serif font-semibold text-foreground mb-4">
-                  {faq.question}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

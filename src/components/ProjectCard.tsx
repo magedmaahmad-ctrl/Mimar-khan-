@@ -10,33 +10,44 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <Link
       to={`/projects/${project.categories[0]}/${project.slug}`}
-      className="group relative block h-[400px] w-full overflow-hidden rounded-2xl bg-gray-100"
+      className="group flex h-full min-h-[28rem] w-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_60px_-30px_rgba(0,0,0,0.28)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_32px_90px_-36px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red/70"
     >
-      <img
-        src={project.images[0]}
-        alt={project.title}
-        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-        loading="lazy"
-      />
+      <div className="relative h-[18.5rem] overflow-hidden">
+        <img
+          src={project.images[0]}
+          alt={project.title}
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+        />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-transparent" />
 
-      <div className="absolute bottom-0 left-0 w-full p-6 text-white transform transition-transform duration-300 translate-y-4 group-hover:translate-y-0">
-        <span className="mb-2 inline-block rounded-full bg-red px-3 py-1 text-xs font-medium uppercase tracking-wider text-white">
-          {project.categories[0]}
-        </span>
+        <div className="absolute left-5 top-5">
+          <span className="inline-flex items-center rounded-full bg-background/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-charcoal shadow-sm backdrop-blur">
+            {project.categories[0]}
+          </span>
+        </div>
+      </div>
 
-        <h3 className="mb-2 text-2xl font-serif font-bold leading-tight">
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <MapPin className="h-4 w-4 text-red" />
+          <span className="truncate">{project.location}</span>
+        </div>
+
+        <h3 className="mt-4 text-2xl font-serif font-semibold leading-tight text-foreground transition-colors duration-300 group-hover:text-red">
           {project.title}
         </h3>
 
-        <div className="flex items-center space-x-2 text-sm text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 delay-100">
-          <MapPin className="h-4 w-4" />
-          <span>{project.location}</span>
-        </div>
+        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+          {project.summary}
+        </p>
 
-        <div className="mt-4 flex items-center text-sm font-medium text-red opacity-0 transition-opacity duration-300 group-hover:opacity-100 delay-200">
-          View Project <ArrowRight className="ml-2 h-4 w-4" />
+        <div className="mt-6 border-t border-border/70 pt-5">
+          <span className="inline-flex items-center gap-2 text-sm font-medium text-red transition-transform duration-300 group-hover:translate-x-1">
+            Explore project
+            <ArrowRight className="h-4 w-4" />
+          </span>
         </div>
       </div>
     </Link>

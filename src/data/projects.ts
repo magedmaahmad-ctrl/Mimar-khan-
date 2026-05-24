@@ -14,6 +14,12 @@ import project10 from "@/assets/project (10).jpg";
 import project11 from "@/assets/project (11).jpg";
 import project12 from "@/assets/project (12).jpg";
 import project13 from "@/assets/project (13).jpg";
+import mosqueMain from "@/assets/projects/islamic-mosque/main.jpg";
+import mosqueGallery1 from "@/assets/projects/islamic-mosque/gallery1.jpg";
+import mosqueGallery2 from "@/assets/projects/islamic-mosque/gallery2.jpg";
+import mosqueGallery3 from "@/assets/projects/islamic-mosque/gallery3.jpg";
+import gowharaMain from "@/assets/projects/the-gowhara/main.jpg";
+import gowharaGallery1 from "@/assets/projects/the-gowhara/gallery1.jpg";
 
 type RawProject = typeof rawProjects[number];
 
@@ -39,6 +45,12 @@ const imageLibrary: Record<string, string> = {
   "project-11": project11,
   "project-12": project12,
   "project-13": project13,
+  "project-14": mosqueMain,
+  "project-15": mosqueGallery1,
+  "project-16": mosqueGallery2,
+  "project-17": mosqueGallery3,
+  "project-18": gowharaMain,
+  "project-19": gowharaGallery1,
 };
 // === END REPLACE PROJECT IMAGES HERE ===
 

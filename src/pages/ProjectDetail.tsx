@@ -1,35 +1,9 @@
 import { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  MapPin,
-  ArrowRight,
-  Building,
-  Square,
-  TreePine,
-  Hotel,
-  Flower2,
-} from "lucide-react";
+import { ArrowLeft, MapPin, ArrowRight } from "lucide-react";
 import { projectsData } from "@/data/projectsData";
 import ProjectGallery from "@/components/ProjectGallery";
-
-const getCategoryIcon = (category: string) => {
-  switch (category) {
-    case "residential":
-      return <Building className="h-5 w-5" />;
-    case "commercial":
-      return <Square className="h-5 w-5" />;
-    case "cultural":
-      return <TreePine className="h-5 w-5" />;
-    case "hospitality":
-      return <Hotel className="h-5 w-5" />;
-    case "landscape":
-      return <Flower2 className="h-5 w-5" />;
-    default:
-      return <Building className="h-5 w-5" />;
-  }
-};
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -93,8 +67,7 @@ const ProjectDetail = () => {
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Projects
           </Link>
 
-          <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
-            {/* Main Content */}
+          <div className="space-y-12">
             <div>
               <h2 className="mb-6 text-3xl font-serif font-bold">Overview</h2>
               <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
@@ -116,59 +89,6 @@ const ProjectDetail = () => {
 
               <h3 className="mb-6 text-2xl font-serif font-bold">Gallery</h3>
               <ProjectGallery images={project.images} title={project.title} />
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              <div className="rounded-2xl border border-border/50 bg-stone/20 p-8">
-                <h3 className="mb-6 text-xl font-serif font-bold">Project Details</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between border-b border-border/30 pb-2">
-                    <span className="text-muted-foreground">Client</span>
-                    <span className="font-medium">{project.client}</span>
-                  </div>
-                  <div className="flex justify-between border-b border-border/30 pb-2">
-                    <span className="text-muted-foreground">Status</span>
-                    <span className="font-medium">{project.status}</span>
-                  </div>
-                  <div className="flex justify-between border-b border-border/30 pb-2">
-                    <span className="text-muted-foreground">Location</span>
-                    <span className="font-medium">{project.location}</span>
-                  </div>
-                  <div className="flex justify-between border-b border-border/30 pb-2">
-                    <span className="text-muted-foreground">Category</span>
-                    <span className="font-medium capitalize">{project.categories.join(", ")}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-border/50 bg-stone/20 p-8">
-                <h3 className="mb-6 text-xl font-serif font-bold">Specifications</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between border-b border-border/30 pb-2">
-                    <span className="text-muted-foreground">Total Area</span>
-                    <span className="font-medium">{project.specifications.area}</span>
-                  </div>
-                  {project.specifications.floors && (
-                    <div className="flex justify-between border-b border-border/30 pb-2">
-                      <span className="text-muted-foreground">Floors</span>
-                      <span className="font-medium">{project.specifications.floors}</span>
-                    </div>
-                  )}
-                  {project.specifications.units && (
-                    <div className="flex justify-between border-b border-border/30 pb-2">
-                      <span className="text-muted-foreground">Units</span>
-                      <span className="font-medium">{project.specifications.units}</span>
-                    </div>
-                  )}
-                  {project.specifications.parking && (
-                    <div className="flex justify-between border-b border-border/30 pb-2">
-                      <span className="text-muted-foreground">Parking</span>
-                      <span className="font-medium">{project.specifications.parking}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -196,5 +116,4 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
-
 

@@ -18,7 +18,6 @@ import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import { useScrollAnimations } from "./hooks/useScrollAnimations";
 import useScrollToTop from "./hooks/useScrollToTop";
 import { useScrollRestoration } from "./hooks/useScrollRestoration";
-import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +53,6 @@ const App = () => (
       <Sonner />
       <HashRouter>
         <AppContent />
-        <CustomCursor />
       </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>

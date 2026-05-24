@@ -69,7 +69,7 @@ const About = () => {
                   </ul>
                 </div>
                 <p>
-                  Our portfolio spans residential, commercial, educational, cultural, hospitality, and industrial projects—both locally and internationally.
+                  Our portfolio spans residential, commercial, educational, cultural, hospitality, and industrial projects - both locally and internationally.
                 </p>
                 <p>
                   We operate with the highest standards of ethics, ensuring client privacy, precision, and excellence in every project.
@@ -158,7 +158,7 @@ const About = () => {
                 <p>
                   Every project we take on is a deeply collaborative process—a continuous, evolving conversation between the client's unique vision and our firm's collective expertise. It is in this synergy that true magic happens. We don't just design buildings; together, we bring to life vibrant spaces that breathe, adapt, and continually inspire those who inhabit them."
                 </p>
-                <p className="font-semibold mt-6 text-charcoal not-italic text-lg">— Maged Khorshed</p>
+                <p className="font-semibold mt-6 text-charcoal not-italic text-lg">- Maged Khorshed</p>
               </div>
             </div>
           </div>
