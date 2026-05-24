@@ -123,11 +123,13 @@ const Projects = () => {
     { id: "all", title: "All Projects" },
     { id: "administrative", title: "Administrative" },
     { id: "commercial", title: "Commercial" },
+    { id: "cultural", title: "Cultural" },
     { id: "residential", title: "Residential" },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const gowharaProject = projectsData.find((project) => project.slug === "the-gowhara");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -164,19 +166,27 @@ const Projects = () => {
   const filteredProjects = activeFilter === "all"
     ? projectsData
     : projectsData.filter(p => p.categories.includes(activeFilter));
+  const featuredProjects = gowharaProject
+    ? [
+        gowharaProject,
+        ...projectsData
+          .filter((project) => project.slug !== gowharaProject.slug)
+          .slice(0, 7),
+      ]
+    : projectsData.slice(0, 8);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section: 3D on desktop, lightweight carousel on mobile */}
       {isMobile ? (
         <MobileHeroCarousel
-          projects={projectsData}
+          projects={featuredProjects}
           onProjectClick={(project) => navigate(`/projects/${project.categories[0]}/${project.slug}`)}
         />
       ) : (
         <section className="relative h-screen w-full bg-white overflow-hidden">
           <SimpleThreeDCarousel
-            projects={projectsData}
+            projects={featuredProjects}
             onProjectClick={(project) => navigate(`/projects/${project.categories[0]}/${project.slug}`)}
           />
         </section>

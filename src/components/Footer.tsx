@@ -19,46 +19,50 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground relative overflow-hidden z-10">
-      <div className="container mx-auto px-6 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Company Info */}
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-serif font-semibold text-gradient-red mb-2">
-              Mimar Khan
-            </h3>
-            <p className="text-xs text-muted-foreground mb-3 leading-relaxed max-w-md">
-              Designing Tomorrow's Landmarks. An Egyptian architecture consultancy
-              dedicated to creating innovative and sustainable architectural solutions
-              that blend modern design with cultural heritage.
+    <footer className="relative z-10 overflow-hidden border-t border-border/40 bg-primary text-primary-foreground">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,0,0,0.14),transparent_24%)]" />
+      <div className="relative mx-auto max-w-7xl px-6 py-10 md:py-12">
+        <div className="grid gap-8 lg:grid-cols-[1.35fr_0.65fr_0.8fr]">
+          <div className="max-w-xl">
+            <Link to="/" className="inline-flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-red to-red-light text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white shadow-red">
+                MK
+              </span>
+              <span className="font-serif text-xl font-semibold tracking-tight">
+                Mimar Khan
+              </span>
+            </Link>
+            <p className="mt-4 max-w-lg text-xs leading-relaxed text-white/72 md:text-sm">
+              Designing tomorrow's landmarks with a balance of clarity, craft, and context.
+              We shape spaces that feel calm in use and confident in presence.
             </p>
 
-            {/* Contact Information */}
-            <div className="space-y-1">
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-red" />
-                <span className="text-xs">35 ObourBuildings -Floor 16 –Office 4 –Salah Salem Street –Cairo , Egypt</span>
+            <div className="mt-6 space-y-2.5 text-xs text-white/76 md:text-sm">
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-3.5 w-3.5 text-red" />
+                <span>35 Obour Buildings, Floor 16, Office 4, Salah Salem Street, Cairo, Egypt</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-red" />
-                <span className="text-xs">+2-0220822573</span>
+              <div className="flex items-center gap-3">
+                <Phone className="h-3.5 w-3.5 text-red" />
+                <span>+2-0220822573</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-red" />
-                <span className="text-xs">Info@MimarKhan.com</span>
+              <div className="flex items-center gap-3">
+                <Mail className="h-3.5 w-3.5 text-red" />
+                <span>Info@MimarKhan.com</span>
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold mb-2">Quick Links</h4>
-            <ul className="space-y-1">
+            <h4 className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
+              Quick Links
+            </h4>
+            <ul className="mt-4 space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-xs text-muted-foreground hover:text-red transition-colors duration-300"
+                    className="text-xs text-white/76 transition-colors duration-300 hover:text-red md:text-sm"
                   >
                     {link.name}
                   </Link>
@@ -67,17 +71,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Media */}
           <div>
-            <h4 className="text-sm font-semibold mb-2">Follow Us</h4>
-            <div className="flex space-x-2">
+            <h4 className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
+              Follow Us
+            </h4>
+            <div className="mt-4 flex flex-wrap gap-2.5">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
                   <a
                     key={social.name}
                     href={social.href}
-                    className="w-7 h-7 bg-stone rounded-full flex items-center justify-center text-charcoal hover:bg-red hover:text-background transition-all duration-300"
+                    className="grid h-9 w-9 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-red hover:bg-red hover:text-white"
                     aria-label={social.name}
                   >
                     <Icon className="h-3.5 w-3.5" />
@@ -85,32 +90,35 @@ const Footer = () => {
                 );
               })}
             </div>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
+                Studio hours
+              </p>
+              <p className="mt-2.5 text-xs leading-relaxed text-white/76 md:text-sm">
+                Sunday to Thursday, 9:00 AM to 6:00 PM.
+                Friday appointments are available by request.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-border mt-6 pt-4 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-[11px] text-muted-foreground">
-            © {new Date().getFullYear()} Mimar Khan Architecture Consultancy. All rights reserved.
+        <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-4 text-xs text-white/60 md:flex-row md:items-center md:justify-between md:text-sm">
+          <p>
+            (c) {new Date().getFullYear()} Mimar Khan Architecture Consultancy. All rights reserved.
           </p>
-          <div className="flex space-x-4 mt-3 md:mt-0">
-            <a
-              href="#"
-              className="text-[11px] text-muted-foreground hover:text-red transition-colors duration-300"
-            >
+          <div className="flex flex-wrap gap-4">
+            <a href="#" className="transition-colors duration-300 hover:text-red">
               Privacy Policy
             </a>
-            <a
-              href="#"
-              className="text-[11px] text-muted-foreground hover:text-red transition-colors duration-300"
-            >
+            <a href="#" className="transition-colors duration-300 hover:text-red">
               Terms of Service
             </a>
           </div>
         </div>
       </div>
       <FooterWave />
-    </footer >
+    </footer>
   );
 };
 

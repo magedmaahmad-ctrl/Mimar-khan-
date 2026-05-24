@@ -70,7 +70,8 @@ const Debris = () => {
         if (!meshRef.current) return;
 
         particles.forEach((particle, i) => {
-            let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
+            const { factor, speed, xFactor, yFactor, zFactor } = particle;
+            let t = particle.t;
             t = particle.t += speed / 2;
             const a = Math.cos(t) + Math.sin(t * 1) / 10;
             const b = Math.sin(t) + Math.cos(t * 2) / 10;
@@ -98,8 +99,15 @@ const Debris = () => {
 };
 
 const MonolithGallery = () => {
-    // Get first 3 projects for the screens
-    const featuredProjects = projectsData.slice(0, 3);
+    const gowharaProject = projectsData.find((project) => project.slug === "the-gowhara");
+    const featuredProjects = gowharaProject
+        ? [
+            gowharaProject,
+            ...projectsData
+                .filter((project) => project.slug !== gowharaProject.slug)
+                .slice(0, 2),
+        ]
+        : projectsData.slice(0, 3);
 
     return (
         <div className="h-[80vh] w-full bg-[#111111]">

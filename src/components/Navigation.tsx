@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,6 +16,17 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -24,81 +35,137 @@ const Navigation = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) =>
+    path === "/" ? location.pathname === "/" : location.pathname === path || location.pathname.startsWith(`${path}/`);
 
   return (
     <>
       <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-elegant border-b border-border/20"
-          : "bg-transparent"
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "bg-background/88 backdrop-blur-xl"
+            : "bg-transparent"
         }`}
-    >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="text-2xl font-serif font-semibold text-gradient-red">
-            Mimar Khan
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`font-medium tracking-wide transition-all duration-300 ${isActive(item.path)
-                    ? "text-red border-b-2 border-red"
-                    : "text-foreground hover:text-red"
-                  }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
+      >
+        <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+          <div
+            className={`flex items-center justify-between rounded-full border px-4 py-3 shadow-[0_18px_45px_-28px_rgba(0,0,0,0.45)] transition-all duration-500 sm:px-6 ${
+              isScrolled
+                ? "border-border/70 bg-background/85 backdrop-blur-xl"
+                : "border-transparent bg-background/40 backdrop-blur-md"
+            }`}
           >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
-        </div>
-      </div>
-    </nav>
-
-      {/* Mobile Navigation Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-background/98 backdrop-blur-xl md:hidden flex flex-col justify-center items-center space-y-8">
-          {/* Close button inside overlay */}
-          <button
-            className="absolute top-4 right-6 p-2 z-10"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-label="Close mobile menu"
-          >
-            <X className="h-6 w-6 text-foreground" />
-          </button>
-          {navItems.map((item, index) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`text-3xl font-serif font-medium tracking-wide transition-all duration-300 transform translate-y-0 opacity-100 ${
-                isActive(item.path)
-                  ? "text-red"
-                  : "text-foreground hover:text-red"
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {item.name}
+            <Link to="/" className="flex items-center gap-3 group">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-red to-red-light text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-red">
+                MK
+              </span>
+              <span className="font-serif text-base font-semibold tracking-tight text-foreground sm:text-lg">
+                Mimar Khan
+              </span>
             </Link>
-          ))}
+
+            <div className="hidden items-center gap-2 md:flex">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300 ${
+                    isActive(item.path)
+                      ? "bg-red/10 text-red"
+                      : "text-foreground hover:bg-muted hover:text-red"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            <div className="hidden items-center gap-3 md:flex">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-charcoal px-4 py-2.5 text-sm font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                Start a Project
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <button
+              className="inline-flex h-11 items-center gap-2 rounded-full border border-border/70 bg-background/95 px-4 text-sm font-semibold text-foreground transition-transform duration-300 hover:-translate-y-0.5 md:hidden"
+              onClick={() => setIsMobileMenuOpen((current) => !current)}
+              aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-4 w-4" />
+              ) : (
+                <Menu className="h-4 w-4" />
+              )}
+              <span>{isMobileMenuOpen ? "Close" : "Menu"}</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-background/96 backdrop-blur-2xl md:hidden">
+          <div className="flex h-full flex-col px-6 py-5">
+            <div className="flex items-center justify-between">
+              <Link to="/" className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-red to-red-light text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-red">
+                  MK
+                </span>
+                <span className="font-serif text-lg font-semibold text-foreground">
+                  Mimar Khan
+                </span>
+              </Link>
+              <button
+                className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-foreground"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Close mobile menu"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-10 space-y-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`flex items-center justify-between rounded-2xl border px-5 py-4 text-lg font-medium transition-all duration-300 ${
+                    isActive(item.path)
+                      ? "border-red/20 bg-red/8 text-red"
+                      : "border-border bg-card text-foreground hover:border-red/20 hover:bg-muted/70 hover:text-red"
+                  }`}
+                >
+                  <span>{item.name}</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-auto space-y-4 pb-2">
+              <div className="rounded-3xl border border-border bg-card p-5 shadow-elegant">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                  Let us talk
+                </p>
+                <p className="mt-3 font-serif text-2xl leading-tight text-foreground">
+                  Start your next project with a clear plan.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  We can help shape your brief, clarify priorities, and move from concept to delivery.
+                </p>
+              </div>
+              <Link
+                to="/contact"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-red px-5 py-4 text-sm font-semibold text-white shadow-red transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                Contact the studio
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       )}
     </>

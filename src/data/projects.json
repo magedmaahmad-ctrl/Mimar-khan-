@@ -166,6 +166,48 @@
       "parking": 260,
       "area": "18,500 sqm"
     }
+  },
+  {
+    "id": 9,
+    "slug": "islamic-mosque",
+    "title": "Islamic Mosque",
+    "summary": "A serene mosque concept with a sculpted dome, articulated minaret, and landscaped forecourt.",
+    "description": "Islamic Mosque is a composed civic and spiritual landmark designed to feel welcoming from the street and calm within. The composition centers on a clear prayer hall, a refined dome, a slender minaret, and shaded side courts that soften the transition from road to sanctuary. Landscape planting and palm trees frame the building while maintaining a dignified, contemporary identity.",
+    "location": "Cairo, Egypt",
+    "category": "cultural",
+    "features": ["Prayer hall", "Minaret tower", "Landscaped courtyard", "Accessible entry"],
+    "highlights": ["Shaded forecourt", "Quiet side garden", "Clear arrival sequence"],
+    "images": ["project-14", "project-15", "project-16", "project-17"],
+    "model": null,
+    "status": "Completed",
+    "client": "Community Trust",
+    "specifications": {
+      "floors": 2,
+      "units": 0,
+      "parking": 40,
+      "area": "3,800 sqm"
+    }
+  },
+  {
+    "id": 10,
+    "slug": "the-gowhara",
+    "title": "The Gowhara",
+    "summary": "A contemporary residential building with balanced facades, warm textures, and landscaped frontage.",
+    "description": "The Gowhara presents a clean residential silhouette with generous balconies, refined material transitions, and a landscaped ground plane that gives the building a polished, modern presence. The architecture balances privacy and openness through carefully proportioned openings, shaded terraces, and a composed street-facing elevation.",
+    "location": "Cairo, Egypt",
+    "category": "residential",
+    "features": ["Private balconies", "Landscaped frontage", "Warm material palette", "Contemporary facade"],
+    "highlights": ["Clean street presence", "Balanced massing", "Residential comfort"],
+    "images": ["project-18", "project-19"],
+    "model": null,
+    "status": "Completed",
+    "client": "The Gowhara Development",
+    "specifications": {
+      "floors": 6,
+      "units": 24,
+      "parking": 40,
+      "area": "5,200 sqm"
+    }
   }
 ]
 
