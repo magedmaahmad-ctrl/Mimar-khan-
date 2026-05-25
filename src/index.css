@@ -56,7 +56,7 @@
     --input: 0 0% 88%;
     --ring: 0 84% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;
 
     /* Gradients */
     --gradient-red: linear-gradient(135deg, hsl(var(--red)), hsl(var(--red-light)));
@@ -130,6 +130,12 @@
 @layer base {
   * {
     @apply border-border;
+    border-radius: 0 !important;
+  }
+
+  *::before,
+  *::after {
+    border-radius: 0 !important;
   }
 
   body {
@@ -686,12 +692,8 @@
   gap: 4rem;
   align-items: center;
   width: max-content;
-  animation: scroll-left-marquee 30s linear infinite;
+  animation: scroll-left-marquee 60s linear infinite;
   padding-left: 4rem;
-}
-
-.marquee-widget:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 .marquee-logo-link {
@@ -726,6 +728,7 @@
   .marquee-track {
     gap: 2.5rem;
     padding-left: 2.5rem;
+    animation-duration: 72s;
   }
   .marquee-logo-img {
     height: 45px;

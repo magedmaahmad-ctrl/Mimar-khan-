@@ -3,18 +3,25 @@ import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const isProjectsRoute = location.pathname.startsWith("/projects");
 
   useEffect(() => {
+    if (!isProjectsRoute) {
+      setIsScrolled(true);
+      return;
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isProjectsRoute]);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
@@ -41,18 +48,14 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-background/88 backdrop-blur-xl"
-            : "bg-transparent"
-        }`}
+        className="fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-500"
       >
         <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
           <div
-            className={`flex items-center justify-between rounded-full border px-4 py-3 shadow-[0_18px_45px_-28px_rgba(0,0,0,0.45)] transition-all duration-500 sm:px-6 ${
-              isScrolled
-                ? "border-border/70 bg-background/85 backdrop-blur-xl"
-                : "border-transparent bg-background/40 backdrop-blur-md"
+            className={`flex items-center justify-between px-4 py-3 transition-all duration-500 sm:px-6 ${
+              isProjectsRoute && !isScrolled
+                ? "border border-transparent bg-transparent shadow-none backdrop-blur-0"
+                : "border border-white/[0.14] bg-white/[0.08] shadow-none backdrop-blur-2xl"
             }`}
           >
             <Link to="/" className="flex items-center gap-3 group">
@@ -83,7 +86,11 @@ const Navigation = () => {
             <div className="hidden items-center gap-3 md:flex">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-charcoal px-4 py-2.5 text-sm font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
+                className={`inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-transform duration-300 hover:-translate-y-0.5 ${
+                  isProjectsRoute && !isScrolled
+                    ? "border border-black/15 bg-black/5 text-foreground hover:bg-black/10"
+                    : "border border-white/[0.15] bg-white/10 text-foreground hover:bg-white/[0.18]"
+                }`}
               >
                 Start a Project
                 <ArrowRight className="h-4 w-4" />
@@ -91,7 +98,11 @@ const Navigation = () => {
             </div>
 
             <button
-              className="inline-flex h-11 items-center gap-2 rounded-full border border-border/70 bg-background/95 px-4 text-sm font-semibold text-foreground transition-transform duration-300 hover:-translate-y-0.5 md:hidden"
+              className={`inline-flex h-11 items-center gap-2 px-4 text-sm font-semibold transition-transform duration-300 hover:-translate-y-0.5 md:hidden ${
+                isProjectsRoute && !isScrolled
+                  ? "border border-black/15 bg-black/5 text-foreground backdrop-blur-0"
+                  : "border border-white/[0.15] bg-white/[0.12] text-foreground backdrop-blur-xl"
+              }`}
               onClick={() => setIsMobileMenuOpen((current) => !current)}
               aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
               aria-expanded={isMobileMenuOpen}
@@ -120,7 +131,11 @@ const Navigation = () => {
                 </span>
               </Link>
               <button
-                className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-foreground"
+                className={`grid h-11 w-11 place-items-center text-foreground ${
+                  isProjectsRoute && !isScrolled
+                    ? "border border-black/15 bg-black/5 backdrop-blur-0"
+                    : "border border-white/[0.15] bg-white/10 backdrop-blur-xl"
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Close mobile menu"
               >
