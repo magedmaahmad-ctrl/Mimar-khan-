@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Project } from "@/data/projectsData";
 
+const heroShellClass =
+  "relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-black";
+const heroOverlayClass =
+  "absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.28)_100%)]";
+
 interface CinematicProjectsHeroProps {
   projects: Project[];
   onProjectClick?: (project: Project) => void;
@@ -36,13 +41,15 @@ function HeroImage({
   return (
     <div className={className}>
       <div className="absolute inset-0 rounded-[1.75rem] bg-black/60 shadow-[0_30px_80px_-45px_rgba(0,0,0,0.85)]" />
-      <div className="absolute inset-0 overflow-hidden rounded-[1.75rem] border border-black/10 bg-black">
+      <div className={heroShellClass}>
         <img
           src={project.images[0]}
           alt={project.title}
           className={`h-full w-full object-cover ${emphasis ? "scale-[1.02]" : "scale-[1.01]"}`}
+          loading="eager"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.28)_100%)]" />
+        <div className={heroOverlayClass} />
       </div>
 
       <div className={`absolute ${insetClassName} rounded-[1.5rem] border border-white/10 bg-black/10`} />
@@ -168,6 +175,8 @@ const CinematicProjectsHero = ({
                 src={(secondaryProject ?? primaryProject).images[0]}
                 alt={(secondaryProject ?? primaryProject).title}
                 className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <p className="mt-3 text-xs uppercase tracking-[0.26em] text-red">Secondary work</p>
@@ -186,6 +195,8 @@ const CinematicProjectsHero = ({
                 src={(tertiaryProject ?? primaryProject).images[0]}
                 alt={(tertiaryProject ?? primaryProject).title}
                 className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <p className="mt-3 text-xs uppercase tracking-[0.26em] text-red">Supporting work</p>

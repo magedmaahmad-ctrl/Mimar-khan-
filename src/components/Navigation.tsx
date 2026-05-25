@@ -2,6 +2,14 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
 
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "Projects", path: "/projects" },
+  { name: "Contact", path: "/contact" },
+];
+
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,14 +41,6 @@ const Navigation = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
-
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
 
   const isActive = (path: string) =>
     path === "/" ? location.pathname === "/" : location.pathname === path || location.pathname.startsWith(`${path}/`);

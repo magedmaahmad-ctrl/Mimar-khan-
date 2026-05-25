@@ -1,11 +1,10 @@
+import { Component, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import Layout from "./components/Layout";
-import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -20,6 +19,43 @@ import useScrollToTop from "./hooks/useScrollToTop";
 import { useScrollRestoration } from "./hooks/useScrollRestoration";
 
 const queryClient = new QueryClient();
+
+class AppErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error) {
+    console.error("Application error boundary caught an error:", error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-background px-6 text-center">
+          <div className="max-w-xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+              Something went wrong
+            </p>
+            <h1 className="mt-4 font-serif text-4xl font-semibold text-foreground">
+              The site hit a temporary issue.
+            </h1>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Please refresh the page and try again. If the issue keeps happening, check the latest deployment or error logs.
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 const AppContent = () => {
   const location = useLocation();
@@ -52,7 +88,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <HashRouter>
-        <AppContent />
+        <AppErrorBoundary>
+          <AppContent />
+        </AppErrorBoundary>
       </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>

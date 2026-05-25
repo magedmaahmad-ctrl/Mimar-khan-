@@ -13,39 +13,45 @@ import rancoLogo from "@/assets/partners/ranco.jpg";
 import almasLogo from "@/assets/partners/almas.jpg";
 import osamaTahaLogo from "@/assets/partners/osama-taha.jpg";
 
-const PartnerMarquee = () => {
-  const clients = [
-    { name: "Ranco Contracting & Engineering", src: rancoLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "Almas", src: almasLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "Digital Com", src: digitalComLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "Landmark Developments", src: landmarkDevelopmentsLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "EMKS Insurance Brokerage", src: emksLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "Dabur", src: daburLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "Client 5", src: clientSevenLogo, className: "max-h-16 sm:max-h-20" },
-    {
-      name: "MTA International",
-      src: mtaInternationalLogo,
-      className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
-      featured: true,
-    },
-    {
-      name: "Adam Grain",
-      src: adamGrainLogo,
-      className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
-      featured: true,
-    },
-    {
-      name: "Primostone",
-      src: primostoneLogo,
-      className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
-      featured: true,
-    },
-    { name: "Gadalla Group & Co.", src: gadallaLogo, className: "max-h-16 sm:max-h-20" },
-    { name: "AIVOC", src: aivocLogo, className: "max-h-[4.5rem] sm:max-h-[5.5rem]" },
-    { name: "Solutions Construction", src: solutionsConstructionLogo, className: "max-h-[5rem] sm:max-h-[6rem]" },
-  ];
+type ClientLogo = {
+  name: string;
+  src: string;
+  className: string;
+  featured?: boolean;
+};
 
+const clients: ClientLogo[] = [
+  { name: "Ranco Contracting & Engineering", src: rancoLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "Almas", src: almasLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "Digital Com", src: digitalComLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "Landmark Developments", src: landmarkDevelopmentsLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "EMKS Insurance Brokerage", src: emksLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "Dabur", src: daburLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "Client 5", src: clientSevenLogo, className: "max-h-16 sm:max-h-20" },
+  {
+    name: "MTA International",
+    src: mtaInternationalLogo,
+    className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+    featured: true,
+  },
+  {
+    name: "Adam Grain",
+    src: adamGrainLogo,
+    className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+    featured: true,
+  },
+  {
+    name: "Primostone",
+    src: primostoneLogo,
+    className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+    featured: true,
+  },
+  { name: "Gadalla Group & Co.", src: gadallaLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "AIVOC", src: aivocLogo, className: "max-h-[4.5rem] sm:max-h-[5.5rem]" },
+  { name: "Solutions Construction", src: solutionsConstructionLogo, className: "max-h-[5rem] sm:max-h-[6rem]" },
+];
+const PartnerMarquee = () => {
   return (
     <section className="border-y border-border/60 bg-stone/35 py-12 overflow-hidden">
       <div className="container mx-auto px-6 mb-8 text-center">
@@ -69,6 +75,8 @@ const PartnerMarquee = () => {
                 className={`w-auto max-w-[12.5rem] object-contain ${client.className} ${
                   "featured" in client && client.featured ? "drop-shadow-[0_10px_18px_rgba(0,0,0,0.16)]" : ""
                 }`}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}
