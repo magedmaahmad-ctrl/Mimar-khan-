@@ -206,22 +206,6 @@ const Home = () => {
 
       <PartnerMarquee />
 
-      <section className="py-10">
-        <div className="container mx-auto px-6">
-          <div className="grid gap-4 rounded-[2rem] border border-border bg-background/90 p-6 shadow-[0_24px_70px_-44px_rgba(0,0,0,0.35)] lg:grid-cols-3">
-            {[
-              "Concept clarity",
-              "Material warmth",
-              "Delivery discipline",
-            ].map((item) => (
-              <div key={item} className="rounded-2xl bg-muted/50 px-5 py-4 text-sm font-medium text-foreground">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-24">
         <div className="container mx-auto px-6">
           <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">

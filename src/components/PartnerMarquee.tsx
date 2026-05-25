@@ -8,25 +8,42 @@ import clientSevenLogo from "@/assets/clients/client-7.jpg";
 import primostoneLogo from "@/assets/clients/primostone.png";
 import gadallaLogo from "@/assets/clients/gadalla-group.png";
 import aivocLogo from "@/assets/clients/aivoc.png";
+import solutionsConstructionLogo from "@/assets/clients/solutions-construction.png";
 import rancoLogo from "@/assets/partners/ranco.jpg";
 import almasLogo from "@/assets/partners/almas.jpg";
 import osamaTahaLogo from "@/assets/partners/osama-taha.jpg";
 
 const PartnerMarquee = () => {
   const clients = [
-    { name: "Ranco Contracting & Engineering", src: rancoLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Almas", src: almasLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Digital Com", src: digitalComLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Landmark Developments", src: landmarkDevelopmentsLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "EMKS Insurance Brokerage", src: emksLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Dabur", src: daburLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Client 5", src: clientSevenLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "MTA International", src: mtaInternationalLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Adam Grain", src: adamGrainLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Primostone", src: primostoneLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "Gadalla Group & Co.", src: gadallaLogo, className: "max-h-10 sm:max-h-12" },
-    { name: "AIVOC", src: aivocLogo, className: "max-h-12 sm:max-h-14" },
+    { name: "Ranco Contracting & Engineering", src: rancoLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "Almas", src: almasLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "Digital Com", src: digitalComLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "Landmark Developments", src: landmarkDevelopmentsLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "EMKS Insurance Brokerage", src: emksLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "Dabur", src: daburLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "Client 5", src: clientSevenLogo, className: "max-h-16 sm:max-h-20" },
+    {
+      name: "MTA International",
+      src: mtaInternationalLogo,
+      className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+      featured: true,
+    },
+    {
+      name: "Adam Grain",
+      src: adamGrainLogo,
+      className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+      featured: true,
+    },
+    {
+      name: "Primostone",
+      src: primostoneLogo,
+      className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+      featured: true,
+    },
+    { name: "Gadalla Group & Co.", src: gadallaLogo, className: "max-h-16 sm:max-h-20" },
+    { name: "AIVOC", src: aivocLogo, className: "max-h-[4.5rem] sm:max-h-[5.5rem]" },
+    { name: "Solutions Construction", src: solutionsConstructionLogo, className: "max-h-[5rem] sm:max-h-[6rem]" },
   ];
 
   return (
@@ -44,12 +61,14 @@ const PartnerMarquee = () => {
           {[...clients, ...clients].map((client, index) => (
             <div
               key={`${client.name}-${index}`}
-              className="flex h-20 min-w-[10.5rem] items-center justify-center rounded-[1.25rem] border border-border bg-background px-4 py-3 shadow-sm sm:h-24 sm:min-w-[13rem] sm:px-6"
+              className="flex h-28 min-w-[13rem] items-center justify-center px-3 py-2 sm:h-32 sm:min-w-[15rem] sm:px-5"
             >
               <img
                 src={client.src}
                 alt={client.name}
-                className={`w-full object-contain ${client.className}`}
+                className={`w-auto max-w-[12.5rem] object-contain ${client.className} ${
+                  "featured" in client && client.featured ? "drop-shadow-[0_10px_18px_rgba(0,0,0,0.16)]" : ""
+                }`}
               />
             </div>
           ))}

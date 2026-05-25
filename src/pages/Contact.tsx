@@ -68,7 +68,7 @@ Sent from the Mimar Khan website`;
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+2-0220822573", "+2-01222175051", "+2-01113618082"],
+      details: ["+2-0220822573", "+2-01222175051", "+2-01143118052"],
     },
     {
       icon: Mail,
