@@ -30,6 +30,8 @@ export interface ProjectData
   model?: string;
 }
 
+const OFFICE_CATEGORY_PATTERN = /\b(?:office|hq|headquarter|headquarters)\b/i;
+
 // === REPLACE PROJECT IMAGES HERE ===
 const imageLibrary: Record<string, string> = {
   "project-1": project1,
@@ -62,6 +64,11 @@ const modelLibrary: Record<string, string> = {
 
 export const projects: ProjectData[] = rawProjects.map((project) => ({
   ...project,
+  category: OFFICE_CATEGORY_PATTERN.test(
+    `${project.title} ${project.slug} ${project.summary} ${project.description}`
+  )
+    ? "administrative"
+    : project.category,
   summary: project.summary.trim(),
   description: project.description.trim(),
   images: project.images.map((key) => imageLibrary[key] ?? key),

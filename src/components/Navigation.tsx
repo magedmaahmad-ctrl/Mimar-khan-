@@ -10,6 +10,12 @@ const navItems = [
   { name: "Contact", path: "/contact" },
 ];
 
+const BrandMark = () => (
+  <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-white p-1 shadow-red">
+    <img src="/favicon.png" alt="Mimar Khan" className="h-full w-full object-contain" />
+  </span>
+);
+
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,15 +59,13 @@ const Navigation = () => {
         <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
           <div
             className={`flex items-center justify-between px-4 py-3 transition-all duration-500 sm:px-6 ${
-              isProjectsRoute && !isScrolled
+            isProjectsRoute && !isScrolled
                 ? "border border-transparent bg-transparent shadow-none backdrop-blur-0"
                 : "border border-white/[0.14] bg-white/[0.08] shadow-none backdrop-blur-2xl"
             }`}
           >
             <Link to="/" className="flex items-center gap-3 group">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-red to-red-light text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-red">
-                MK
-              </span>
+              <BrandMark />
               <span className="font-serif text-base font-semibold tracking-tight text-foreground sm:text-lg">
                 Mimar Khan
               </span>
@@ -123,9 +127,7 @@ const Navigation = () => {
           <div className="flex h-full flex-col px-6 py-5">
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-red to-red-light text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-red">
-                  MK
-                </span>
+                <BrandMark />
                 <span className="font-serif text-lg font-semibold text-foreground">
                   Mimar Khan
                 </span>

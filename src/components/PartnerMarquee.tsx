@@ -17,37 +17,58 @@ type ClientLogo = {
   name: string;
   src: string;
   className: string;
+  frameClassName?: string;
   featured?: boolean;
 };
 
+const standardLogoClass = "max-h-24 sm:max-h-28";
+const featuredLogoClass = "max-h-[5.25rem] sm:max-h-[6.25rem]";
+const visibleFrameClass =
+  "rounded-2xl border border-border/70 bg-background/95 px-5 py-4 shadow-[0_14px_34px_-24px_rgba(0,0,0,0.35)]";
+
 const clients: ClientLogo[] = [
-  { name: "Ranco Contracting & Engineering", src: rancoLogo, className: "max-h-16 sm:max-h-20" },
-  { name: "Almas", src: almasLogo, className: "max-h-16 sm:max-h-20" },
-  { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, className: "max-h-16 sm:max-h-20" },
-  { name: "Digital Com", src: digitalComLogo, className: "max-h-16 sm:max-h-20" },
-  { name: "Landmark Developments", src: landmarkDevelopmentsLogo, className: "max-h-16 sm:max-h-20" },
-  { name: "EMKS Insurance Brokerage", src: emksLogo, className: "max-h-16 sm:max-h-20" },
-  { name: "Dabur", src: daburLogo, className: "max-h-16 sm:max-h-20" },
-  { name: "Client 5", src: clientSevenLogo, className: "max-h-16 sm:max-h-20" },
+  {
+    name: "Ranco Contracting & Engineering",
+    src: rancoLogo,
+    className: "!max-w-[15rem] max-h-[5.75rem] sm:!max-w-[18rem] sm:max-h-[6.75rem]",
+    frameClassName: visibleFrameClass,
+    featured: true,
+  },
+  { name: "Almas", src: almasLogo, className: standardLogoClass },
+  { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, className: standardLogoClass },
+  { name: "Digital Com", src: digitalComLogo, className: "max-h-32 sm:max-h-40" },
+  { name: "Landmark Developments", src: landmarkDevelopmentsLogo, className: standardLogoClass },
+  { name: "EMKS Insurance Brokerage", src: emksLogo, className: standardLogoClass },
+  {
+    name: "Dabur",
+    src: daburLogo,
+    className: "!max-w-[16rem] max-h-[6rem] sm:!max-w-[19rem] sm:max-h-[7rem]",
+    frameClassName: visibleFrameClass,
+    featured: true,
+  },
+  { name: "Client 5", src: clientSevenLogo, className: standardLogoClass },
   {
     name: "MTA International",
     src: mtaInternationalLogo,
-    className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+    className: "max-h-[5.5rem] sm:max-h-[6.5rem]",
+    frameClassName: visibleFrameClass,
     featured: true,
   },
   {
     name: "Adam Grain",
     src: adamGrainLogo,
-    className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+    className: "max-h-[5.5rem] sm:max-h-[6.5rem]",
+    frameClassName: visibleFrameClass,
     featured: true,
   },
   {
     name: "Primostone",
     src: primostoneLogo,
-    className: "max-h-[4.75rem] sm:max-h-[5.75rem]",
+    className: "!max-w-[15rem] max-h-[5.75rem] sm:!max-w-[18rem] sm:max-h-[6.75rem]",
+    frameClassName: visibleFrameClass,
     featured: true,
   },
-  { name: "Gadalla Group & Co.", src: gadallaLogo, className: "max-h-16 sm:max-h-20" },
+  { name: "Gadalla Group & Co.", src: gadallaLogo, className: standardLogoClass },
   { name: "AIVOC", src: aivocLogo, className: "max-h-[4.5rem] sm:max-h-[5.5rem]" },
   { name: "Solutions Construction", src: solutionsConstructionLogo, className: "max-h-[5rem] sm:max-h-[6rem]" },
 ];
@@ -67,17 +88,19 @@ const PartnerMarquee = () => {
           {[...clients, ...clients].map((client, index) => (
             <div
               key={`${client.name}-${index}`}
-              className="flex h-28 min-w-[13rem] items-center justify-center px-3 py-2 sm:h-32 sm:min-w-[15rem] sm:px-5"
+              className="flex h-32 min-w-[13.5rem] items-center justify-center px-3 py-2 sm:h-36 sm:min-w-[15.5rem] sm:px-5"
             >
-              <img
-                src={client.src}
-                alt={client.name}
-                className={`w-auto max-w-[12.5rem] object-contain ${client.className} ${
-                  "featured" in client && client.featured ? "drop-shadow-[0_10px_18px_rgba(0,0,0,0.16)]" : ""
-                }`}
-                loading="lazy"
-                decoding="async"
-              />
+              <div className={client.frameClassName}>
+                <img
+                  src={client.src}
+                  alt={client.name}
+                  className={`w-auto max-w-[12.5rem] object-contain ${client.className} ${
+                    "featured" in client && client.featured ? "drop-shadow-[0_10px_18px_rgba(0,0,0,0.16)]" : ""
+                  }`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
           ))}
         </div>
