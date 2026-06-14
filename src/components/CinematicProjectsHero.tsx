@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Project } from "@/data/projectsData";
 
+const heroShellClass =
+  "relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-[#4a4a4a]";
+const heroOverlayClass =
+  "absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.18)_48%,rgba(0,0,0,0.3)_100%)]";
+
 interface CinematicProjectsHeroProps {
   projects: Project[];
   onProjectClick?: (project: Project) => void;
@@ -20,34 +25,44 @@ function pickHeroProjects(projects: Project[]) {
   return projects.slice(0, 3);
 }
 
-function HeroImage({
+function HeroCard({
   project,
   className,
   insetClassName = "",
-  emphasis = false,
+  featured = false,
   children,
 }: {
   project: Project;
   className: string;
   insetClassName?: string;
-  emphasis?: boolean;
+  featured?: boolean;
   children?: ReactNode;
 }) {
   return (
     <div className={className}>
-      <div className="absolute inset-0 rounded-[1.75rem] bg-black/60 shadow-[0_30px_80px_-45px_rgba(0,0,0,0.85)]" />
-      <div className="absolute inset-0 overflow-hidden rounded-[1.75rem] border border-black/10 bg-black">
-        <img
-          src={project.images[0]}
-          alt={project.title}
-          className={`h-full w-full object-cover ${emphasis ? "scale-[1.02]" : "scale-[1.01]"}`}
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.28)_100%)]" />
-      </div>
+      <div className="absolute inset-0 rounded-[1.75rem] bg-black/35 shadow-[0_30px_80px_-45px_rgba(0,0,0,0.85)]" />
+      <div className={`${heroShellClass} h-full`}>
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={project.images[0]}
+            alt={project.title}
+            className={`h-full w-full object-cover object-center ${
+              featured ? "scale-[1.03]" : "scale-[1.015]"
+            }`}
+            loading="eager"
+            decoding="async"
+          />
+          <div className={heroOverlayClass} />
+        </div>
 
-      <div className={`absolute ${insetClassName} rounded-[1.5rem] border border-white/10 bg-black/10`} />
-      <div className="absolute inset-x-6 bottom-6 h-px bg-gradient-to-r from-transparent via-red/80 to-transparent" />
-      {children}
+        <div
+          className={`absolute ${insetClassName} inset-3 rounded-[1.5rem] border border-white/10 bg-transparent`}
+        />
+
+        <div className="absolute inset-x-0 bottom-0 z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.26)_28%,rgba(0,0,0,0.76)_100%)] px-4 pb-4 pt-14 sm:px-5 sm:pb-5 sm:pt-20">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }
@@ -123,18 +138,18 @@ const CinematicProjectsHero = ({
         >
           <div className="absolute inset-0 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(0,0,0,0.12))] shadow-[0_50px_130px_-55px_rgba(0,0,0,0.7)]" />
 
-          <div className="grid gap-4 md:grid-cols-[0.7fr_1.15fr_0.7fr] md:items-center">
-            <HeroImage
+          <div className="relative mx-auto w-full lg:h-[52rem] xl:h-[56rem]">
+            <HeroCard
               project={secondaryProject ?? primaryProject}
-              className="relative hidden md:block h-[30rem] w-full md:translate-y-8 md:rotate-[-2deg]"
+              className="relative z-10 hidden lg:block lg:absolute lg:left-1 lg:top-16 lg:h-[38rem] lg:w-[14rem] xl:left-2 xl:h-[41rem] xl:w-[14.5rem] lg:rotate-[-2deg]"
               insetClassName="inset-3"
             />
 
-            <HeroImage
+            <HeroCard
               project={primaryProject}
-              className="relative min-h-[36rem] overflow-hidden rounded-[2rem] md:min-h-[42rem]"
+              className="relative z-20 mx-auto w-full max-w-[21rem] overflow-hidden rounded-[2rem] sm:max-w-[22rem] lg:absolute lg:left-1/2 lg:top-0 lg:h-[48rem] lg:w-[23rem] lg:-translate-x-1/2 xl:h-[52rem] xl:w-[24rem]"
               insetClassName="inset-2"
-              emphasis
+              featured
             >
               <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-white">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/55">Featured work</p>
@@ -145,55 +160,15 @@ const CinematicProjectsHero = ({
                   {primaryProject.summary}
                 </p>
               </div>
-            </HeroImage>
+            </HeroCard>
 
-            <HeroImage
+            <HeroCard
               project={tertiaryProject ?? primaryProject}
-              className="relative hidden md:block h-[30rem] w-full md:-translate-y-10 md:rotate-[2deg]"
+              className="relative z-10 hidden lg:block lg:absolute lg:right-1 lg:top-12 lg:h-[38rem] lg:w-[14rem] xl:right-2 xl:h-[41rem] xl:w-[14.5rem] lg:rotate-[2deg]"
               insetClassName="inset-3"
             />
           </div>
         </motion.div>
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-6 pb-8 md:px-8 lg:hidden">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <button
-            type="button"
-            onClick={() => handleProjectClick(secondaryProject ?? primaryProject)}
-            className="group overflow-hidden rounded-[1.5rem] border border-black/8 bg-white/55 p-3 text-left shadow-[0_20px_60px_-45px_rgba(0,0,0,0.5)] backdrop-blur transition-transform duration-300 hover:-translate-y-0.5"
-          >
-            <div className="overflow-hidden rounded-[1.1rem]">
-              <img
-                src={(secondaryProject ?? primaryProject).images[0]}
-                alt={(secondaryProject ?? primaryProject).title}
-                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-            </div>
-            <p className="mt-3 text-xs uppercase tracking-[0.26em] text-red">Secondary work</p>
-            <h3 className="mt-2 font-serif text-xl font-semibold leading-tight text-foreground">
-              {(secondaryProject ?? primaryProject).title}
-            </h3>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleProjectClick(tertiaryProject ?? primaryProject)}
-            className="group overflow-hidden rounded-[1.5rem] border border-black/8 bg-white/55 p-3 text-left shadow-[0_20px_60px_-45px_rgba(0,0,0,0.5)] backdrop-blur transition-transform duration-300 hover:-translate-y-0.5"
-          >
-            <div className="overflow-hidden rounded-[1.1rem]">
-              <img
-                src={(tertiaryProject ?? primaryProject).images[0]}
-                alt={(tertiaryProject ?? primaryProject).title}
-                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-            </div>
-            <p className="mt-3 text-xs uppercase tracking-[0.26em] text-red">Supporting work</p>
-            <h3 className="mt-2 font-serif text-xl font-semibold leading-tight text-foreground">
-              {(tertiaryProject ?? primaryProject).title}
-            </h3>
-          </button>
-        </div>
       </div>
     </section>
   );

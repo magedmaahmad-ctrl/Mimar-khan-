@@ -153,6 +153,8 @@ export interface Project {
     };
 }
 
+const OFFICE_CATEGORY_PATTERN = /\b(?:office|hq|headquarter|headquarters)\b/i;
+
 const localImages = [
     project1, project2, project3, project4, project5,
     project6, project7, project8, project9, project10,
@@ -166,6 +168,15 @@ const getUnsplashImage = (index: number) =>
 const generateProjects = (): Project[] => {
     const projects: Project[] = [];
     const categoryList = ["administrative", "commercial", "residential"];
+    const commercialOfficeExceptions = new Set(["digital-com"]);
+    const normalizeOfficeCategories = (categories: string[], title: string, slug: string, description: string) => {
+        const searchableText = `${title} ${slug} ${description}`;
+        if (commercialOfficeExceptions.has(slug)) {
+            return ["commercial"];
+        }
+
+        return OFFICE_CATEGORY_PATTERN.test(searchableText) ? ["administrative"] : categories;
+    };
 
     for (let i = 0; i < 26; i++) {
         const isLocal = i < localImages.length;
@@ -265,7 +276,7 @@ const generateProjects = (): Project[] => {
         } else if (i === 4) {
             title = "Abou Alalla Gallery";
             slug = "abou-alalla-gallery";
-            categories = ["commercial", "administrative"];
+            categories = ["commercial"];
             description = "A sophisticated commercial gallery space designed to highlight exclusive collections, with modern lighting, open flows, and a sleek, artistic environment.";
         } else if (i === 5) {
             title = "Mr. Ahmed Gallal";
@@ -280,7 +291,7 @@ const generateProjects = (): Project[] => {
         } else if (i === 7) {
             title = "Digital Com";
             slug = "digital-com";
-            categories = ["commercial", "administrative"];
+            categories = ["commercial"];
             description = "A dynamic and cutting-edge office environment designed for a leading technology firm, emphasizing collaboration, innovation, and modern workspaces.";
         } else if (i === 8) {
             title = "Future Mall";
@@ -305,7 +316,7 @@ const generateProjects = (): Project[] => {
         } else if (i === 12) {
             title = "Osama Taha Clinic";
             slug = "osama-taha-clinic";
-            categories = ["commercial", "administrative"];
+            categories = ["administrative"];
             description = "A state-of-the-art medical clinic designed to provide a calming, sterile, yet welcoming environment for patients, featuring optimized workflows for medical professionals.";
         } else if (i === 13) {
             title = "Mr. Ahmad Shawkey Bedrooms";
@@ -345,7 +356,7 @@ const generateProjects = (): Project[] => {
         } else if (i === 20) {
             title = "MTA International for Export & Trading";
             slug = "mta-international-for-export-trading-2";
-            categories = ["commercial", "administrative"];
+            categories = ["administrative"];
             description = "A globally inspired administrative hub for a trading firm, prioritizing efficiency, clear communication flows, and an imposing, professional entrance.";
         } else if (i === 21) {
             title = "Mr. Ali Abo Ellail Studio";
@@ -373,6 +384,8 @@ const generateProjects = (): Project[] => {
             categories = ["residential"];
             description = "The Gowhara is a contemporary residential building defined by crisp balconies, warm textures, and a generous landscaped approach that gives the project a clean, polished presence.";
         }
+
+        categories = normalizeOfficeCategories(categories, title, slug, description);
 
         let features = ["Sustainable Design", "Smart Home Integration", "Panoramic Views", "Green Spaces"];
         let client = `Client ${i + 1}`;

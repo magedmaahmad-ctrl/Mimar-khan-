@@ -2,22 +2,22 @@ import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, Twitter, MapPin, Phone, Mail } from "lucide-react";
 import FooterWave from "./FooterWave";
 
+const socialLinks = [
+  { name: "Instagram", icon: Instagram, href: "#" },
+  { name: "Facebook", icon: Facebook, href: "#" },
+  { name: "LinkedIn", icon: Linkedin, href: "#" },
+  { name: "Twitter", icon: Twitter, href: "#" },
+];
+
+const quickLinks = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "Projects", path: "/projects" },
+  { name: "Contact", path: "/contact" },
+];
+
 const Footer = () => {
-  const socialLinks = [
-    { name: "Instagram", icon: Instagram, href: "#" },
-    { name: "Facebook", icon: Facebook, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
-    { name: "Twitter", icon: Twitter, href: "#" },
-  ];
-
-  const quickLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
-
   return (
     <footer className="relative z-10 overflow-hidden border-t border-border/40 bg-primary text-primary-foreground">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,0,0,0.14),transparent_24%)]" />
