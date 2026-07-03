@@ -366,7 +366,7 @@ const generateProjects = (): Project[] => {
         } else if (i === 22) {
             title = "Dabur Factory";
             slug = "dabur-factory";
-            categories = ["commercial", "administrative"];
+            categories = ["administrative"];
             description = "A large-scale industrial and administrative facility designed to meet high functional requirements while providing structured, well-lit spaces for management and operations.";
         } else if (i === 23) {
             title = "Mr. Tamer Apartment";

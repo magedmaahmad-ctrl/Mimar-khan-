@@ -9,17 +9,33 @@ import {
   Users,
 } from "lucide-react";
 import heroImage from "@/assets/hero-architecture.jpg";
-import heroImageSecondary from "@/assets/project (2).jpg";
-import heroImageTertiary from "@/assets/project (3).jpg";
 import ProjectCard from "@/components/ProjectCard";
 import PartnerMarquee from "@/components/PartnerMarquee";
 import { projectsData } from "@/data/projectsData";
 
 const Home = () => {
   const heroStats = [
-    { icon: Award, value: "500+", label: "Projects delivered" },
-    { icon: Compass, value: "6", label: "Countries served" },
-    { icon: Users, value: "30+", label: "Years of practice" },
+    { value: "500+", label: "Projects delivered" },
+    { value: "6", label: "Countries served" },
+    { value: "30+", label: "Years of practice" },
+  ];
+
+  const studioFocus = [
+    {
+      title: "Structured briefs",
+      description:
+        "We turn open-ended goals into a clear sequence of decisions so the project stays easy to follow.",
+    },
+    {
+      title: "Material clarity",
+      description:
+        "Texture, proportion, and daylight are balanced to keep the architecture calm and readable.",
+    },
+    {
+      title: "Delivery discipline",
+      description:
+        "Coordination stays visible from start to finish, which helps each stage move with confidence.",
+    },
   ];
 
   const services = [
@@ -92,7 +108,7 @@ const Home = () => {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,63,63,0.12),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(17,17,17,0.08),transparent_30%)]" />
 
         <div className="container mx-auto px-6">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.96fr]">
+          <div className="grid items-start gap-12 lg:grid-cols-[0.96fr_1.04fr]">
             <div className="max-w-3xl">
               <div className="h-1 w-20 rounded-full bg-gradient-to-r from-red to-red-light" />
               <h1 className="mt-8 max-w-[10ch] text-[clamp(3.2rem,7vw,6.75rem)] font-serif font-semibold leading-[0.92] tracking-tight text-foreground">
@@ -120,36 +136,27 @@ const Home = () => {
               </div>
 
               <div className="mt-12 grid gap-4 sm:grid-cols-3">
-                {heroStats.map((stat) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div
-                      key={stat.label}
-                      className="rounded-3xl border border-border bg-background/90 p-5 shadow-[0_20px_50px_-34px_rgba(0,0,0,0.35)] backdrop-blur"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-red/10 text-red">
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <p className="text-2xl font-serif font-semibold leading-none text-foreground">
-                            {stat.value}
-                          </p>
-                          <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                            {stat.label}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                {heroStats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-[1.5rem] border border-border/70 bg-background/90 p-5 shadow-[0_20px_50px_-34px_rgba(0,0,0,0.35)] backdrop-blur"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      {stat.label}
+                    </p>
+                    <p className="mt-3 text-3xl font-serif font-semibold leading-none text-foreground">
+                      {stat.value}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="relative">
               <div className="absolute -left-8 top-8 hidden h-36 w-36 rounded-full bg-red/10 blur-3xl lg:block" />
-              <div className="grid gap-4 sm:grid-cols-[1.12fr_0.88fr]">
-                <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_28px_80px_-36px_rgba(0,0,0,0.45)] sm:row-span-2">
+
+              <div className="grid gap-4 lg:grid-cols-[1.02fr_0.98fr]">
+                <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_28px_80px_-36px_rgba(0,0,0,0.45)]">
                   <img
                     src={heroImage}
                     alt="Contemporary architectural facade"
@@ -165,38 +172,28 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="rounded-[2rem] border border-border bg-background/90 p-5 shadow-[0_18px_50px_-34px_rgba(0,0,0,0.35)] backdrop-blur">
+                <div className="rounded-[2rem] border border-border bg-background/90 p-6 shadow-[0_18px_50px_-34px_rgba(0,0,0,0.35)] backdrop-blur">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                     Studio focus
                   </p>
-                  <div className="mt-4 space-y-4">
-                    {[
-                      "Architecture that feels precise without feeling rigid.",
-                      "Interiors that bring warmth, clarity, and comfort together.",
-                      "Delivery support that keeps decisions organized from start to finish.",
-                    ].map((item, index) => (
-                      <div key={index} className="flex gap-3">
-                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-red shadow-red" />
-                        <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
+
+                  <div className="mt-5 divide-y divide-border/70">
+                    {studioFocus.map((item, index) => (
+                      <div key={item.title} className="grid grid-cols-[3rem_1fr] gap-4 py-5 first:pt-0 last:pb-0">
+                        <span className="font-serif text-2xl font-semibold leading-none text-red/80">
+                          0{index + 1}
+                        </span>
+                        <div>
+                          <h3 className="text-lg font-serif font-semibold leading-tight text-foreground">
+                            {item.title}
+                          </h3>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>
-                </div>
-
-                <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_18px_50px_-34px_rgba(0,0,0,0.35)]">
-                  <img
-                    src={heroImageSecondary}
-                    alt="Architectural detail and exterior composition"
-                    className="h-56 w-full object-cover"
-                  />
-                </div>
-
-                <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_18px_50px_-34px_rgba(0,0,0,0.35)]">
-                  <img
-                    src={heroImageTertiary}
-                    alt="Interior architecture and warm material palette"
-                    className="h-56 w-full object-cover"
-                  />
                 </div>
               </div>
             </div>
