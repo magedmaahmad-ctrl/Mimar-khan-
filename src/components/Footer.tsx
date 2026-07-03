@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, Twitter, MapPin, Phone, Mail } from "lucide-react";
 import FooterWave from "./FooterWave";
+import BrandLogo from "./BrandLogo";
 
 const socialLinks = [
   { name: "Instagram", icon: Instagram, href: "#" },
@@ -24,13 +25,8 @@ const Footer = () => {
       <div className="relative mx-auto max-w-7xl px-6 py-7 md:py-8">
         <div className="grid gap-6 lg:grid-cols-[1.35fr_0.65fr_0.8fr]">
           <div className="max-w-xl">
-            <Link to="/" className="inline-flex items-center gap-3">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-red to-red-light text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-white shadow-red">
-                MK
-              </span>
-              <span className="font-serif text-lg font-semibold tracking-tight">
-                Mimar Khan
-              </span>
+            <Link to="/" className="inline-flex items-center" aria-label="Mimar Khan home">
+              <BrandLogo className="w-[min(10rem,48vw)] sm:w-[min(12rem,24vw)]" />
             </Link>
             <p className="mt-3 max-w-lg text-[0.72rem] leading-relaxed text-white/72 md:text-xs">
               Designing tomorrow's landmarks with a balance of clarity, craft, and context.
@@ -48,7 +44,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-3 w-3 text-red" />
-                <span>Info@MimarKhan.com</span>
+                <a href="mailto:mk@mimarkhan.com" className="transition-colors duration-300 hover:text-red">
+                  mk@mimarkhan.com
+                </a>
               </div>
             </div>
           </div>
@@ -97,7 +95,8 @@ const Footer = () => {
               </p>
               <p className="mt-2 text-[0.72rem] leading-relaxed text-white/76 md:text-xs">
                 Sunday to Thursday, 9:00 AM to 6:00 PM.
-                Friday appointments are available by request.
+                Friday is off.
+                Saturday, 10:00 AM to 4:00 PM.
               </p>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
+import BrandLogo from "./BrandLogo";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -9,12 +10,6 @@ const navItems = [
   { name: "Projects", path: "/projects" },
   { name: "Contact", path: "/contact" },
 ];
-
-const BrandMark = () => (
-  <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-white p-1 shadow-red">
-    <img src="/favicon.png" alt="Mimar Khan" className="h-full w-full object-contain" />
-  </span>
-);
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -64,11 +59,8 @@ const Navigation = () => {
                 : "border border-white/[0.14] bg-white/[0.08] shadow-none backdrop-blur-2xl"
             }`}
           >
-            <Link to="/" className="flex items-center gap-3 group">
-              <BrandMark />
-              <span className="font-serif text-base font-semibold tracking-tight text-foreground sm:text-lg">
-                Mimar Khan
-              </span>
+            <Link to="/" className="group inline-flex items-center" aria-label="Mimar Khan home">
+              <BrandLogo className="w-[min(10rem,40vw)] sm:w-[min(12rem,30vw)] lg:w-[min(13rem,18vw)]" />
             </Link>
 
             <div className="hidden items-center gap-2 md:flex">
@@ -126,11 +118,8 @@ const Navigation = () => {
         <div className="fixed inset-0 z-[60] bg-background/96 backdrop-blur-2xl md:hidden">
           <div className="flex h-full flex-col px-6 py-5">
             <div className="flex items-center justify-between">
-              <Link to="/" className="flex items-center gap-3">
-                <BrandMark />
-                <span className="font-serif text-lg font-semibold text-foreground">
-                  Mimar Khan
-                </span>
+              <Link to="/" className="inline-flex items-center" aria-label="Mimar Khan home">
+                <BrandLogo className="w-[min(9rem,42vw)] sm:w-[min(11rem,32vw)]" />
               </Link>
               <button
                 className={`grid h-11 w-11 place-items-center text-foreground ${

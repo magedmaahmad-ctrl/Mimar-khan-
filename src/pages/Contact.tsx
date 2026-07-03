@@ -73,12 +73,12 @@ Sent from the Mimar Khan website`;
     {
       icon: Mail,
       title: "Email Address",
-      details: ["Info@MimarKhan.com"],
+      details: ["mk@mimarkhan.com"],
     },
     {
       icon: Clock,
       title: "Office Hours",
-      details: ["Sunday - Thursday: 9:00 AM - 6:00 PM", "Friday: 9:00 AM - 2:00 PM", "Saturday: Closed"],
+      details: ["Sunday - Thursday: 9:00 AM - 6:00 PM", "Friday: Off", "Saturday: 10:00 AM - 4:00 PM"],
     },
   ];
 

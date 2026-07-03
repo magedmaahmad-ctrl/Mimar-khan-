@@ -1,6 +1,6 @@
 import { Award, Target, Eye, Heart } from "lucide-react";
 import aboutImage from "@/assets/about-office.jpg";
-import founderImage from "@/assets/maged-khorshed.jpg";
+import founderImage from "@/assets/ceo.png";
 
 const About = () => {
   const values = [
