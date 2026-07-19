@@ -7,6 +7,7 @@ const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Services", path: "/services" },
+  { name: "Interior", path: "/interior" },
   { name: "Projects", path: "/projects" },
   { name: "Contact", path: "/contact" },
 ];
@@ -48,13 +49,11 @@ const Navigation = () => {
 
   return (
     <>
-      <nav
-        className="fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-500"
-      >
-        <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+      <nav className="fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-500">
+        <div className="w-full px-0">
           <div
-            className={`flex items-center justify-between px-4 py-3 transition-all duration-500 sm:px-6 ${
-            isProjectsRoute && !isScrolled
+            className={`flex items-center justify-between px-3 py-3 transition-all duration-500 sm:px-4 lg:px-6 ${
+              isProjectsRoute && !isScrolled
                 ? "border border-transparent bg-transparent shadow-none backdrop-blur-0"
                 : "border border-white/[0.14] bg-white/[0.08] shadow-none backdrop-blur-2xl"
             }`}
@@ -63,7 +62,7 @@ const Navigation = () => {
               <BrandLogo className="w-[min(10rem,40vw)] sm:w-[min(12rem,30vw)] lg:w-[min(13rem,18vw)]" />
             </Link>
 
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="hidden items-center gap-2 lg:flex">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -79,7 +78,7 @@ const Navigation = () => {
               ))}
             </div>
 
-            <div className="hidden items-center gap-3 md:flex">
+            <div className="hidden items-center gap-3 lg:flex">
               <Link
                 to="/contact"
                 className={`inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-transform duration-300 hover:-translate-y-0.5 ${
@@ -94,7 +93,7 @@ const Navigation = () => {
             </div>
 
             <button
-              className={`inline-flex h-11 items-center gap-2 px-4 text-sm font-semibold transition-transform duration-300 hover:-translate-y-0.5 md:hidden ${
+              className={`inline-flex h-11 items-center gap-2 px-4 text-sm font-semibold transition-transform duration-300 hover:-translate-y-0.5 lg:hidden ${
                 isProjectsRoute && !isScrolled
                   ? "border border-black/15 bg-black/5 text-foreground backdrop-blur-0"
                   : "border border-white/[0.15] bg-white/[0.12] text-foreground backdrop-blur-xl"
@@ -115,7 +114,7 @@ const Navigation = () => {
       </nav>
 
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-background/96 backdrop-blur-2xl md:hidden">
+        <div className="fixed inset-0 z-[60] bg-background/96 backdrop-blur-2xl lg:hidden">
           <div className="flex h-full flex-col px-6 py-5">
             <div className="flex items-center justify-between">
               <Link to="/" className="inline-flex items-center" aria-label="Mimar Khan home">
@@ -134,7 +133,8 @@ const Navigation = () => {
               </button>
             </div>
 
-            <div className="mt-10 space-y-3">
+            <div className="mt-10 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-1">
+              <div className="space-y-3">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -149,9 +149,9 @@ const Navigation = () => {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               ))}
-            </div>
+              </div>
 
-            <div className="mt-auto space-y-4 pb-2">
+            <div className="mt-8 space-y-4 pb-2">
               <div className="rounded-3xl border border-border bg-card p-5 shadow-elegant">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                   Let us talk
@@ -170,6 +170,7 @@ const Navigation = () => {
                 Contact the studio
                 <ArrowRight className="h-4 w-4" />
               </Link>
+            </div>
             </div>
           </div>
         </div>
