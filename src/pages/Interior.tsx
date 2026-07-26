@@ -5,6 +5,13 @@ import heroImage from "@/assets/hero-architecture.jpg";
 import { projectsData } from "@/data/projectsData";
 
 const Interior = () => {
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const privateJobProjects = [
     "the-gowhara",
     "mr-tamer-apartment",
@@ -68,20 +75,22 @@ const Interior = () => {
               </p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#private-jobs"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("private-jobs")}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-red px-6 py-3.5 text-sm font-semibold text-white shadow-red transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   Explore private jobs
                   <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="#furniture"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("furniture")}
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-red/20 bg-background px-6 py-3.5 text-sm font-semibold text-red transition-all duration-300 hover:border-red hover:bg-red/5"
                 >
                   See furniture work
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </button>
               </div>
 
               <div className="mt-12 grid max-w-3xl gap-3 sm:grid-cols-3">

@@ -4,7 +4,9 @@ import {
   Award,
   Building,
   Compass,
+  Clock3,
   Layers,
+  Play,
   Sparkles,
   Users,
 } from "lucide-react";
@@ -93,6 +95,34 @@ const Home = () => {
   ];
 
   const gowharaProject = projectsData.find((project) => project.slug === "the-gowhara");
+  const interiorReels = [
+    {
+      title: "Mr. Tamer Apartment",
+      format: "Walkthrough reel",
+      duration: "1:12",
+      summary:
+        "A quiet interior flow shaped by warm finishes, clean joins, and a calm daylight rhythm.",
+      image: projectsData.find((project) => project.slug === "mr-tamer-apartment")?.images[0] ?? heroImage,
+    },
+    {
+      title: "Mr. Ahmad Shawkey Bedrooms",
+      format: "Mood cut",
+      duration: "0:48",
+      summary:
+        "A softer residential sequence focused on comfort, texture, and a layered private atmosphere.",
+      image:
+        projectsData.find((project) => project.slug === "mr-ahmad-shawkey-bedrooms")?.images[0] ??
+        heroImage,
+    },
+    {
+      title: "Osama Taha Clinic",
+      format: "Space tour",
+      duration: "1:03",
+      summary:
+        "A calm professional interior that balances clarity, function, and a polished client experience.",
+      image: projectsData.find((project) => project.slug === "osama-taha-clinic")?.images[0] ?? heroImage,
+    },
+  ];
   const featuredProjects = gowharaProject
     ? [
         gowharaProject,
@@ -275,6 +305,119 @@ const Home = () => {
             {featuredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                Interior design
+              </p>
+              <h2 className="mt-4 text-4xl font-serif font-semibold text-foreground md:text-5xl">
+                Design in motion
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                Short walkthrough reels and room-by-room clips that show how our interiors feel once
+                the light, materials, and proportions come together.
+              </p>
+            </div>
+            <Link
+              to="/interior"
+              className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-red hover:text-red"
+            >
+              Open interior studio
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+            <article className="group relative min-h-[34rem] overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_24px_70px_-40px_rgba(0,0,0,0.38)]">
+              <img
+                src={interiorReels[0].image}
+                alt={interiorReels[0].title}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/16 to-transparent" />
+
+              <div className="absolute inset-x-0 top-0 flex items-center justify-between p-6">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
+                  <Play className="h-3.5 w-3.5 fill-current" />
+                  Video reel
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
+                  <Clock3 className="h-3.5 w-3.5" />
+                  {interiorReels[0].duration}
+                </span>
+              </div>
+
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                  <div className="max-w-2xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/65">
+                      {interiorReels[0].format}
+                    </p>
+                    <h3 className="mt-3 text-3xl font-serif font-semibold leading-tight text-white md:text-4xl">
+                      {interiorReels[0].title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-white/78 md:text-base">
+                      {interiorReels[0].summary}
+                    </p>
+                  </div>
+
+                  <div className="hidden h-16 w-16 shrink-0 place-items-center rounded-full border border-white/20 bg-white/12 text-white shadow-lg backdrop-blur md:grid">
+                    <Play className="h-6 w-6 fill-current pl-1" />
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+                  <span className="rounded-full bg-white/12 px-3 py-2 backdrop-blur">Residential</span>
+                  <span className="rounded-full bg-white/12 px-3 py-2 backdrop-blur">Interior</span>
+                  <span className="rounded-full bg-white/12 px-3 py-2 backdrop-blur">Walkthrough</span>
+                </div>
+              </div>
+            </article>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+              {interiorReels.slice(1).map((reel) => (
+                <article
+                  key={reel.title}
+                  className="group relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src={reel.image}
+                      alt={reel.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-transparent" />
+
+                    <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur">
+                        <Play className="h-3 w-3 fill-current" />
+                        {reel.format}
+                      </span>
+                      <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
+                        <Clock3 className="h-3 w-3" />
+                        {reel.duration}
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                      <h3 className="text-2xl font-serif font-semibold leading-tight">{reel.title}</h3>
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <p className="text-sm leading-relaxed text-muted-foreground">{reel.summary}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
