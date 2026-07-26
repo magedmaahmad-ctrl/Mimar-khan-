@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import Interior from "./pages/Interior";
 import Projects from "./pages/Projects";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -71,6 +72,7 @@ const AppContent = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/interior" element={<Interior />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:category" element={<Projects />} />
         <Route path="/projects/:category/:slug" element={<ProjectDetail />} />

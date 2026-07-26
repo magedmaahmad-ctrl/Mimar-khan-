@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 
 const FooterWave = () => {
     return (
-        <div className="absolute bottom-2 left-0 right-0 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        <div className="absolute bottom-1 left-0 right-0 w-full overflow-hidden leading-none z-0 pointer-events-none">
             <motion.svg
-                className="relative block w-[200%] h-[48px] md:h-[72px]"
+                className="relative block h-10 w-[200%] md:h-12"
                 viewBox="0 0 1200 120"
                 preserveAspectRatio="none"
                 animate={{
@@ -28,7 +28,7 @@ const FooterWave = () => {
             </motion.svg>
 
             <motion.svg
-                className="absolute bottom-0 left-0 w-[200%] h-[48px] md:h-[72px]"
+                className="absolute bottom-0 left-0 h-10 w-[200%] md:h-12"
                 viewBox="0 0 1200 120"
                 preserveAspectRatio="none"
                 animate={{
