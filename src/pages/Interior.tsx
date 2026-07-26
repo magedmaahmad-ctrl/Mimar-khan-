@@ -55,6 +55,9 @@ const Interior = () => {
           loop
           playsInline
           preload="metadata"
+          onLoadedMetadata={(event) => {
+            event.currentTarget.playbackRate = 0.75;
+          }}
           poster={heroImage}
           aria-hidden="true"
         >
