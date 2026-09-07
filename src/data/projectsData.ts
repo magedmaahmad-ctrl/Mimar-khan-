@@ -132,6 +132,10 @@ import mosqueGallery2 from "@/assets/projects/islamic-mosque/gallery2.jpg";
 import mosqueGallery3 from "@/assets/projects/islamic-mosque/gallery3.jpg";
 import gowharaMain from "@/assets/projects/the-gowhara/main.jpg";
 import gowharaGallery1 from "@/assets/projects/the-gowhara/gallery1.jpg";
+import grandHotelDubaiMain from "@/assets/projects/grand-hotel-dubai/main.png";
+import grandHotelDubaiGallery1 from "@/assets/projects/grand-hotel-dubai/gallery1.png";
+import grandHotelDubaiGallery2 from "@/assets/projects/grand-hotel-dubai/gallery2.png";
+import grandHotelDubaiGallery3 from "@/assets/projects/grand-hotel-dubai/gallery3.png";
 
 export interface Project {
     id: string;
@@ -158,12 +162,11 @@ const OFFICE_CATEGORY_PATTERN = /\b(?:office|hq|headquarter|headquarters)\b/i;
 const localImages = [
     project1, project2, project3, project4, project5,
     project6, project7, project8, project9, project10,
-    project11, project12, project13
+    project11, project12, project13, project14, project15,
+    project16, project17, project18, project19, project20,
+    project21, project22, project23, project24, mosqueMain,
+    gowharaMain, grandHotelDubaiMain,
 ];
-
-// Helper to generate unique Unsplash architecture images
-const getUnsplashImage = (index: number) =>
-    `https://images.unsplash.com/photo-${1500000000000 + index}?auto=format&fit=crop&w=1600&q=80`;
 
 const generateProjects = (): Project[] => {
     const projects: Project[] = [];
@@ -178,9 +181,9 @@ const generateProjects = (): Project[] => {
         return OFFICE_CATEGORY_PATTERN.test(searchableText) ? ["administrative"] : categories;
     };
 
-    for (let i = 0; i < 26; i++) {
+    for (let i = 0; i < 27; i++) {
         const isLocal = i < localImages.length;
-        let image = isLocal ? localImages[i] : getUnsplashImage(i);
+        let image = localImages[i];
 
         // Ensure gallery images are also unique-ish or at least valid
         let galleryImages: string[];
@@ -237,10 +240,18 @@ const generateProjects = (): Project[] => {
         } else if (i === 25) {
             image = gowharaMain;
             galleryImages = [gowharaMain, gowharaGallery1];
+        } else if (i === 26) {
+            image = grandHotelDubaiMain;
+            galleryImages = [
+                grandHotelDubaiMain,
+                grandHotelDubaiGallery1,
+                grandHotelDubaiGallery2,
+                grandHotelDubaiGallery3,
+            ];
         } else {
             galleryImages = isLocal
                 ? [image, localImages[(i + 1) % localImages.length]] // Fallback to another local for gallery
-                : [image, getUnsplashImage(i + 100)]; // Different unsplash for gallery
+                : [image, localImages[(i + 1) % localImages.length]];
         }
 
         const isMouradElgendy = i === 0;
@@ -383,12 +394,18 @@ const generateProjects = (): Project[] => {
             slug = "the-gowhara";
             categories = ["residential"];
             description = "The Gowhara is a contemporary residential building defined by crisp balconies, warm textures, and a generous landscaped approach that gives the project a clean, polished presence.";
+        } else if (i === 26) {
+            title = "Grand Hotel Dubai";
+            slug = "grand-hotel-dubai";
+            categories = ["commercial"];
+            description = "A destination hotel and leisure resort in Dubai, completed in 2016, designed around a sweeping waterfront promenade, lagoon pools, landscaped gardens, and generous spaces for hospitality and entertainment.";
         }
 
         categories = normalizeOfficeCategories(categories, title, slug, description);
 
         let features = ["Sustainable Design", "Smart Home Integration", "Panoramic Views", "Green Spaces"];
         let client = `Client ${i + 1}`;
+        let location = "Cairo, Egypt";
         let status: Project["status"] = i % 3 === 0 ? "Completed" : i % 3 === 1 ? "In Progress" : "Concept";
         let specifications = {
             area: `${2000 + i * 100} sqm`,
@@ -415,6 +432,16 @@ const generateProjects = (): Project[] => {
                 floors: "6",
                 parking: "Underground"
             };
+        } else if (i === 26) {
+            features = ["Waterfront promenade", "Lagoon pools", "Landscaped gardens", "Resort amenities"];
+            client = "Grand Hotel Dubai";
+            location = "Dubai, UAE";
+            status = "Completed";
+            specifications = {
+                area: "45,000 sqm",
+                floors: "4",
+                parking: "Surface parking"
+            };
         }
 
         projects.push({
@@ -422,7 +449,7 @@ const generateProjects = (): Project[] => {
             slug,
             title,
             categories,
-            location: "Cairo, Egypt",
+            location,
             client,
             status,
             summary: description.length > 80 ? description.substring(0, 80) + "..." : description,

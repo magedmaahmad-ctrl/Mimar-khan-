@@ -88,13 +88,13 @@ const Projects = () => {
 
       <section className="bg-white py-20">
         <div className="container mx-auto px-6 text-center">
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl"
           >
             Our <span className="text-red">Projects</span>
-          </motion.h1>
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

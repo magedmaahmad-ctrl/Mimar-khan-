@@ -1,25 +1,24 @@
-import { Component, type ReactNode } from "react";
+import { Component, lazy, Suspense, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Interior from "./pages/Interior";
-import Projects from "./pages/Projects";
-import AllProjects from "./pages/AllProjects";
-import ProjectDetail from "./pages/ProjectDetail";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
-import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import { useScrollAnimations } from "./hooks/useScrollAnimations";
 import useScrollToTop from "./hooks/useScrollToTop";
 import { useScrollRestoration } from "./hooks/useScrollRestoration";
 
-const queryClient = new QueryClient();
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Interior = lazy(() => import("./pages/Interior"));
+const Projects = lazy(() => import("./pages/Projects"));
+const AllProjects = lazy(() => import("./pages/AllProjects"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+const RouteFallback = () => (
+  <div className="min-h-[60vh] bg-background" role="status" aria-label="Loading page" />
+);
 
 class AppErrorBoundary extends Component<
   { children: ReactNode },
@@ -61,41 +60,37 @@ class AppErrorBoundary extends Component<
 const AppContent = () => {
   const location = useLocation();
 
-  // useSmoothScroll(); // Temporarily disabled to test scroll issue
   useScrollAnimations(location.pathname);
   useScrollToTop(); // Scroll to top on route changes
   useScrollRestoration(); // Custom scroll restoration
 
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/interior" element={<Interior />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:category" element={<Projects />} />
-        <Route path="/projects/:category/:slug" element={<ProjectDetail />} />
-        <Route path="/all-projects" element={<AllProjects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/interior" element={<Interior />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:category" element={<Projects />} />
+          <Route path="/projects/:category/:slug" element={<ProjectDetail />} />
+          <Route path="/all-projects" element={<AllProjects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 };
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+  <HashRouter>
+    <AppErrorBoundary>
       <Toaster />
-      <Sonner />
-      <HashRouter>
-        <AppErrorBoundary>
-          <AppContent />
-        </AppErrorBoundary>
-      </HashRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      <AppContent />
+    </AppErrorBoundary>
+  </HashRouter>
 );
 
 export default App;

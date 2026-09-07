@@ -16,6 +16,8 @@ import osamaTahaLogo from "@/assets/partners/osama-taha.jpg";
 type ClientLogo = {
   name: string;
   src: string;
+  width: number;
+  height: number;
   className: string;
   frameClassName?: string;
   featured?: boolean;
@@ -30,26 +32,32 @@ const clients: ClientLogo[] = [
   {
     name: "Ranco Contracting & Engineering",
     src: rancoLogo,
+    width: 1080,
+    height: 1080,
     className: "!max-w-[15rem] max-h-[5.75rem] sm:!max-w-[18rem] sm:max-h-[6.75rem]",
     frameClassName: visibleFrameClass,
     featured: true,
   },
-  { name: "Almas", src: almasLogo, className: standardLogoClass },
-  { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, className: standardLogoClass },
-  { name: "Digital Com", src: digitalComLogo, className: "max-h-32 sm:max-h-40" },
-  { name: "Landmark Developments", src: landmarkDevelopmentsLogo, className: standardLogoClass },
-  { name: "EMKS Insurance Brokerage", src: emksLogo, className: standardLogoClass },
+  { name: "Almas", src: almasLogo, width: 1079, height: 700, className: standardLogoClass },
+  { name: "Osama Taha Bariatric Group", src: osamaTahaLogo, width: 370, height: 226, className: standardLogoClass },
+  { name: "Digital Com", src: digitalComLogo, width: 229, height: 148, className: "max-h-32 sm:max-h-40" },
+  { name: "Landmark Developments", src: landmarkDevelopmentsLogo, width: 225, height: 224, className: standardLogoClass },
+  { name: "EMKS Insurance Brokerage", src: emksLogo, width: 302, height: 58, className: standardLogoClass },
   {
     name: "Dabur",
     src: daburLogo,
+    width: 383,
+    height: 132,
     className: "!max-w-[16rem] max-h-[6rem] sm:!max-w-[19rem] sm:max-h-[7rem]",
     frameClassName: visibleFrameClass,
     featured: true,
   },
-  { name: "Client 5", src: clientSevenLogo, className: standardLogoClass },
+  { name: "Client 5", src: clientSevenLogo, width: 820, height: 360, className: standardLogoClass },
   {
     name: "MTA International",
     src: mtaInternationalLogo,
+    width: 200,
+    height: 200,
     className: "max-h-[5.5rem] sm:max-h-[6.5rem]",
     frameClassName: visibleFrameClass,
     featured: true,
@@ -57,6 +65,8 @@ const clients: ClientLogo[] = [
   {
     name: "Adam Grain",
     src: adamGrainLogo,
+    width: 225,
+    height: 225,
     className: "max-h-[5.5rem] sm:max-h-[6.5rem]",
     frameClassName: visibleFrameClass,
     featured: true,
@@ -64,13 +74,15 @@ const clients: ClientLogo[] = [
   {
     name: "Primostone",
     src: primostoneLogo,
+    width: 225,
+    height: 225,
     className: "!max-w-[15rem] max-h-[5.75rem] sm:!max-w-[18rem] sm:max-h-[6.75rem]",
     frameClassName: visibleFrameClass,
     featured: true,
   },
-  { name: "Gadalla Group & Co.", src: gadallaLogo, className: standardLogoClass },
-  { name: "AIVOC", src: aivocLogo, className: "max-h-[4.5rem] sm:max-h-[5.5rem]" },
-  { name: "Solutions Construction", src: solutionsConstructionLogo, className: "max-h-[5rem] sm:max-h-[6rem]" },
+  { name: "Gadalla Group & Co.", src: gadallaLogo, width: 204, height: 192, className: standardLogoClass },
+  { name: "AIVOC", src: aivocLogo, width: 1600, height: 1499, className: "max-h-[4.5rem] sm:max-h-[5.5rem]" },
+  { name: "Solutions Construction", src: solutionsConstructionLogo, width: 873, height: 388, className: "max-h-[5rem] sm:max-h-[6rem]" },
 ];
 const PartnerMarquee = () => {
   return (
@@ -94,6 +106,8 @@ const PartnerMarquee = () => {
                 <img
                   src={client.src}
                   alt={client.name}
+                  width={client.width}
+                  height={client.height}
                   className={`w-auto max-w-[12.5rem] object-contain ${client.className} ${
                     "featured" in client && client.featured ? "drop-shadow-[0_10px_18px_rgba(0,0,0,0.16)]" : ""
                   }`}
