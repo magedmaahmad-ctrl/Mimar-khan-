@@ -41,7 +41,7 @@ Sent from the Mimar Khan website`;
       const encodedMessage = encodeURIComponent(whatsappMessage);
       const whatsappUrl = `https://wa.me/201222175051?text=${encodedMessage}`;
 
-      window.open(whatsappUrl, "_blank");
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
       setFormData({ name: "", email: "", subject: "", message: "" });
       toast({
@@ -190,6 +190,7 @@ Sent from the Mimar Khan website`;
                         value={formData.name}
                         onChange={handleInputChange}
                         required
+                        autoComplete="name"
                         className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20"
                         placeholder="Your full name"
                       />
@@ -205,6 +206,7 @@ Sent from the Mimar Khan website`;
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        autoComplete="email"
                         className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-red focus:outline-none focus:ring-2 focus:ring-red/20"
                         placeholder="your.email@example.com"
                       />

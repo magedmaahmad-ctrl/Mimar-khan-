@@ -16,6 +16,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <img
           src={project.images[0]}
           alt={project.title}
+          width="1600"
+          height="900"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
         />

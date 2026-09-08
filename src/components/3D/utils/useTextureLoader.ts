@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import * as THREE from 'three';
 
 interface TextureLoaderOptions {
@@ -10,6 +10,7 @@ interface TextureLoaderOptions {
  * Optimized texture loader hook with caching and compression
  */
 export const useTextureLoader = (imageUrl: string, options: TextureLoaderOptions = {}) => {
+  const { onProgress, priority } = options;
   const [texture, setTexture] = useState<THREE.Texture | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -21,33 +22,34 @@ export const useTextureLoader = (imageUrl: string, options: TextureLoaderOptions
     setError(null);
 
     const loader = new THREE.TextureLoader();
+    let loadedTexture: THREE.Texture | null = null;
     
     loader.load(
       imageUrl,
-      (loadedTexture) => {
+      (nextTexture) => {
+        loadedTexture = nextTexture;
         // Optimize texture settings
-        loadedTexture.colorSpace = THREE.SRGBColorSpace;
-        loadedTexture.generateMipmaps = true;
-        loadedTexture.minFilter = THREE.LinearMipmapLinearFilter;
-        loadedTexture.magFilter = THREE.LinearFilter;
+        nextTexture.colorSpace = THREE.SRGBColorSpace;
+        nextTexture.generateMipmaps = true;
+        nextTexture.minFilter = THREE.LinearMipmapLinearFilter;
+        nextTexture.magFilter = THREE.LinearFilter;
         
         // Compress if needed (for better performance)
-        if (options.priority === 'low') {
-          loadedTexture.minFilter = THREE.LinearFilter;
+        if (priority === 'low') {
+          nextTexture.minFilter = THREE.LinearFilter;
         }
 
-        setTexture(loadedTexture);
+        setTexture(nextTexture);
         setIsLoading(false);
-        options.onProgress?.(1);
+        onProgress?.(1);
       },
       (progress) => {
         if (progress.total > 0) {
           const progressValue = progress.loaded / progress.total;
-          options.onProgress?.(progressValue);
+          onProgress?.(progressValue);
         }
       },
       (err) => {
-        console.warn(`Failed to load texture: ${imageUrl}`, err);
         setError(err);
         setIsLoading(false);
       }
@@ -55,11 +57,11 @@ export const useTextureLoader = (imageUrl: string, options: TextureLoaderOptions
 
     return () => {
       // Cleanup texture on unmount
-      if (texture) {
-        texture.dispose();
+      if (loadedTexture) {
+        loadedTexture.dispose();
       }
     };
-  }, [imageUrl, options.priority]);
+  }, [imageUrl, onProgress, priority]);
 
   return { texture, isLoading, error };
 };
@@ -71,12 +73,15 @@ export const useTextureBatchLoader = (
   imageUrls: string[],
   options: TextureLoaderOptions = {}
 ) => {
+  const { onProgress } = options;
+  const imageUrlsKey = imageUrls.join(',');
   const [textures, setTextures] = useState<Map<string, THREE.Texture>>(new Map());
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (imageUrls.length === 0) {
+    const urls = imageUrlsKey ? imageUrlsKey.split(',') : [];
+    if (urls.length === 0) {
       setIsLoading(false);
       return;
     }
@@ -85,7 +90,7 @@ export const useTextureBatchLoader = (
     const textureMap = new Map<string, THREE.Texture>();
     let loaded = 0;
 
-    const loadTexture = (url: string, index: number) => {
+    const loadTexture = (url: string) => {
       loader.load(
         url,
         (loadedTexture) => {
@@ -97,20 +102,19 @@ export const useTextureBatchLoader = (
           textureMap.set(url, loadedTexture);
           loaded++;
           
-          const progress = loaded / imageUrls.length;
+          const progress = loaded / urls.length;
           setLoadingProgress(progress);
-          options.onProgress?.(progress);
+          onProgress?.(progress);
           
-          if (loaded === imageUrls.length) {
+          if (loaded === urls.length) {
             setTextures(new Map(textureMap));
             setIsLoading(false);
           }
         },
         undefined,
         (err) => {
-          console.warn(`Failed to load texture: ${url}`, err);
           loaded++;
-          if (loaded === imageUrls.length) {
+          if (loaded === urls.length) {
             setTextures(new Map(textureMap));
             setIsLoading(false);
           }
@@ -119,10 +123,10 @@ export const useTextureBatchLoader = (
     };
 
     // Load textures with priority ordering
-    imageUrls.forEach((url, index) => {
-      setTimeout(() => loadTexture(url, index), index * 50); // Stagger loading
+    urls.forEach((url, index) => {
+      setTimeout(() => loadTexture(url), index * 50); // Stagger loading
     });
-  }, [imageUrls.join(',')]);
+  }, [imageUrlsKey, onProgress]);
 
   return { textures, loadingProgress, isLoading };
 };

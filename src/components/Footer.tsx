@@ -1,14 +1,7 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Linkedin, Twitter, MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import FooterWave from "./FooterWave";
 import BrandLogo from "./BrandLogo";
-
-const socialLinks = [
-  { name: "Instagram", icon: Instagram, href: "#" },
-  { name: "Facebook", icon: Facebook, href: "#" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Twitter", icon: Twitter, href: "#" },
-];
 
 const quickLinks = [
   { name: "Home", path: "/" },
@@ -53,9 +46,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
+            <h3 className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
               Quick Links
-            </h4>
+            </h3>
             <ul className="mt-2 space-y-1.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -71,25 +64,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
-              Follow Us
-            </h4>
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="grid h-7 w-7 place-items-center rounded-full border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-red hover:bg-red hover:text-white"
-                    aria-label={social.name}
-                  >
-                    <Icon className="h-3 w-3" />
-                  </a>
-                );
-              })}
-            </div>
-
+            <h3 className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
+              Studio contact
+            </h3>
             <div className="mt-3 rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur">
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/60">
                 Studio hours
@@ -107,14 +84,6 @@ const Footer = () => {
           <p>
             (c) {new Date().getFullYear()} Mimar Khan Architecture Consultancy. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#" className="transition-colors duration-300 hover:text-red">
-              Privacy Policy
-            </a>
-            <a href="#" className="transition-colors duration-300 hover:text-red">
-              Terms of Service
-            </a>
-          </div>
         </div>
       </div>
       <FooterWave />
