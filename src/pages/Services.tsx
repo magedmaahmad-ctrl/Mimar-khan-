@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Building, Map, TreePine, Layers } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Services = () => {
 
@@ -30,25 +30,21 @@ const Services = () => {
     {
       title: "Architecture",
       description: "We design structures that combine functionality and aesthetics, creating spaces that inspire and endure.",
-      icon: Building,
       delay: "0.2s"
     },
     {
       title: "Urban Design",
       description: "We shape cities and communities through thoughtful, sustainable planning that enhances connection and growth.",
-      icon: Map,
       delay: "0.3s"
     },
     {
       title: "Landscape Design",
       description: "We create outdoor environments that blend nature with design, delivering harmony and purpose.",
-      icon: TreePine,
       delay: "0.4s"
     },
     {
       title: "Interior Architecture",
       description: "We craft interior spaces that balance beauty and function, turning environments into meaningful experiences.",
-      icon: Layers,
       delay: "0.5s"
     }
   ];
@@ -80,13 +76,9 @@ const Services = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {servicesList.map((service, index) => {
-              const Icon = service.icon;
               return (
                 <div key={index} className="bg-card p-8 rounded-sm shadow-elegant hover-lift fade-in-up h-full" style={{ animationDelay: service.delay }}>
                   <div className="flex flex-col items-start h-full">
-                    <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center flex-shrink-0 mb-6">
-                      <Icon className="h-8 w-8 text-background" />
-                    </div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
                         {service.title}

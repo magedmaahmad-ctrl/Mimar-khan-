@@ -1,29 +1,24 @@
-import { Award, Target, Eye, Heart } from "lucide-react";
 import aboutImage from "@/assets/about-office.jpg";
 import founderImage from "@/assets/ceo.png";
 
 const About = () => {
   const values = [
     {
-      icon: Award,
       title: "Excellence",
       description: "We strive for architectural excellence in every project, ensuring the highest standards of design and execution.",
       delay: "0.2s"
     },
     {
-      icon: Target,
       title: "Innovation",
       description: "Embracing cutting-edge design technologies and sustainable practices to create future-ready architectures.",
       delay: "0.4s"
     },
     {
-      icon: Eye,
       title: "Vision",
       description: "Our visionary approach transforms spaces into meaningful environments that inspire and endure.",
       delay: "0.6s"
     },
     {
-      icon: Heart,
       title: "Passion",
       description: "Driven by our passion for architecture, we craft spaces that reflect cultural heritage and modern aesthetics.",
       delay: "0.8s"
@@ -101,17 +96,12 @@ const About = () => {
           </div>
 
           <div className="arch-grid">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
+            {values.map((value, index) => (
                 <div
                   key={index}
                   className="bg-card p-8 rounded-sm shadow-elegant hover-lift text-center fade-in-up"
                   style={{ animationDelay: value.delay }}
                 >
-                  <div className="w-16 h-16 bg-red rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Icon className="h-8 w-8 text-background" />
-                  </div>
                   <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
                     {value.title}
                   </h3>
@@ -119,8 +109,7 @@ const About = () => {
                     {value.description}
                   </p>
                 </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>

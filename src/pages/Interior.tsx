@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Layers, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ProjectCard from "@/components/ProjectCard";
 import heroImage from "@/assets/hero-architecture.jpg";
 import { projectsData } from "@/data/projectsData";
@@ -136,8 +136,7 @@ const Interior = () => {
                 so the room reads as one complete composition.
               </p>
             </div>
-            <div className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground">
-              <Sparkles className="h-4 w-4 text-red" />
+            <div className="inline-flex items-center self-start rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground">
               Custom detailing
             </div>
           </div>

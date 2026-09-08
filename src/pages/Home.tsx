@@ -1,13 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Award,
-  Building,
-  Compass,
-  Layers,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-architecture.jpg";
 import ProjectCard from "@/components/ProjectCard";
 import PartnerMarquee from "@/components/PartnerMarquee";
@@ -43,25 +35,21 @@ const Home = () => {
       title: "Architecture",
       description:
         "Clear, functional structures shaped around light, circulation, and long-term value.",
-      icon: Building,
     },
     {
       title: "Urban Design",
       description:
         "Thoughtful planning that connects places, people, and the wider city fabric.",
-      icon: Compass,
     },
     {
       title: "Landscape Design",
       description:
         "Outdoor environments that soften transitions, frame views, and add calm to daily use.",
-      icon: Sparkles,
     },
     {
       title: "Interior Architecture",
       description:
         "Tailored interiors that balance material warmth, durability, and spatial clarity.",
-      icon: Layers,
     },
   ];
 
@@ -70,25 +58,21 @@ const Home = () => {
       title: "Design for excellence",
       description:
         "We hold every decision to a high standard so the final space feels resolved and confident.",
-      icon: Award,
     },
     {
       title: "Innovative force",
       description:
         "We use new ideas when they improve the experience, not just because they are new.",
-      icon: Sparkles,
     },
     {
       title: "Architecture meets technology",
       description:
         "Digital tools help us test ideas faster, coordinate better, and deliver with more clarity.",
-      icon: Layers,
     },
     {
       title: "Invest in people",
       description:
         "Great spaces come from a team culture that values learning, care, and shared ownership.",
-      icon: Users,
     },
   ];
 
@@ -221,17 +205,12 @@ const Home = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
+            {services.map((service) => (
                 <div
                   key={service.title}
                   className="group rounded-[1.75rem] border border-border bg-card p-7 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="grid h-12 w-12 place-items-center rounded-full bg-red/10 text-red">
-                      <Icon className="h-5 w-5" />
-                    </div>
+                  <div className="flex items-center justify-end">
                     <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-red" />
                   </div>
                   <h3 className="mt-6 text-2xl font-serif font-semibold text-foreground">
@@ -241,8 +220,7 @@ const Home = () => {
                     {service.description}
                   </p>
                 </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
@@ -288,9 +266,7 @@ const Home = () => {
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              {culture.map((item, index) => {
-                const Icon = item.icon;
-                return (
+              {culture.map((item, index) => (
                   <article
                     key={item.title}
                     className="rounded-[1.75rem] border border-border bg-card p-7 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]"
@@ -300,9 +276,6 @@ const Home = () => {
                       <span className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                         0{index + 1}
                       </span>
-                      <div className="grid h-12 w-12 place-items-center rounded-full bg-red/10 text-red">
-                        <Icon className="h-5 w-5" />
-                      </div>
                     </div>
                     <h3 className="mt-6 text-2xl font-serif font-semibold text-foreground">
                       {item.title}
@@ -311,8 +284,7 @@ const Home = () => {
                       {item.description}
                     </p>
                   </article>
-                );
-              })}
+              ))}
             </div>
           </div>
         </div>

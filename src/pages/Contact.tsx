@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { MapPin, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -61,22 +61,18 @@ Sent from the Mimar Khan website`;
 
   const contactInfo = [
     {
-      icon: MapPin,
       title: "Office Location",
       details: ["35 Obour Buildings, Floor 16", "Office 4, Salah Salem Street", "Cairo, Egypt"],
     },
     {
-      icon: Phone,
       title: "Phone Numbers",
       details: ["+2-0220822573", "+2-01222175051", "+2-01143118052"],
     },
     {
-      icon: Mail,
       title: "Email Address",
       details: ["mk@mimarkhan.com"],
     },
     {
-      icon: Clock,
       title: "Office Hours",
       details: ["Sunday - Thursday: 9:00 AM - 6:00 PM", "Friday: Off", "Saturday: 10:00 AM - 4:00 PM"],
     },
@@ -112,16 +108,12 @@ Sent from the Mimar Khan website`;
             <div className="space-y-6">
               <div className="grid gap-4 sm:grid-cols-2">
                 {contactInfo.map((info) => {
-                  const Icon = info.icon;
                   return (
                     <div
                       key={info.title}
                       className="rounded-[1.75rem] border border-border bg-card p-6 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]"
                     >
-                      <div className="flex items-center gap-3">
-                        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-red/10 text-red">
-                          <Icon className="h-5 w-5" />
-                        </div>
+                      <div>
                         <h2 className="text-lg font-serif font-semibold text-foreground">
                           {info.title}
                         </h2>
@@ -171,9 +163,6 @@ Sent from the Mimar Khan website`;
                     <h2 className="mt-3 text-3xl font-serif font-semibold text-foreground">
                       Send Us a Message
                     </h2>
-                  </div>
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-red/10 text-red">
-                    <MessageCircle className="h-5 w-5" />
                   </div>
                 </div>
 
