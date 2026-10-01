@@ -136,6 +136,16 @@ import grandHotelDubaiMain from "@/assets/projects/grand-hotel-dubai/main.png";
 import grandHotelDubaiGallery1 from "@/assets/projects/grand-hotel-dubai/gallery1.png";
 import grandHotelDubaiGallery2 from "@/assets/projects/grand-hotel-dubai/gallery2.png";
 import grandHotelDubaiGallery3 from "@/assets/projects/grand-hotel-dubai/gallery3.png";
+import grandHotelDubaiGallery4 from "@/assets/projects/grand-hotel-dubai/gallery4.jpg";
+import grandHotelDubaiGallery5 from "@/assets/projects/grand-hotel-dubai/gallery5.jpg";
+import grandHotelDubaiGallery6 from "@/assets/projects/grand-hotel-dubai/gallery6.jpg";
+import grandHotelDubaiGallery7 from "@/assets/projects/grand-hotel-dubai/gallery7.jpg";
+import grandHotelDubaiGallery8 from "@/assets/projects/grand-hotel-dubai/gallery8.jpg";
+import grandHotelDubaiGallery9 from "@/assets/projects/grand-hotel-dubai/gallery9.jpg";
+import grandHotelDubaiGallery10 from "@/assets/projects/grand-hotel-dubai/gallery10.jpg";
+import grandHotelDubaiGallery11 from "@/assets/projects/grand-hotel-dubai/gallery11.jpg";
+import grandHotelDubaiGallery12 from "@/assets/projects/grand-hotel-dubai/gallery12.jpg";
+import grandHotelDubaiGallery13 from "@/assets/projects/grand-hotel-dubai/gallery13.jpg";
 
 export interface Project {
     id: string;
@@ -247,6 +257,16 @@ const generateProjects = (): Project[] => {
                 grandHotelDubaiGallery1,
                 grandHotelDubaiGallery2,
                 grandHotelDubaiGallery3,
+                grandHotelDubaiGallery4,
+                grandHotelDubaiGallery5,
+                grandHotelDubaiGallery6,
+                grandHotelDubaiGallery7,
+                grandHotelDubaiGallery8,
+                grandHotelDubaiGallery9,
+                grandHotelDubaiGallery10,
+                grandHotelDubaiGallery11,
+                grandHotelDubaiGallery12,
+                grandHotelDubaiGallery13,
             ];
         } else {
             galleryImages = isLocal
